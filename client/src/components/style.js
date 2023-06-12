@@ -20,6 +20,7 @@ export const Container = styled.div`
 export const Title = styled.div`
   position: absolute;
   top: 10%;
+
   font-weight: 600;
   font-size: 50px;
   line-height: 60px;
@@ -28,6 +29,7 @@ export const Title = styled.div`
 export const Box = styled.div`
   position: absolute;
   top: 33%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,12 +41,15 @@ export const SubmitBtn = styled.button`
   position: absolute;
   bottom: 18%;
   height: 8%;
+
   border: none;
   background-color: #ff6060;
   border-radius: 10px;
   width: 18vw;
+
   color: #ffffff;
-  font-weight: 300;
-  font-size: 40px;
+  font-weight: 100;
+  font-size: 35px;
   text-align: center;
+  cursor: pointer;
 `;
