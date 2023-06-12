@@ -1,4 +1,4 @@
 import styled from 'styled-components';
-import '../../GlobalStyle';
+// import '../../GlobalStyle';
 
 export const Container = styled.div``;
