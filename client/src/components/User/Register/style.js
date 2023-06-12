@@ -11,7 +11,12 @@ export const Input = styled.input`
   border-radius: 10px 0px 0px 10px;
   border: none;
   height: 5vh;
-  width: 15vw;
+  width: 14vw;
+  &:focus {
+    outline: none !important;
+    border-color: #ff6060;
+    box-shadow: 0 0 10px #ff6060;
+  }
 `;
 
 export const CheckBtn = styled.button`
@@ -19,5 +24,7 @@ export const CheckBtn = styled.button`
   border: none;
   background-color: #ff6060;
   border-radius: 0px 10px 10px 0px;
-  width: 3vw;
+  width: 4vw;
+  color: #fff;
+  cursor: pointer;
 `;
