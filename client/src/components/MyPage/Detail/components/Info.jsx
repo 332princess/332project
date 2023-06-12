@@ -5,6 +5,7 @@ import { Container, Box, Text, MoreBtn, Input, Modi } from '../style';
 const Info = () => {
   return (
     <Container>
+      <h1>000님, 안녕하세용!</h1>
       <Box>
         <Text>아이디 변경</Text>
         <Input placeholder="please" />
@@ -20,7 +21,7 @@ const Info = () => {
         <Input placeholder="please" />
         <Modi>수정</Modi>
       </Box>
-      <MoreBtn>More</MoreBtn>
+      <MoreBtn>회원 탈퇴</MoreBtn>
     </Container>
   );
 };

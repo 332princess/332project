@@ -1,0 +1,19 @@
+[
+  {
+    "user1": {
+      "name": "윤태영",
+      "id": "test1",
+      "password": "32"
+    },
+    "user2": {
+      "name": "이강우",
+      "id": "test2",
+      "password": "31"
+    },
+    "user3": {
+      "name": "김혜지",
+      "id": "test3",
+      "password": "26"
+    }
+  }
+]
