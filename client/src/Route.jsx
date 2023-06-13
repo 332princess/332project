@@ -5,8 +5,14 @@ import Like from './components/MyPage/Detail/Like';
 import Info from './components/MyPage/Detail/Info';
 import PlayList from './components/MyPage/Detail/PlayList';
 import Running from './components/MyPage/Detail/Running';
+import Home from './components/HomePage/HomePage';
 
 export const ROUTE = {
+  HOME: {
+    path: '/',
+    link: '/',
+    component: Home,
+  },
   REGISTER: {
     path: '/register',
     link: '/register',
@@ -44,6 +50,11 @@ export const ROUTE = {
   },
 };
 export const PUBLIC_ROUTE = {
+  HOME: {
+    path: '/',
+    link: '/',
+    component: Home,
+  },
   REGISTER: {
     path: '/register',
     link: '/register',
