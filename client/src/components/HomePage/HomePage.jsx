@@ -12,28 +12,29 @@ import {
   ImageWithTextContainer,
   ImageWrapper,
 } from './style';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
+import { ROUTE } from '../../Route';
 
-const HomePage = () => {
+const Home = () => {
   return (
     <Container>
       <Title>런메이트</Title>
       <H1>Made by 삼삼한 녀석 둘</H1>
       <WhiteBox>
         <ImageWithTextContainer>
-          <Link to="/music">
+          <Link to={ROUTE.LIKE.path}>
             <ImageWrapper>
               <Music />
               <Text>음악</Text>
             </ImageWrapper>
           </Link>
-          <Link to="/playlist">
+          <Link to={ROUTE.PLAYLIST.path}>
             <ImageWrapper>
               <PlayList />
               <Text>플레이리스트</Text>
             </ImageWrapper>
           </Link>
-          <Link to="/running">
+          <Link to={ROUTE.RUNNING.path}>
             <ImageWrapper>
               <Running />
               <Text>런닝</Text>
@@ -41,16 +42,16 @@ const HomePage = () => {
           </Link>
         </ImageWithTextContainer>
       </WhiteBox>
-      <Switch>
+      <Routes>
         <Route path="/music" />
         <Route path="/playlist" />
         <Route path="/running" />
-      </Switch>
+      </Routes>
     </Container>
   );
 };
 
-export default HomePage;
+export default Home;
 
 // shift + alt + f = 프리티어인가? eslint인가 둘중에 하나
 // 형식에 맞춰서 교정해주는 단축키로 알고있어요.

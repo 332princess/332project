@@ -43,6 +43,14 @@ export const Bar = styled.div`
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
+  // gap: 2px;
+`;
+
+export const BarBtn = styled.button`
+  border: none;
+  background-color: #ff6060;
+  width: 50%;
+  cursor: pointer;
 `;
 
 export const MoreBtn = styled.button`

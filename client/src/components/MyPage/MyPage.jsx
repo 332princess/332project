@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Container, Title, Box, Find, FindBox, Input } from './style';
-import Detail from './Detail/Detail';
+import { MyPage } from './style';
 import Side from './SideBar/Side';
+import { Container } from './Detail/style';
 
-const MyPage = () => {
+const MyPages = () => {
   return (
-    <Container>
-      <Side></Side>
-      <Detail></Detail>
-    </Container>
+    <MyPage>
+      <Side />
+      <Container>원하는 메뉴를 선택해 주셍뇨</Container>
+    </MyPage>
   );
 };
-export default MyPage;
+export default MyPages;

@@ -34,7 +34,7 @@ export const Box = styled.div`
   align-items: center;
 
   padding-top: 30px;
-  gap: 3vh;
+  // gap: 3vh;
   border-radius: 10px;
 
   margin-top: 40%;
@@ -45,8 +45,8 @@ export const Box = styled.div`
 
 // export const SideBox =
 
-export const URLs = styled.a`
-  padding-top: 10px;
+export const URLs = styled.p`
+  // padding-top: 1px;
   text-decoration-line: none;
   color: #fff;
 `;

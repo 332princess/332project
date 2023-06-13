@@ -66,11 +66,12 @@ export const ImageWrapper = styled.div`
   width: 100px;
   height: 200px;
   background-size: cover;
-  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
 `;
 
-export const Text = styled.p`
-  text-align: center;
+export const Text = styled.button`
+  border: none;
 `;
 
 export const activeStyle = {
