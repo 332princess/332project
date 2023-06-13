@@ -1,16 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, Title, H1, Box, WhiteBox, Image1 } from './style';
+import {
+  Container,
+  Title,
+  H1,
+  WhiteBox,
+  Music,
+  PlayList,
+  Running,
+  Text,
+  ImageWithTextContainer,
+  ImageWrapper,
+} from './style';
+import { Switch, Route, Link } from 'react-router-dom';
 
 const HomePage = () => {
   return (
     <Container>
-      <Box>
-        <Image1 />
-      </Box>
-      <Title>Welcome to the home page</Title>
-      <H1>대충 웹사이트 소개문구 123456678910</H1>
-      <WhiteBox />
+      <Title>런메이트</Title>
+      <H1>Made by 삼삼한 녀석 둘</H1>
+      <WhiteBox>
+        <ImageWithTextContainer>
+          <Link to="/music">
+            <ImageWrapper>
+              <Music />
+              <Text>음악</Text>
+            </ImageWrapper>
+          </Link>
+          <Link to="/playlist">
+            <ImageWrapper>
+              <PlayList />
+              <Text>플레이리스트</Text>
+            </ImageWrapper>
+          </Link>
+          <Link to="/running">
+            <ImageWrapper>
+              <Running />
+              <Text>런닝</Text>
+            </ImageWrapper>
+          </Link>
+        </ImageWithTextContainer>
+      </WhiteBox>
+      <Switch>
+        <Route path="/music" />
+        <Route path="/playlist" />
+        <Route path="/running" />
+      </Switch>
     </Container>
   );
 };

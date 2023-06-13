@@ -10,30 +10,69 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 60px;
-  margi-top: 20px;
+  font-size: 70px;
+  margin-top: 10vh;
+  color: #fff;
 `;
-
-export const Box = styled.div``;
 
 export const H1 = styled.h1`
   font-size: 18px;
   text-align: center;
+  color: #fff;
+`;
+
+export const Music = styled.div`
+  background-image: url('/image1.png');
+  background-size: cover;
+  margin-top: 30%;
+  width: 100px;
+  height: 100px;
+`;
+
+export const PlayList = styled.div`
+  background-image: url('/image2.png');
+  background-size: cover;
+  margin-top: 30%;
+  width: 100px;
+  height: 100px;
+`;
+
+export const Running = styled.div`
+  background-image: url('/image3.png');
+  background-size: cover;
+  margin-top: 30%;
+  width: 100px;
+  height: 100px;
 `;
 
 export const WhiteBox = styled.div`
-  background-color: white;
   width: 100%;
-  height: 300px;
-  position: absolute;
+  height: 42vh;
+  background-color: white;
+  position: fixed;
   bottom: 0;
+  v-index: -1;
 `;
 
-export const Image1 = styled.div`
-  background-image: url('./image1.png');
-  background-size: cover;
-  margin-top: 30%;
-  width: 45%;
-  height: 20%;
-  border-radius: 100%;
+export const ImageWithTextContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  justify-content: space-evenly;
 `;
+
+export const ImageWrapper = styled.div`
+  width: 100px;
+  height: 200px;
+  background-size: cover;
+  justify-content: flex-start;
+`;
+
+export const Text = styled.p`
+  text-align: center;
+`;
+
+export const activeStyle = {
+  color: '#fff',
+};
