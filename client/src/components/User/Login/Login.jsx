@@ -6,7 +6,7 @@ import { Cookies } from 'react-cookie';
 import { validateEmail, validatePassword } from '../../util/usefulFunction';
 import { Box, Container, SubmitBtn, Title } from '../../style';
 import { Find, FindBox, Input } from './style';
-
+import Navbar from '../../Navbar/Navbar';
 const Login = () => {
   const navigate = useNavigate();
   const [info, setInfo] = useState({
@@ -89,6 +89,7 @@ const Login = () => {
 
   return (
     <Container>
+      <Navbar></Navbar>
       <Title>로그인</Title>
       <Box style={{ gap: '40px' }}>
         <Input
