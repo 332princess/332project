@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-// import '../../GlobalStyle';
 
-export const Container = styled.div`
+export const MyPage = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
