@@ -93,7 +93,6 @@ const Login = () => {
 
   return (
     <Container>
-      <Navbar></Navbar>
       <Title>로그인</Title>
       <Box style={{ gap: '40px' }}>
         <Input

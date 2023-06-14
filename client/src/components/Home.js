@@ -6,6 +6,7 @@ export const Container = styled.div`
   justify-content: center;
   min-height: 50vh;
   flex-direction: column;
+  font-family: 'HSJiptokki-Round';
 `;
 
 export const Title = styled.h1`
@@ -71,6 +72,7 @@ export const ImageWrapper = styled.div`
 
 export const Text = styled.button`
   border: none;
+  font-family: 'HSJiptokki-Round';
 `;
 
 export const activeStyle = {

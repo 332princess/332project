@@ -1,7 +1,16 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  //   align-items: ;
+  @font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff')
+      format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  font-family: 'GangwonEdu_OTFBoldA';
+  font-size: 20px;
+  font-weight: 500;
 `;
 export const Box = styled.div`
   position: relative;
@@ -56,34 +65,21 @@ export const BarBtn = styled.button`
   cursor: pointer;
 `;
 
-export const MoreBtn = styled.button`
-  position: absolute;
-  bottom: 10%;
-  height: 8%;
-
-  border: none;
-  background-color: #ff6060;
-  border-radius: 10px;
-  width: 30%;
-
-  color: #ffffff;
-  font-weight: 100;
-  font-size: 35px;
-  text-align: center;
-  cursor: pointer;
-`;
 export const SongDetail = styled.div`
   display: flex;
   align-items: flex-end;
   gap: 10px;
 `;
 
-export const Title = styled.h3``;
+export const Title = styled.h3`
+  text-align: center;
+`;
 
 export const Singer = styled.span``;
 
 export const Lyrics = styled.p`
   margin-top: 10%;
+  text-align: center;
 `;
 
 export const PlayBox = styled.div`

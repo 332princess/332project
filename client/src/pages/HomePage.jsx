@@ -21,7 +21,6 @@ const Home = () => {
     <Container>
       <Title>런메이트</Title>
       <H1>Made by 삼삼한 녀석 둘</H1>
-      <Navbar></Navbar>
       <WhiteBox>
         <ImageWithTextContainer>
           <Link to={ROUTE.SONG.path}>
