@@ -1,11 +1,12 @@
-import Register from './components/User/Register/Register';
-import Login from './components/User/Login/Login';
-import MyPage from './components/MyPage/MyPage';
-import Like from './components/MyPage/Detail/Like';
-import Info from './components/MyPage/Detail/Info';
-import PlayList from './components/MyPage/Detail/PlayList';
-import Running from './components/MyPage/Detail/Running';
-import Home from './components/HomePage/HomePage';
+import Register from './pages/User/Register';
+import Login from './pages/User/Login';
+import MyPage from './pages/MyPage/MyPage';
+import Like from './pages/MyPage/Like';
+import Info from './pages/MyPage/Info';
+import PlayList from './pages/MyPage/PlayList';
+import Running from './pages/MyPage/Running';
+import Home from './pages/HomePage';
+import Song from './pages/SongPage';
 
 export const ROUTE = {
   HOME: {
@@ -22,6 +23,11 @@ export const ROUTE = {
     path: '/login',
     link: '/login',
     element: Login,
+  },
+  SONG: {
+    path: '/song',
+    link: '/song',
+    element: Song,
   },
   MYPAGE: {
     path: '/mypage',
@@ -67,6 +73,11 @@ export const PUBLIC_ROUTE = {
   },
 };
 export const PRIVATE_ROUTE = {
+  SONG: {
+    path: '/song',
+    link: '/song',
+    element: Song,
+  },
   MYPAGE: {
     path: '/mypage',
     link: '/mypage',

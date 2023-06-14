@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { ROUTE } from '../../../Route';
+import { ROUTE } from '../../Route';
 import { Cookies } from 'react-cookie';
-import { validateEmail, validatePassword } from '../../util/usefulFunction';
-import { Box, Container, SubmitBtn, Title } from '../../style';
-import { Find, FindBox, Input } from './style';
-import Navbar from '../../Navbar/Navbar';
+import {
+  validateEmail,
+  validatePassword,
+} from '../../components/util/usefulFunction';
+import { Box, Container, SubmitBtn, Title } from '../../components/UserStyle';
+import { Find, FindBox, Input } from '../../components/Login';
+import Navbar from '../Navbar';
+
 const Login = () => {
   const navigate = useNavigate();
   const [info, setInfo] = useState({

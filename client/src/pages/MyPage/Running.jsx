@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, Box, Song, Bar, BarBtn, MoreBtn } from './style';
+import {
+  Container,
+  Box,
+  Song,
+  Bar,
+  BarBtn,
+  MoreBtn,
+} from '../../components/Detail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faMinus } from '@fortawesome/free-solid-svg-icons';
-import { MyPage } from '../style';
-import Side from '../SideBar/Side';
+import { MyPage } from '../../components/MyPage';
+import Side from './Side';
 
 const Running = () => {
   return (

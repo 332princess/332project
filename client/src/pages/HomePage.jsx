@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Navbar from '../Navbar/Navbar';
+import Navbar from './Navbar';
 import {
   Container,
   Title,
@@ -12,9 +12,9 @@ import {
   Text,
   ImageWithTextContainer,
   ImageWrapper,
-} from './style';
+} from '../components/Home';
 import { Routes, Route, Link } from 'react-router-dom';
-import { ROUTE } from '../../Route';
+import { ROUTE } from '../Route';
 
 const Home = () => {
   return (
@@ -24,7 +24,7 @@ const Home = () => {
       <Navbar></Navbar>
       <WhiteBox>
         <ImageWithTextContainer>
-          <Link to={ROUTE.LIKE.path}>
+          <Link to={ROUTE.SONG.path}>
             <ImageWrapper>
               <Music />
               <Text>음악</Text>
