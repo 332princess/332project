@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { Container, Title, Box, URLs, Logo } from './style';
-import { PRIVATE_ROUTE_ARR } from '../../../Route';
-import Navbar from '../../Navbar/Navbar';
+import { Container, Title, Box, URLs, Logo } from '../../components/SideBar';
+import { PRIVATE_ROUTE_ARR } from '../../Route';
+import Navbar from '../Navbar';
 
 const Side = () => {
   return (

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { ROUTE } from '../../../Route';
-import { Container, Title, Box, SubmitBtn } from '../../style';
-import { CheckBtn, Input, InputBox } from './style';
+import { ROUTE } from '../../Route';
+import { Container, Title, Box, SubmitBtn } from '../../components/UserStyle';
+import { CheckBtn, Input, InputBox } from '../../components/Register';
 import {
   validateNickname,
   validateEmail,
   validatePassword,
-} from '../../util/usefulFunction';
+} from '../../components/util/usefulFunction';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -103,12 +103,28 @@ const Register = () => {
       info.confirmPasswordError === ''
     ) {
       axios
-        .post('http://localhost:3000/api/user/register', info)
+        .post('/user.json', info)
         .then((res) => {
-          alert('Success Register!');
-          navigate(`${ROUTE.LOGIN.link}`);
+          axios
+            .get('/user.json')
+            .then((res) => {
+              const users = res.data;
+              const newUser = {
+                name: info.name,
+                email: info.email,
+                password: info.password,
+              };
+              const updatedUsers = { ...users, newUser };
+              alert('Success Register!');
+              navigate(`${ROUTE.LOGIN.link}`);
+            })
+            .catch((error) => {
+              console.error('Error fetching user data:', error);
+              alert('An error occurred while fetching user data.');
+            });
         })
         .catch((error) => {
+          console.error('Error registering user:', error);
           alert('This email has already been used.');
         });
     } else {

@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, Box, Text, MoreBtn, Input, Modi } from './style';
-import { MyPage } from '../style';
-import Side from '../SideBar/Side';
+import {
+  Container,
+  Box,
+  Text,
+  MoreBtn,
+  Input,
+  Modi,
+} from '../../components/Detail';
+import { MyPage } from '../../components/MyPage';
+import Side from './Side';
 
 const Info = () => {
   return (
