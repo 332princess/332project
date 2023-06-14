@@ -16,6 +16,8 @@ const NavList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
+  justify-content: flex-end; /* 텍스트를 오른쪽으로 이동 */
+  align-items: center; /* 가운데 정렬 */
 `;
 
 const NavItem = styled.li`
@@ -31,6 +33,15 @@ const NavLinkWrapper = styled(NavLink)`
     color: #ff0000;
   }
 `;
+export const LogoHome = styled.div`
+  background-image: url('/logoMyu.png');
+  background-size: cover;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  margin-right: 1330px; /* 이미지 오른쪽 여백 설정 */
+`;
 
 const Navbar = () => {
   return (
@@ -38,7 +49,7 @@ const Navbar = () => {
       <NavList>
         <NavItem>
           <NavLinkWrapper exact to="/" activeClassName="active">
-            Home
+            <LogoHome />
           </NavLinkWrapper>
         </NavItem>
         <NavItem>

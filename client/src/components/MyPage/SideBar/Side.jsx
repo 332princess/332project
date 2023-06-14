@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Container, Title, Box, URLs, Logo } from './style';
 import { PRIVATE_ROUTE_ARR } from '../../../Route';
+import Navbar from '../../Navbar/Navbar';
 
 const Side = () => {
   return (
     <Container>
+      <Navbar></Navbar>
       <Title>마이페이지</Title>
       <Box>
         {PRIVATE_ROUTE_ARR.map((menu, index) => {
