@@ -13,49 +13,120 @@ import {
   Singer,
   Title,
   SongDetail,
+  BarBtn,
 } from '../components/Song';
 import Navbar from './Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faPlay } from '@fortawesome/free-solid-svg-icons';
+import {
+  faPlus,
+  faPlay,
+  faPause,
+  faMinus,
+  faHeart,
+} from '@fortawesome/free-solid-svg-icons';
 
 const Song = () => {
-  const navigate = useNavigate();
+  const [songs, setSongs] = useState([]);
+  const [currentSong, setCurrentSong] = useState(false);
+  const [playList, setPlayList] = useState([]);
+  const [heart, setHeart] = useState('');
+
+  useEffect(() => {
+    const fetchSongs = async () => {
+      try {
+        const response = await axios.get('/data/song.json');
+        setSongs(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchSongs();
+  }, []);
+
+  const handleSongClick = (song) => {
+    if (currentSong && currentSong.id === song.id) {
+      setCurrentSong(null);
+    } else {
+      setCurrentSong(song);
+    }
+  };
+  const handlePlayList = (song) => {
+    const index = playList.findIndex((item) => item.id === song.id);
+    if (index === -1) {
+      setPlayList([...playList, song]);
+    } else {
+      const updatedPlayList = [...playList];
+      updatedPlayList.splice(index, 1);
+      setPlayList(updatedPlayList);
+    }
+  };
+  const clickHeart = () => {
+    if (heart === 'pink') {
+      setHeart('red');
+    } else {
+      setHeart('white');
+    }
+  };
 
   return (
     <Container>
-      <Navbar />
       <Box>
         <WhiteBox>
-          <SongContainer>
-            <SongBox>노래 제목 - 가수</SongBox>
-            <Bar>
-              <FontAwesomeIcon icon={faPlay} />
-              <FontAwesomeIcon icon={faPlus} />
-            </Bar>
-          </SongContainer>
-          <SongContainer>
-            <SongBox>노래 제목 - 가수</SongBox>
-            <Bar>
-              <FontAwesomeIcon icon={faPlay} />
-              <FontAwesomeIcon icon={faPlus} />
-            </Bar>
-          </SongContainer>
-          <SongContainer>
-            <SongBox>노래 제목 - 가수</SongBox>
-            <Bar>
-              <FontAwesomeIcon icon={faPlay} />
-              <FontAwesomeIcon icon={faPlus} />
-            </Bar>
-          </SongContainer>
+          {songs.map((song) => (
+            <SongContainer key={song.id}>
+              <SongBox>
+                {song.title} - {song.singer}
+              </SongBox>
+              <Bar>
+                <BarBtn>
+                  {currentSong && currentSong.id === song.id ? (
+                    <FontAwesomeIcon
+                      icon={faPause}
+                      onClick={() => handleSongClick(song)}
+                    />
+                  ) : (
+                    <FontAwesomeIcon
+                      icon={faPlay}
+                      onClick={() => handleSongClick(song)}
+                    />
+                  )}
+                </BarBtn>
+                <BarBtn>
+                  {playList.find((item) => item.id === song.id) ? (
+                    <FontAwesomeIcon
+                      icon={faMinus}
+                      onClick={() => handlePlayList(song)}
+                    />
+                  ) : (
+                    <FontAwesomeIcon
+                      icon={faPlus}
+                      onClick={() => handlePlayList(song)}
+                    />
+                  )}
+                </BarBtn>
+                <BarBtn>
+                  <FontAwesomeIcon
+                    icon={faHeart}
+                    color={heart}
+                    onClick={clickHeart}
+                  ></FontAwesomeIcon>
+                </BarBtn>
+              </Bar>
+            </SongContainer>
+          ))}
         </WhiteBox>
-        <WhiteBox>
-          <SongDetail>
-            <Title>눈물나는점심</Title>
-            <Singer>이강우</Singer>
-          </SongDetail>
-          <Lyrics>점심을 먹었는데 눈물이 나</Lyrics>
-          <PlayBox></PlayBox>
-        </WhiteBox>
+
+        {currentSong && (
+          <WhiteBox>
+            <SongDetail>
+              <Title>{currentSong.title}</Title>
+              <Singer>{currentSong.singer}</Singer>
+            </SongDetail>
+            <Lyrics>{currentSong.lyrics}</Lyrics>
+
+            <PlayBox></PlayBox>
+          </WhiteBox>
+        )}
       </Box>
     </Container>
   );

@@ -13,7 +13,7 @@ import { faPlay, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { MyPage } from '../../components/MyPage';
 import Side from './Side';
 
-const Running = () => {
+const Chat = () => {
   return (
     <MyPage>
       <Side />
@@ -34,4 +34,4 @@ const Running = () => {
     </MyPage>
   );
 };
-export default Running;
+export default Chat;

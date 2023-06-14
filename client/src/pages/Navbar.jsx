@@ -28,6 +28,7 @@ const NavLinkWrapper = styled(NavLink)`
   text-decoration: none;
   color: #333;
   font-weight: bold;
+  margin: 0 1.2vw 0 1.2vw;
 
   &.active {
     color: #ff0000;
@@ -36,7 +37,6 @@ const NavLinkWrapper = styled(NavLink)`
 export const LogoHome = styled.div`
   background-image: url('/logoMyu.png');
   background-size: cover;
-
   width: 40px;
   height: 40px;
   border-radius: 100%;
@@ -47,11 +47,9 @@ const Navbar = () => {
   return (
     <Container>
       <NavList>
-        <NavItem>
-          <NavLinkWrapper exact to="/" activeClassName="active">
-            <LogoHome />
-          </NavLinkWrapper>
-        </NavItem>
+        <NavLinkWrapper to="/">
+          <LogoHome />
+        </NavLinkWrapper>
         <NavItem>
           <NavLinkWrapper to="/login" activeClassName="active">
             Login

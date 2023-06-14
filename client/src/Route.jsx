@@ -4,9 +4,10 @@ import MyPage from './pages/MyPage/MyPage';
 import Like from './pages/MyPage/Like';
 import Info from './pages/MyPage/Info';
 import PlayList from './pages/MyPage/PlayList';
-import Running from './pages/MyPage/Running';
+import Running from './pages/MyPage/Chatting';
 import Home from './pages/HomePage';
 import Song from './pages/SongPage';
+import Chat from './pages/MyPage/Chatting';
 
 export const ROUTE = {
   HOME: {
@@ -89,12 +90,6 @@ export const PRIVATE_ROUTE = {
     link: '/mypage/like',
     element: Like,
   },
-  INFO: {
-    name: '내 정보 보기',
-    path: '/mypage/info',
-    link: '/mypage/info',
-    element: Info,
-  },
   PLAYLIST: {
     name: '플레이리스트',
     path: '/mypage/playlist',
@@ -102,10 +97,16 @@ export const PRIVATE_ROUTE = {
     element: PlayList,
   },
   RUNNING: {
-    name: '달린 기록',
-    path: '/mypage/running',
-    link: '/mypage/running',
-    element: Running,
+    name: '내 채팅방',
+    path: '/mypage/chatting',
+    link: '/mypage/chatting',
+    element: Chat,
+  },
+  INFO: {
+    name: '내 정보 보기',
+    path: '/mypage/info',
+    link: '/mypage/info',
+    element: Info,
   },
 };
 

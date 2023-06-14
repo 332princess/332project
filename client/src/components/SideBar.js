@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-// import '../../GlobalStyle';
+import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
   position: absolute;
@@ -34,7 +34,7 @@ export const Box = styled.div`
   align-items: center;
 
   padding-top: 30px;
-  // gap: 3vh;
+  gap: 3vh;
   border-radius: 10px;
 
   margin-top: 40%;
@@ -45,8 +45,7 @@ export const Box = styled.div`
 
 // export const SideBox =
 
-export const URLs = styled.p`
-  // padding-top: 1px;
+export const URLs = styled(NavLink)`
   text-decoration-line: none;
   color: #fff;
 `;
