@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { PUBLIC_ROUTE_ARR, PRIVATE_ROUTE_ARR } from './Route';
 import { PrivateRoute } from './components/util/CustomRoute';
 import Home from './components/HomePage/HomePage';
+
 function App() {
   return (
     <Router>
