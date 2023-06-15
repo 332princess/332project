@@ -1,0 +1,14 @@
+2023-06-15 14:56:52.113[info] app start
+2023-06-15 14:56:52.185[info] DB connection success
+2023-06-15 14:56:52.233[info] Sequelize sync success
+2023-06-15 14:57:05.247[info] app start
+2023-06-15 14:57:05.300[info] DB connection success
+2023-06-15 14:57:05.312[info] Sequelize sync success
+2023-06-15 14:58:28.834[info] (user.reg.params) {"name":"강우","password":"1234","email":"rkddn@naver.com","gender":"false"}
+2023-06-15 14:58:28.837[debug] (userService.makePassword) "1234"
+2023-06-15 14:58:28.875[debug] (userService.reg) {"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"updatedAt":"2023-06-15T05:58:28.839Z","createdAt":"2023-06-15T05:58:28.839Z"}
+2023-06-15 14:58:28.877[info] (user.reg.result) {"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"updatedAt":"2023-06-15T05:58:28.839Z","createdAt":"2023-06-15T05:58:28.839Z"}
+2023-06-15 14:58:47.188[info] (user.reg.params) {"name":"태영","password":"2345","email":"xodud@naver.com","gender":"false"}
+2023-06-15 14:58:47.190[debug] (userService.makePassword) "2345"
+2023-06-15 14:58:47.202[debug] (userService.reg) {"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"updatedAt":"2023-06-15T05:58:47.191Z","createdAt":"2023-06-15T05:58:47.191Z"}
+2023-06-15 14:58:47.204[info] (user.reg.result) {"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"updatedAt":"2023-06-15T05:58:47.191Z","createdAt":"2023-06-15T05:58:47.191Z"}
