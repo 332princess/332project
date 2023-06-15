@@ -29,7 +29,7 @@ const Song = () => {
   const [songs, setSongs] = useState([]);
   const [currentSong, setCurrentSong] = useState(false);
   const [playList, setPlayList] = useState([]);
-  const [heart, setHeart] = useState('');
+  const [likedSongs, setLikedSongs] = useState([]);
 
   useEffect(() => {
     const fetchSongs = async () => {
@@ -47,26 +47,89 @@ const Song = () => {
     if (currentSong && currentSong.id === song.id) {
       setCurrentSong(null);
     } else {
-      setCurrentSong(song);
+      setCurrentSong({ ...song, playing: true });
     }
   };
+
+  useEffect(() => {
+    const updateCurrentSong = async () => {
+      try {
+        if (currentSong) {
+          await axios.post('/api/current', currentSong);
+        } else {
+          await axios.post('/api/current', null);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    updateCurrentSong();
+  }, [currentSong]);
+
   const handlePlayList = (song) => {
     const index = playList.findIndex((item) => item.id === song.id);
     if (index === -1) {
-      setPlayList([...playList, song]);
+      setPlayList((prevPlayList) => [...prevPlayList, song]);
     } else {
-      const updatedPlayList = [...playList];
-      updatedPlayList.splice(index, 1);
-      setPlayList(updatedPlayList);
+      setPlayList((prevPlayList) => {
+        const updatedPlayList = [...prevPlayList];
+        updatedPlayList.splice(index, 1);
+        return updatedPlayList;
+      });
     }
   };
-  const clickHeart = () => {
-    if (heart === 'pink') {
-      setHeart('red');
+
+  const handleLike = (song) => {
+    const index = likedSongs.findIndex((item) => item.id === song.id);
+    if (index === -1) {
+      setLikedSongs((prevLikedSongs) => [...prevLikedSongs, song]);
     } else {
-      setHeart('white');
+      setLikedSongs((prevLikedSongs) => {
+        const updatedLikedSongs = [...prevLikedSongs];
+        updatedLikedSongs.splice(index, 1);
+        return updatedLikedSongs;
+      });
     }
   };
+  useEffect(() => {
+    const updatePlayList = async () => {
+      try {
+        await axios.post('/api/playlist', playList);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    updatePlayList();
+  }, [playList]);
+
+  useEffect(() => {
+    const updateLikedSongs = async () => {
+      try {
+        await axios.post('/api/likes', likedSongs);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    updateLikedSongs();
+  }, [likedSongs]);
+  // useEffect(() => {
+  //   const updateCurrentSong = async () => {
+  //     if (currentSong) {
+  //       try {
+  //         await axios.post('/api/current', currentSong);
+  //       } catch (error) {
+  //         console.log(error);
+  //       }
+  //     } else {
+  //       try {
+  //         await axios.post('/api/current', null);
+  //       } catch (error) {
+  //         console.log(error);
+  //       }
+  //     }
+  //   };
+  //   updateCurrentSong();
+  // }, [currentSong]);
 
   return (
     <Container>
@@ -80,14 +143,25 @@ const Song = () => {
               <Bar>
                 <BarBtn>
                   {currentSong && currentSong.id === song.id ? (
-                    <FontAwesomeIcon
-                      icon={faPause}
-                      onClick={() => handleSongClick(song)}
-                    />
+                    currentSong.playing ? (
+                      <FontAwesomeIcon
+                        icon={faPause}
+                        onClick={() =>
+                          setCurrentSong({ ...currentSong, playing: false })
+                        }
+                      />
+                    ) : (
+                      <FontAwesomeIcon
+                        icon={faPlay}
+                        onClick={() =>
+                          setCurrentSong({ ...currentSong, playing: true })
+                        }
+                      />
+                    )
                   ) : (
                     <FontAwesomeIcon
                       icon={faPlay}
-                      onClick={() => handleSongClick(song)}
+                      onClick={() => setCurrentSong({ ...song, playing: true })}
                     />
                   )}
                 </BarBtn>
@@ -107,8 +181,12 @@ const Song = () => {
                 <BarBtn>
                   <FontAwesomeIcon
                     icon={faHeart}
-                    color={heart}
-                    onClick={clickHeart}
+                    color={
+                      likedSongs.find((item) => item.id === song.id)
+                        ? 'red'
+                        : 'white'
+                    }
+                    onClick={() => handleLike(song)}
                   ></FontAwesomeIcon>
                 </BarBtn>
               </Bar>
