@@ -11,10 +11,25 @@ import {
 } from '../../components/util/usefulFunction';
 
 const Register = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
+  const [emailList, setEmailList] = useState([]);
+
+  useEffect(() => {
+    fetchEmailList();
+  }, []);
+
+  const fetchEmailList = async () => {
+    try {
+      const response = await axios.get('/api/users');
+      setEmailList(response.data);
+    } catch (error) {
+      console.error('Failed to fetch email list:', error);
+    }
+  };
 
   const nameChange = ({ target: { value } }) => setName(value);
   const emailChange = ({ target: { value } }) => setEmail(value);
@@ -33,11 +48,31 @@ const Register = () => {
       } else {
         if (!reg.test(email.toLowerCase())) alert('잘못된 이메일 입니다!');
       }
-      if (password.length < 8) {
+      if (password.length < 8)
         alert('8자의 이상의 비밀번호를 사용하셔야 합니다.');
-      } else {
-        alert(`변경된 패스워드: ${password}`);
+      if (password !== password2) alert('비밀번호를 재확인해주세요!');
+    } else {
+      try {
+        const response = await axios.post('/api/users', {
+          name,
+          email,
+          password,
+        });
+        alert('회원가입이 완료되었습니다.');
+        navigate(ROUTE.LOGIN);
+      } catch (error) {
+        console.error('Failed to register:', error);
+        alert('회원가입에 실패하였습니다.');
       }
+    }
+  };
+
+  const handleCheckEmail = (e) => {
+    e.preventDefault();
+    if (emailList.includes(email)) {
+      alert('중복된 이메일입니다.');
+    } else {
+      alert('사용 가능한 이메일입니다.');
     }
   };
 
@@ -63,7 +98,7 @@ const Register = () => {
             className="email"
             placeholder=" Please Enter Your Email"
           />
-          <CheckBtn>확인</CheckBtn>
+          <CheckBtn onClick={handleCheckEmail}>확인</CheckBtn>
         </InputBox>
         <InputBox>
           <Input

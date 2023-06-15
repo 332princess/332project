@@ -61,34 +61,35 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      error.emailError === '' &&
-      error.passwordError === '' &&
-      info.email !== '' &&
-      info.password !== ''
-    ) {
-      axios
-        .post('http://localhost:3000/login', info)
-        .then((res) => {
-          const cookies = new Cookies();
-          const token = res.data.user.refreshToken;
-          const userNum = res.data.user.user.userNum;
-          const userName = res.data.user.user.name;
-          const userCountry = res.data.user.user.country;
-          cookies.set('token', token);
-          localStorage.setItem('userNum', userNum);
-          localStorage.setItem('userName', userName);
-          localStorage.setItem('userCountry', userCountry);
-          alert('Success Login!');
-          navigate(`${ROUTE.HOME.link}`);
-        })
-        .catch((error) => {
-          console.log(error);
-          alert('Please Check Your Email or Password!');
-        });
-    } else {
-      alert('Please Check Your Email or Password!');
-    }
+    // if (
+    //   error.emailError === '' &&
+    //   error.passwordError === '' &&
+    //   info.email !== '' &&
+    //   info.password !== ''
+    // ) {
+    axios
+      .post('http://localhost:8000/login', info)
+      .then((res) => {
+        const cookies = new Cookies();
+        const token = res.data.user.refreshToken;
+        const userNum = res.data.user.user.userNum;
+        const userName = res.data.user.user.name;
+        const userCountry = res.data.user.user.country;
+        cookies.set('token', token);
+        localStorage.setItem('userNum', userNum);
+        localStorage.setItem('userName', userName);
+        localStorage.setItem('userCountry', userCountry);
+        alert('Success Login!');
+        navigate(`${ROUTE.HOME.link}`);
+      })
+      .catch((error) => {
+        console.log(error);
+        alert('Please Check Your Email or Password!');
+      });
+
+    // } else {
+    //   alert('Please Check Your Email or Password!');
+    // }
   };
 
   return (
