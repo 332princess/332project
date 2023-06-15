@@ -25,7 +25,7 @@ export const Title = styled.div`
   line-height: 60px;
 `;
 
-export const Box = styled.div`
+export const Box = styled.form`
   position: absolute;
   top: 33%;
 

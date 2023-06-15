@@ -111,13 +111,13 @@ const Login = () => {
         />
       </Box>
       <FindBox>
-        <Link>
-          <Find href="">아이디 찾기</Find>
-        </Link>
+        <Find>
+          <Link>아이디 찾기</Link>
+        </Find>
         &nbsp;|&nbsp;
-        <Link>
-          <Find href="">비밀번호 찾기</Find>
-        </Link>
+        <Find>
+          <Link>비밀번호 찾기</Link>
+        </Find>
         &nbsp;|&nbsp;
         <Find>
           <Link to={'/register'}>회원가입</Link>
