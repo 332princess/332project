@@ -26,7 +26,16 @@ export const FindBox = styled.div`
   font-size: 12px;
 `;
 
-export const Find = styled.a`
+export const Find = styled.span`
   text-decoration-line: none;
   color: #000;
+  font-weight: 600;
+  color: #212121;
+  & > a {
+    all: unset;
+  }
+  &:hover {
+    color: #ff6060;
+    cursor: pointer;
+  }
 `;

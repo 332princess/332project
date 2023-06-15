@@ -12,123 +12,67 @@ import {
 
 const Register = () => {
   const navigate = useNavigate();
-  const [info, setInfo] = useState({
-    name: '',
-    email: '',
-    password: '',
-    img: 'https://foco-images.s3.ap-northeast-2.amazonaws.com/1672209773539_basic_profile.jpg',
-  });
-  const [error, setError] = useState({
-    nameError: '',
-    emailError: '',
-    passwordError: '',
-    confirmPasswordError: '',
-  });
-  const validateConfirmPassword = (password) => {
-    return password === info.password;
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [password2, setPassword2] = useState('');
+  const [emailList, setEmailList] = useState([]);
+
+  useEffect(() => {
+    fetchEmailList();
+  }, []);
+
+  const fetchEmailList = async () => {
+    try {
+      const response = await axios.get('/api/users');
+      setEmailList(response.data);
+    } catch (error) {
+      console.error('Failed to fetch email list:', error);
+    }
   };
-  const handleChange = (e) => {
-    if (e.target.name === 'name') {
-      if (!validateNickname(e.target.value)) {
-        setError((prev) => ({
-          ...prev,
-          nameError: 'English only',
-        }));
+
+  const nameChange = ({ target: { value } }) => setName(value);
+  const emailChange = ({ target: { value } }) => setEmail(value);
+  const passwordChange = ({ target: { value } }) => setPassword(value);
+  const password2Change = ({ target: { value } }) => setPassword2(value);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await new Promise((res) => setTimeout(res, 1000));
+    if (!name || !email || !password || !password2) {
+      let reg =
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if (!name) alert('이름을 입력해주세요');
+      if (!email) {
+        alert('이메일을 입력해주세요');
       } else {
-        setError((prev) => ({
-          ...prev,
-          nameError: '',
-        }));
-        setInfo((prev) => ({
-          ...prev,
-          [e.target.name]: e.target.value,
-        }));
+        if (!reg.test(email.toLowerCase())) alert('잘못된 이메일 입니다!');
       }
-    } else if (e.target.name === 'email') {
-      if (!validateEmail(e.target.value)) {
-        setError((prev) => ({
-          ...prev,
-          emailError: 'This is not a valid email',
-        }));
-      } else {
-        setError((prev) => ({
-          ...prev,
-          emailError: '',
-        }));
-        setInfo((prev) => ({
-          ...prev,
-          [e.target.name]: e.target.value,
-        }));
-      }
-    } else if (e.target.name === 'password') {
-      if (!validatePassword(e.target.value)) {
-        setError((prev) => ({
-          ...prev,
-          passwordError: 'Must be at 8 characters',
-        }));
-      } else {
-        setError((prev) => ({
-          ...prev,
-          passwordError: '',
-        }));
-        setInfo((prev) => ({
-          ...prev,
-          [e.target.name]: e.target.value,
-        }));
-      }
-    } else if (e.target.name === 'confirmPassword') {
-      if (!validateConfirmPassword(e.target.value)) {
-        setError((prev) => ({
-          ...prev,
-          confirmPasswordError: 'Passwords do not match',
-        }));
-      } else {
-        setError((prev) => ({
-          ...prev,
-          confirmPasswordError: '',
-        }));
+      if (password.length < 8)
+        alert('8자의 이상의 비밀번호를 사용하셔야 합니다.');
+      if (password !== password2) alert('비밀번호를 재확인해주세요!');
+    } else {
+      try {
+        const response = await axios.post('/api/users', {
+          name,
+          email,
+          password,
+        });
+        alert('회원가입이 완료되었습니다.');
+        navigate(ROUTE.LOGIN);
+      } catch (error) {
+        console.error('Failed to register:', error);
+        alert('회원가입에 실패하였습니다.');
       }
     }
   };
-  const handleSubmit = (e) => {
+
+  const handleCheckEmail = (e) => {
     e.preventDefault();
-    if (
-      error.nameError === '' &&
-      error.emailError === '' &&
-      error.passwordError === '' &&
-      error.confirmPasswordError === '' &&
-      info.name !== '' &&
-      info.email !== '' &&
-      info.password !== '' &&
-      info.confirmPasswordError === ''
-    ) {
-      axios
-        .post('/user.json', info)
-        .then((res) => {
-          axios
-            .get('/user.json')
-            .then((res) => {
-              const users = res.data;
-              const newUser = {
-                name: info.name,
-                email: info.email,
-                password: info.password,
-              };
-              const updatedUsers = { ...users, newUser };
-              alert('Success Register!');
-              navigate(`${ROUTE.LOGIN.link}`);
-            })
-            .catch((error) => {
-              console.error('Error fetching user data:', error);
-              alert('An error occurred while fetching user data.');
-            });
-        })
-        .catch((error) => {
-          console.error('Error registering user:', error);
-          alert('This email has already been used.');
-        });
+    if (emailList.includes(email)) {
+      alert('중복된 이메일입니다.');
     } else {
-      alert('Please Check Your Info!');
+      alert('사용 가능한 이메일입니다.');
     }
   };
 
@@ -139,38 +83,40 @@ const Register = () => {
         <InputBox>
           <Input
             type="text"
-            name="namw"
-            onChange={handleChange}
+            name="name"
+            value={name}
+            onChange={nameChange}
             placeholder=" Please Enter Your Name"
           />
-          <CheckBtn>확인</CheckBtn>
         </InputBox>
         <InputBox>
           <Input
             type="text"
             name="email"
-            onChange={handleChange}
-            placeholder=" Please Enter Your ID"
+            value={email}
+            onChange={emailChange}
+            className="email"
+            placeholder=" Please Enter Your Email"
           />
-          <CheckBtn>확인</CheckBtn>
+          <CheckBtn onClick={handleCheckEmail}>확인</CheckBtn>
         </InputBox>
         <InputBox>
           <Input
             type="password"
             name="password"
-            onChange={handleChange}
+            value={password}
+            onChange={passwordChange}
             placeholder=" Please Enter Your Password"
           />
-          <CheckBtn>확인</CheckBtn>
         </InputBox>
         <InputBox>
           <Input
             type="password"
             name="confirmPassword"
-            onChange={handleChange}
+            value={password2}
+            onChange={password2Change}
             placeholder=" Please Enter Your Password Again"
           />
-          <CheckBtn>확인</CheckBtn>
         </InputBox>
       </Box>
       <SubmitBtn type="submit" onClick={handleSubmit}>
