@@ -11,7 +11,7 @@ export const Container = styled.div`
 
 export const Title = styled.h1`
   font-size: 70px;
-  margin-top: 10vh;
+  margin-top: 25vh;
   color: #fff;
 `;
 
@@ -60,10 +60,11 @@ export const ImageWithTextContainer = styled.div`
   align-items: center;
   height: 100%;
   justify-content: space-evenly;
+  margin-top: 5vh;
 `;
 
 export const ImageWrapper = styled.div`
-  width: 100px;
+  // width: 100px;
   height: 200px;
   background-size: cover;
   align-items: center;
@@ -73,6 +74,10 @@ export const ImageWrapper = styled.div`
 export const Text = styled.button`
   border: none;
   font-family: 'HSJiptokki-Round';
+  background-color: #ff6060;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 20px;
 `;
 
 export const activeStyle = {

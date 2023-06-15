@@ -23,18 +23,24 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // DB 연결 확인 및 table 생성
-models.sequelize.authenticate().then(() => {
-  logger.info('DB connection success');
+models.sequelize
+  .authenticate()
+  .then(() => {
+    logger.info('DB connection success');
 
-  // sequelize sync (table 생성)
-  models.sequelize.sync().then(() => {
-    logger.info('Sequelize sync success');
-  }).catch((err) => {
-    logger.error('Sequelize sync error', err);
+    // sequelize sync (table 생성)
+    models.sequelize
+      .sync()
+      .then(() => {
+        logger.info('Sequelize sync success');
+      })
+      .catch((err) => {
+        logger.error('Sequelize sync error', err);
+      });
+  })
+  .catch((err) => {
+    logger.error('DB Connection fail', err);
   });
-}).catch((err) => {
-  logger.error('DB Connection fail', err);
-});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -59,6 +65,9 @@ app.use((err, req, res, next) => {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
 
 module.exports = app;

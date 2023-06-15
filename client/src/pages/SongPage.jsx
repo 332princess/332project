@@ -183,7 +183,7 @@ const Song = () => {
                     icon={faHeart}
                     color={
                       likedSongs.find((item) => item.id === song.id)
-                        ? 'red'
+                        ? '#ff6060'
                         : 'white'
                     }
                     onClick={() => handleLike(song)}

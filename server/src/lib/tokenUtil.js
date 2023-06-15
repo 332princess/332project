@@ -9,8 +9,9 @@ const tokenUtil = {
   // 토큰 생성
   makeToken(user) {
     const payload = {
+      id: user.id,
+      name: user.name,
       email: user.email,
-      role: user.role,
     };
 
     const token = jwt.sign(payload, secretKey, options);

@@ -12,3 +12,53 @@
 2023-06-15 14:58:47.190[debug] (userService.makePassword) "2345"
 2023-06-15 14:58:47.202[debug] (userService.reg) {"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"updatedAt":"2023-06-15T05:58:47.191Z","createdAt":"2023-06-15T05:58:47.191Z"}
 2023-06-15 14:58:47.204[info] (user.reg.result) {"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"updatedAt":"2023-06-15T05:58:47.191Z","createdAt":"2023-06-15T05:58:47.191Z"}
+2023-06-15 19:35:14.577[info] app start
+2023-06-15 19:35:14.665[info] DB connection success
+2023-06-15 19:35:14.697[info] Sequelize sync success
+2023-06-15 19:43:18.825[info] app start
+2023-06-15 19:43:18.897[info] DB connection success
+2023-06-15 19:43:18.919[info] Sequelize sync success
+2023-06-15 19:43:24.389[info] (user.list.params) {}
+2023-06-15 19:43:24.391[error] (userService.list) ReferenceError: Department is not defined
+2023-06-15 19:43:45.611[info] (user.reg.params) {"password":"test1234"}
+2023-06-15 19:43:45.613[error] Error: Not allowed null (name, email, password)
+2023-06-15 19:43:45.620[debug] (userService.makePassword) "test1234"
+2023-06-15 21:19:23.431[info] app start
+2023-06-15 21:19:23.560[info] DB connection success
+2023-06-15 21:19:23.644[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_2' in the referenced table 'users'
+2023-06-15 21:20:00.688[info] app start
+2023-06-15 21:20:00.799[info] DB connection success
+2023-06-15 21:20:00.857[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_2' in the referenced table 'users'
+2023-06-15 21:22:01.085[info] app start
+2023-06-15 21:22:01.192[info] DB connection success
+2023-06-15 21:22:01.245[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_2' in the referenced table 'users'
+2023-06-15 21:22:12.655[info] app start
+2023-06-15 21:22:12.774[info] DB connection success
+2023-06-15 21:22:12.825[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_2' in the referenced table 'users'
+2023-06-15 21:22:59.389[info] app start
+2023-06-15 21:22:59.490[info] DB connection success
+2023-06-15 21:22:59.545[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_2' in the referenced table 'users'
+2023-06-15 21:24:46.529[info] app start
+2023-06-15 21:24:46.674[info] DB connection success
+2023-06-15 21:24:46.724[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_2' in the referenced table 'users'
+2023-06-15 21:25:23.851[info] app start
+2023-06-15 21:25:23.948[info] DB connection success
+2023-06-15 21:25:24.005[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_2' in the referenced table 'users'
+2023-06-15 21:25:53.038[info] app start
+2023-06-15 21:25:53.156[info] DB connection success
+2023-06-15 21:25:53.226[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_1' in the referenced table 'users'
+2023-06-15 21:26:02.553[info] app start
+2023-06-15 21:26:02.667[info] DB connection success
+2023-06-15 21:26:02.728[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_1' in the referenced table 'users'
+2023-06-15 21:26:17.815[info] app start
+2023-06-15 21:26:17.922[info] DB connection success
+2023-06-15 21:26:17.970[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_1' in the referenced table 'users'
+2023-06-15 21:30:12.263[info] app start
+2023-06-15 21:30:12.400[info] DB connection success
+2023-06-15 21:30:12.446[error] Sequelize sync error Referencing column 'user_id' and referenced column 'userid' in foreign key constraint 'play_lists_ibfk_1' are incompatible.
+2023-06-15 21:33:04.797[info] app start
+2023-06-15 21:33:04.933[info] DB connection success
+2023-06-15 21:33:04.988[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_1' in the referenced table 'users'
+2023-06-15 21:33:19.369[info] app start
+2023-06-15 21:33:19.479[info] DB connection success
+2023-06-15 21:33:19.539[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_1' in the referenced table 'users'
