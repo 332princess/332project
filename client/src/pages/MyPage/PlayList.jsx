@@ -90,10 +90,21 @@ const PlayList = () => {
             <Bar>
               <BarBtn>
                 {currentSong && currentSong.id === song.id ? (
-                  <FontAwesomeIcon
-                    icon={faPause}
-                    onClick={() => handleSongClick(song)}
-                  />
+                  currentSong.playing ? (
+                    <FontAwesomeIcon
+                      icon={faPause}
+                      onClick={() =>
+                        setCurrentSong({ ...currentSong, playing: false })
+                      }
+                    />
+                  ) : (
+                    <FontAwesomeIcon
+                      icon={faPlay}
+                      onClick={() =>
+                        setCurrentSong({ ...currentSong, playing: true })
+                      }
+                    />
+                  )
                 ) : (
                   <FontAwesomeIcon
                     icon={faPlay}

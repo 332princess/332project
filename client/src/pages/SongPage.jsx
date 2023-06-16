@@ -42,7 +42,17 @@ const Song = () => {
     };
     fetchSongs();
   }, []);
-
+  useEffect(() => {
+    const fetchCurrentSong = async () => {
+      try {
+        const response = await axios.get('/api/current');
+        setCurrentSong(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchCurrentSong();
+  }, []);
   const handleSongClick = (song) => {
     if (currentSong && currentSong.id === song.id) {
       setCurrentSong(null);
@@ -161,7 +171,7 @@ const Song = () => {
                   ) : (
                     <FontAwesomeIcon
                       icon={faPlay}
-                      onClick={() => setCurrentSong({ ...song, playing: true })}
+                      onClick={() => handleSongClick(song)}
                     />
                   )}
                 </BarBtn>

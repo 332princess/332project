@@ -37,7 +37,7 @@ export const PlayList = styled.div`
   height: 100px;
 `;
 
-export const Running = styled.div`
+export const Chat = styled.div`
   background-image: url('/image3.png');
   background-size: cover;
   margin-top: 30%;

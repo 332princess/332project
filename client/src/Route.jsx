@@ -7,7 +7,8 @@ import PlayList from './pages/MyPage/PlayList';
 import Running from './pages/MyPage/Chatting';
 import Home from './pages/HomePage';
 import Song from './pages/SongPage';
-import Chat from './pages/MyPage/Chatting';
+import ChatList from './pages/MyPage/Chatting';
+import Chat from './pages/Chatting';
 
 export const ROUTE = {
   HOME: {
@@ -79,6 +80,11 @@ export const PRIVATE_ROUTE = {
     link: '/song',
     element: Song,
   },
+  CHAT: {
+    path: '/chat',
+    link: '/chat',
+    element: Chat,
+  },
   MYPAGE: {
     path: '/mypage',
     link: '/mypage',
@@ -96,11 +102,11 @@ export const PRIVATE_ROUTE = {
     link: '/mypage/playlist',
     element: PlayList,
   },
-  RUNNING: {
+  CHATLIST: {
     name: '내 채팅방',
     path: '/mypage/chatting',
     link: '/mypage/chatting',
-    element: Chat,
+    element: ChatList,
   },
   INFO: {
     name: '내 정보 보기',

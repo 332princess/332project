@@ -13,13 +13,35 @@ import { faPlay, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { MyPage } from '../../components/MyPage';
 import Side from './Side';
 
-const Chat = () => {
+const ChatList = () => {
   return (
     <MyPage>
       <Side />
       <Container>
         <Box>
-          <Song>0610 - 이강우 달리기 (10000 걸음)</Song>
+          <Song>사우나 보이 - 이강우</Song>
+          <Bar>
+            <BarBtn>
+              <FontAwesomeIcon icon={faPlay} />
+            </BarBtn>
+            <BarBtn>
+              <FontAwesomeIcon icon={faMinus} />
+            </BarBtn>
+          </Bar>
+        </Box>
+        <Box>
+          <Song>열심히 배워가는 중 - 윤태영</Song>
+          <Bar>
+            <BarBtn>
+              <FontAwesomeIcon icon={faPlay} />
+            </BarBtn>
+            <BarBtn>
+              <FontAwesomeIcon icon={faMinus} />
+            </BarBtn>
+          </Bar>
+        </Box>
+        <Box>
+          <Song>이미 죽어 있는 - 김혜지</Song>
           <Bar>
             <BarBtn>
               <FontAwesomeIcon icon={faPlay} />
@@ -34,4 +56,4 @@ const Chat = () => {
     </MyPage>
   );
 };
-export default Chat;
+export default ChatList;

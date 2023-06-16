@@ -8,13 +8,13 @@ import {
   WhiteBox,
   Music,
   PlayList,
-  Running,
+  Chat,
   Text,
   ImageWithTextContainer,
   ImageWrapper,
 } from '../components/Home';
 import { Routes, Route, Link } from 'react-router-dom';
-import { ROUTE } from '../Route';
+import { ROUTE, PRIVATE_ROUTE } from '../Route';
 
 const Home = () => {
   return (
@@ -29,15 +29,15 @@ const Home = () => {
               <Text>음악</Text>
             </ImageWrapper>
           </Link>
-          <Link to={ROUTE.PLAYLIST.path}>
+          <Link to={PRIVATE_ROUTE.PLAYLIST.path}>
             <ImageWrapper>
               <PlayList />
               <Text>플레이리스트</Text>
             </ImageWrapper>
           </Link>
-          <Link to={ROUTE.RUNNING.path}>
+          <Link to={PRIVATE_ROUTE.CHAT.path}>
             <ImageWrapper>
-              <Running />
+              <Chat />
               <Text>런닝</Text>
             </ImageWrapper>
           </Link>
@@ -46,7 +46,7 @@ const Home = () => {
       <Routes>
         <Route path="/music" />
         <Route path="/playlist" />
-        <Route path="/running" />
+        <Route path="/chat" />
       </Routes>
     </Container>
   );
