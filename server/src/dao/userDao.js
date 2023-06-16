@@ -88,6 +88,18 @@ const dao = {
   //   });
   // },
 
+  deleteUser(params) {
+    return new Promise((resolve, reject) => {
+      User.destroy({ where: { user_id: params.user_id } })
+        .then((result) => {
+          resolve(result);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  },
+
 };
 
 module.exports = dao;
