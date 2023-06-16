@@ -19,28 +19,28 @@ import { ROUTE, PRIVATE_ROUTE } from '../Route';
 const Home = () => {
   return (
     <Container>
-      <Title>런메이트</Title>
+      <Title>뮤메이트</Title>
       <H1>Made by 삼삼한 녀석 둘</H1>
       <WhiteBox>
         <ImageWithTextContainer>
-          <Link to={ROUTE.SONG.path}>
-            <ImageWrapper>
+          <ImageWrapper>
+            <Link to={ROUTE.SONG.path}>
               <Music />
               <Text>음악</Text>
-            </ImageWrapper>
-          </Link>
-          <Link to={PRIVATE_ROUTE.PLAYLIST.path}>
-            <ImageWrapper>
+            </Link>
+          </ImageWrapper>
+          <ImageWrapper>
+            <Link to={PRIVATE_ROUTE.PLAYLIST.path}>
               <PlayList />
               <Text>플레이리스트</Text>
-            </ImageWrapper>
-          </Link>
-          <Link to={PRIVATE_ROUTE.CHAT.path}>
-            <ImageWrapper>
+            </Link>
+          </ImageWrapper>
+          <ImageWrapper>
+            <Link to={PRIVATE_ROUTE.CHAT.path}>
               <Chat />
-              <Text>런닝</Text>
-            </ImageWrapper>
-          </Link>
+              <Text>채팅</Text>
+            </Link>
+          </ImageWrapper>
         </ImageWithTextContainer>
       </WhiteBox>
       <Routes>

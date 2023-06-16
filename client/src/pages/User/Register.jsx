@@ -25,8 +25,11 @@ const Register = () => {
   const fetchEmailList = async () => {
     try {
       const response = await axios.get('http://localhost:8081/users');
-      console.log(response.data);
-      setEmailList(response.data.email);
+      setEmailList(
+        response.data?.rows.map((v, i) => {
+          return v.email;
+        })
+      );
     } catch (error) {
       console.error('Failed to fetch email list:', error);
     }
@@ -43,18 +46,25 @@ const Register = () => {
     e.preventDefault();
     await new Promise((res) => setTimeout(res, 1000));
     if (!name || !email || !password || !password2) {
-      let reg =
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      if (!name) alert('이름을 입력해주세요');
-      if (!email) {
-        alert('이메일을 입력해주세요');
+      if (!name && !email && !password && !password2) {
+        alert('정보를 입력해주세요!');
       } else {
-        if (!reg.test(email.toLowerCase())) alert('잘못된 이메일 입니다!');
+        let reg =
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!name) alert('이름을 입력해주세요');
+        else if (!password) alert('비밀번호를 입력해주세요!');
+        else if (!password2) alert('비밀번호를 확인해주세요!');
+        else if (!email) {
+          alert('이메일을 입력해주세요');
+        } else {
+          if (!reg.test(email.toLowerCase())) alert('잘못된 이메일 입니다!');
+          else alert('중복 확인을 해주세요!');
+        }
       }
-      if (password.length < 8)
-        alert('8자의 이상의 비밀번호를 사용하셔야 합니다.');
-      if (password !== password2) alert('비밀번호를 재확인해주세요!');
-    } else {
+    } else if (password.length < 8)
+      alert('8자의 이상의 비밀번호를 사용하셔야 합니다.');
+    else if (password !== password2) alert('비밀번호를 재확인해주세요!');
+    else {
       try {
         await axios.post('http://localhost:8081/users', {
           name,
@@ -62,7 +72,7 @@ const Register = () => {
           password,
         });
         alert('회원가입이 완료되었습니다.');
-        navigate(ROUTE.LOGIN);
+        navigate(ROUTE.LOGIN.path);
       } catch (error) {
         console.error('Failed to register:', error);
         alert('회원가입에 실패하였습니다.');

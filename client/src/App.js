@@ -22,9 +22,9 @@ function App() {
             <Route
               path={route.path}
               element={
-                // <PrivateRoute>
-                <route.element />
-                // </PrivateRoute>
+                <PrivateRoute>
+                  <route.element />
+                </PrivateRoute>
               }
               key={index}
             />

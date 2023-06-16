@@ -3,93 +3,62 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ROUTE } from '../../Route';
 import { Cookies } from 'react-cookie';
+import { Box, Container, SubmitBtn, Title } from '../../components/UserStyle';
+import { Find, FindBox, Input } from '../../components/Login';
 import {
   validateEmail,
   validatePassword,
 } from '../../components/util/usefulFunction';
-import { Box, Container, SubmitBtn, Title } from '../../components/UserStyle';
-import { Find, FindBox, Input } from '../../components/Login';
-import Navbar from '../Navbar';
 
 const Login = () => {
   const navigate = useNavigate();
-  const [info, setInfo] = useState({
-    email: '',
-    password: '',
-  });
-
-  const [error, setError] = useState({
-    emailError: '',
-    passwordError: '',
-  });
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleChange = (e) => {
-    if (e.target.name === 'email') {
-      if (!validateEmail(e.target.value)) {
-        setError((prev) => ({
-          ...prev,
-          emailError: 'This is not a valid email',
-        }));
-      } else {
-        setError((prev) => ({
-          ...prev,
-          emailError: '',
-        }));
-        setInfo((prev) => ({
-          ...prev,
-          [e.target.name]: e.target.value,
-        }));
-      }
-    } else if (e.target.name === 'password') {
-      if (!validatePassword(e.target.value)) {
-        setError((prev) => ({
-          ...prev,
-          passwordError: 'Must be at 8 characters',
-        }));
-      } else {
-        setError((prev) => ({
-          ...prev,
-          passwordError: '',
-        }));
-        setInfo((prev) => ({
-          ...prev,
-          [e.target.name]: e.target.value,
-        }));
-      }
+    const { name, value } = e.target;
+    if (name === 'id') {
+      setEmail(value);
+    } else if (name === 'password') {
+      setPassword(value);
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // if (
-    //   error.emailError === '' &&
-    //   error.passwordError === '' &&
-    //   info.email !== '' &&
-    //   info.password !== ''
-    // ) {
-    axios
-      .post('http://localhost:8000/login', info)
-      .then((res) => {
-        const cookies = new Cookies();
-        const token = res.data.user.refreshToken;
-        const userNum = res.data.user.user.userNum;
-        const userName = res.data.user.user.name;
-        const userCountry = res.data.user.user.country;
-        cookies.set('token', token);
-        localStorage.setItem('userNum', userNum);
-        localStorage.setItem('userName', userName);
-        localStorage.setItem('userCountry', userCountry);
-        alert('Success Login!');
-        navigate(`${ROUTE.HOME.link}`);
-      })
-      .catch((error) => {
-        console.log(error);
-        alert('Please Check Your Email or Password!');
-      });
+  const handleSubmit = async () => {
+    if (!email || !password) {
+      alert('이메일과 비밀번호를 입력해주세요!');
+      return;
+    }
 
-    // } else {
-    //   alert('Please Check Your Email or Password!');
-    // }
+    if (!validateEmail(email)) {
+      alert('유효한 이메일 주소를 입력해주세요!');
+      return;
+    }
+
+    if (!validatePassword(password)) {
+      alert('비밀번호는 최소 8자 이상이어야 합니다!');
+      return;
+    }
+
+    try {
+      // 로그인 요청을 보내고 응답을 받아옴
+      const response = await axios.post('http://localhost:8081/logins', {
+        email,
+        password,
+      });
+      // 로그인 성공 시 토큰을 받아옴
+      const { token } = response.data;
+
+      // 토큰을 쿠키에 저장 (예시: react-cookie 라이브러리 사용)
+      const cookies = new Cookies();
+      cookies.set('token', token);
+
+      alert('로그인 성공!');
+      navigate(ROUTE.HOME.path);
+    } catch (error) {
+      console.error('Failed to login:', error);
+      alert('로그인 실패!');
+    }
   };
 
   return (
@@ -113,11 +82,11 @@ const Login = () => {
       </Box>
       <FindBox>
         <Find>
-          <Link>아이디 찾기</Link>
+          <Link to="#">아이디 찾기</Link>
         </Find>
         &nbsp;|&nbsp;
         <Find>
-          <Link>비밀번호 찾기</Link>
+          <Link to="#">비밀번호 찾기</Link>
         </Find>
         &nbsp;|&nbsp;
         <Find>

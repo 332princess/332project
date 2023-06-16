@@ -26,7 +26,9 @@ const PlayList = () => {
   useEffect(() => {
     const fetchSongs = async () => {
       try {
-        const response = await axios.get('/data/song.json');
+        // const response = await axios.get('http://localhost:8081/playlists');
+
+        const response = await axios.get('/data/like.json');
         setSongs(response.data);
       } catch (error) {
         console.log(error);
@@ -57,7 +59,7 @@ const PlayList = () => {
   };
   const updatePlayList = async (updatedPlayList) => {
     try {
-      await axios.post('/data/playlist.json', updatedPlayList);
+      await axios.post('http://localhost:8081/playlist', updatedPlayList);
     } catch (error) {
       console.log(error);
     }
@@ -66,7 +68,7 @@ const PlayList = () => {
     if (currentSong) {
       const updateCurrentSong = async () => {
         try {
-          await axios.post('/data/currentsong.json', [currentSong]);
+          await axios.post('http://localhost:8081/currentsong', [currentSong]);
         } catch (error) {
           console.log(error);
         }
@@ -93,6 +95,7 @@ const PlayList = () => {
                   currentSong.playing ? (
                     <FontAwesomeIcon
                       icon={faPause}
+                      color="#ff6060"
                       onClick={() =>
                         setCurrentSong({ ...currentSong, playing: false })
                       }
@@ -115,12 +118,13 @@ const PlayList = () => {
               <BarBtn>
                 {playList.find((item) => item.id === song.id) ? (
                   <FontAwesomeIcon
-                    icon={faMinus}
+                    icon={faPlus}
                     onClick={() => handlePlayList(song)}
                   />
                 ) : (
                   <FontAwesomeIcon
-                    icon={faPlus}
+                    icon={faMinus}
+                    color="#ff6060"
                     onClick={() => handlePlayList(song)}
                   />
                 )}

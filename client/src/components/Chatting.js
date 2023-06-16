@@ -81,7 +81,6 @@ export const ChatBox = styled.div`
 export const Chat = styled.div`
   background-color: #d9d9d9;
   border-radius: 10px 0px 0px 10px;
-  border: none;
 
   height: 5vh;
   width: 38vw;
@@ -90,7 +89,6 @@ export const Chat = styled.div`
 `;
 
 export const Bar = styled.div`
-  border: none;
   background-color: #ff6060;
   border-radius: 0px 10px 10px 0px;
   width: 5vw;
@@ -100,14 +98,10 @@ export const Bar = styled.div`
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
-  // gap: 2px;
 `;
 
 export const BarBtn = styled.button`
-  border: none;
-  background-color: #ff6060;
   width: 50%;
-  cursor: pointer;
 `;
 
 export const MoreBtn = styled.button`
@@ -115,16 +109,10 @@ export const MoreBtn = styled.button`
   bottom: 10%;
   height: 8%;
 
-  border: none;
-  background-color: #ff6060;
-  border-radius: 10px;
   width: 65%;
-
-  color: #ffffff;
   font-weight: 100;
   font-size: 35px;
   text-align: center;
-  cursor: pointer;
 `;
 
 export const Text = styled.div`
@@ -133,20 +121,13 @@ export const Text = styled.div`
 `;
 
 export const Input = styled.input`
-  background-color: #d9d9d9;
   border-radius: 10px 0px 0px 10px;
-  border: none;
-
   height: 5vh;
   width: 30vw;
-  text-align: center;
   line-height: 2;
 `;
 
 export const Modi = styled.button`
-  border: none;
-  background-color: #ff6060;
   border-radius: 0px 10px 10px 0px;
   width: 5vw;
-  color: #fff;
 `;

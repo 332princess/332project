@@ -42,6 +42,7 @@ const Song = () => {
     };
     fetchSongs();
   }, []);
+
   useEffect(() => {
     const fetchCurrentSong = async () => {
       try {
@@ -53,6 +54,7 @@ const Song = () => {
     };
     fetchCurrentSong();
   }, []);
+
   const handleSongClick = (song) => {
     if (currentSong && currentSong.id === song.id) {
       setCurrentSong(null);
@@ -101,6 +103,7 @@ const Song = () => {
       });
     }
   };
+
   useEffect(() => {
     const updatePlayList = async () => {
       try {
@@ -156,6 +159,7 @@ const Song = () => {
                     currentSong.playing ? (
                       <FontAwesomeIcon
                         icon={faPause}
+                        color="#ff6060"
                         onClick={() =>
                           setCurrentSong({ ...currentSong, playing: false })
                         }
@@ -179,6 +183,7 @@ const Song = () => {
                   {playList.find((item) => item.id === song.id) ? (
                     <FontAwesomeIcon
                       icon={faMinus}
+                      color="#ff6060"
                       onClick={() => handlePlayList(song)}
                     />
                   ) : (
@@ -210,7 +215,16 @@ const Song = () => {
               <Title>{currentSong.title}</Title>
               <Singer>{currentSong.singer}</Singer>
             </SongDetail>
-            <Lyrics>{currentSong.lyrics}</Lyrics>
+            <Lyrics>
+              {currentSong.lyrics.split('\n').map((line) => {
+                return (
+                  <span>
+                    {line}
+                    <br />
+                  </span>
+                );
+              })}
+            </Lyrics>
 
             <PlayBox></PlayBox>
           </WhiteBox>

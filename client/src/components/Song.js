@@ -28,6 +28,15 @@ export const WhiteBox = styled.div`
   padding-top: 10px;
   width: 500px;
   height: 550px;
+
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: #ccc;
+  }
 `;
 export const SongContainer = styled.div`
   display: flex;
@@ -45,8 +54,8 @@ export const SongBox = styled.div`
   line-height: 2;
 `;
 export const Bar = styled.div`
-  border: none;
   background-color: #000;
+  opacity: 90%;
   border-radius: 0px 10px 10px 0px;
   width: 5vw;
   display: flex;
@@ -57,10 +66,8 @@ export const Bar = styled.div`
 `;
 
 export const BarBtn = styled.button`
-  border: none;
   background-color: #000;
   width: 50%;
-  cursor: pointer;
   color: #fff;
 `;
 
@@ -79,6 +86,16 @@ export const Singer = styled.span``;
 export const Lyrics = styled.p`
   margin-top: 10%;
   text-align: center;
+  word-break: keep-all;
+
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: #ccc;
+  }
 `;
 
 export const PlayBox = styled.div`

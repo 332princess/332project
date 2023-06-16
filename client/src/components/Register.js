@@ -6,9 +6,6 @@ export const InputBox = styled.div`
   flex-direction: row;
 `;
 export const Input = styled.input`
-  background-color: #d9d9d9;
-  border-radius: 10px;
-  border: none;
   height: 5vh;
   width: 14vw;
   &:focus {
@@ -21,10 +18,6 @@ export const Input = styled.input`
 `;
 
 export const CheckBtn = styled.button`
-  border: none;
-  background-color: #ff6060;
   border-radius: 0px 10px 10px 0px;
   width: 4vw;
-  color: #fff;
-  cursor: pointer;
 `;
