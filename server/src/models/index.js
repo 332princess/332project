@@ -1,6 +1,6 @@
 const { sequelize } = require('./connection');
 
-// const Join = require('./login');
+const Login = require('./login');
 // const Department = require('./department');
 const User = require('./user');
 const Song = require('./song');
@@ -15,6 +15,10 @@ db.User = User;
 db.Song = Song;
 db.PlayList = PlayList;
 db.Like = Like;
+db.Login = Login;
+// db.Board = Board;
+// db.Post = Post;
+// db.Comment = Comment;
 
 Object.keys(db).forEach((modelName) => {
   if (db[modelName].init) {

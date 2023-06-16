@@ -50,25 +50,15 @@ const dao = {
         });
     });
   },
-  // selectInfo(params) {
-  //   return new Promise((resolve, reject) => {
-  //     // Department.findAll
-  //     User.findByPk(params.id, {
-  //       include: [
-  //         {
-  //           model: Department,
-  //           as: 'Department',
-  //         },
-  //       ],
-  //     })
-  //       .then((selectedInfo) => {
-  //         resolve(selectedInfo);
-  //       })
-  //       .catch((err) => {
-  //         reject(err);
-  //       });
-  //   });
-  // },
+  selectInfo(params) {
+    return User.findOne({ where: { user_id: params.user_id } })
+      .then((selectedInfo) => {
+        return selectedInfo;
+      })
+      .catch((err) => {
+        throw err;
+      });
+  },
   // update(params) {
   //   return new Promise((resolve, reject) => {
   //     // User.findAll
@@ -97,30 +87,7 @@ const dao = {
   //       });
   //   });
   // },
-  selectUser(params) {
-    return new Promise((resolve, reject) => {
-      User.findOne({
-        attributes: ['password', 'user_id','email','gender'],
-        where: { user_id: params.user_id },
-      }).then((selectedOne) => {
-        resolve(selectedOne);
-      }).catch((err) => {
-        reject(err);
-      });
-    });
-  },
-
 
 };
-  // selectInfo(params) {
-  //   return new Promise((resolve, reject) => {
-  //     // Department.findAll
-  //     User.findByPk(params.id, {
-  //       include: [
-  //         {
-  //           model: Department,
-  //           as: 'Department',
-  //         },
-  //       ],
-  //     })
+
 module.exports = dao;

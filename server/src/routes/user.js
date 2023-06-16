@@ -55,10 +55,10 @@ router.get('/', async (req, res) => {
 });
 
 // 상세 조회
-router.get('/:userid', async (req, res) => {
+router.get('/:user_id', async (req, res) => {
     try {
       const params = {
-        userid: req.params.userid,
+        user_id: req.params.user_id,
       };
       logger.info(`(user.detail.params) ${JSON.stringify(params)}`);
   
