@@ -3,15 +3,18 @@ const { sequelize } = require('./connection');
 const Login = require('./login');
 // const Department = require('./department');
 const User = require('./user');
-// const Board = require('./board');
-// const Post = require('./post');
-// const Comment = require('./comment');
+const Song = require('./song');
+const Like = require('./like');
+const PlayList = require('./playlist');
 
 const db = {};
 db.sequelize = sequelize;
 
 // db.Department = Department;
 db.User = User;
+db.Song = Song;
+db.PlayList = PlayList;
+db.Like = Like;
 db.Login = Login;
 // db.Board = Board;
 // db.Post = Post;

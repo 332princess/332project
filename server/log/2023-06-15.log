@@ -12,441 +12,53 @@
 2023-06-15 14:58:47.190[debug] (userService.makePassword) "2345"
 2023-06-15 14:58:47.202[debug] (userService.reg) {"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"updatedAt":"2023-06-15T05:58:47.191Z","createdAt":"2023-06-15T05:58:47.191Z"}
 2023-06-15 14:58:47.204[info] (user.reg.result) {"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"updatedAt":"2023-06-15T05:58:47.191Z","createdAt":"2023-06-15T05:58:47.191Z"}
-2023-06-15 15:10:06.942[info] (user.list.params) {}
-2023-06-15 15:10:06.944[error] (userService.list) ReferenceError: Department is not defined
-2023-06-15 15:18:28.927[info] app start
-2023-06-15 15:18:28.978[info] DB connection success
-2023-06-15 15:18:28.988[info] Sequelize sync success
-2023-06-15 15:18:31.826[info] (user.list.params) {}
-2023-06-15 15:18:31.853[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:20:10.961[info] app start
-2023-06-15 15:20:11.006[info] DB connection success
-2023-06-15 15:20:11.015[info] Sequelize sync success
-2023-06-15 15:20:30.002[info] app start
-2023-06-15 15:20:30.053[info] DB connection success
-2023-06-15 15:20:30.064[info] Sequelize sync success
-2023-06-15 15:20:34.135[info] (user.list.params) {}
-2023-06-15 15:20:34.148[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:20:37.830[info] (user.list.params) {}
-2023-06-15 15:20:37.835[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:20:50.568[info] app start
-2023-06-15 15:20:50.620[info] DB connection success
-2023-06-15 15:20:50.630[info] Sequelize sync success
-2023-06-15 15:20:58.106[info] (user.list.params) {}
-2023-06-15 15:20:58.121[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:21:13.494[info] app start
-2023-06-15 15:21:13.545[info] DB connection success
-2023-06-15 15:21:13.557[info] Sequelize sync success
-2023-06-15 15:23:29.305[info] app start
-2023-06-15 15:23:29.355[info] DB connection success
-2023-06-15 15:23:29.365[info] Sequelize sync success
-2023-06-15 15:23:36.477[info] (user.list.params) {}
-2023-06-15 15:23:36.500[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:23:38.069[info] (user.list.params) {}
-2023-06-15 15:23:38.083[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:25:50.033[info] (user.list.params) {}
-2023-06-15 15:25:50.045[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:27:12.232[info] app start
-2023-06-15 15:27:12.284[info] DB connection success
-2023-06-15 15:27:12.295[info] Sequelize sync success
-2023-06-15 15:27:15.861[info] (user.list.params) "{}"
-2023-06-15 15:27:15.874[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:27:33.130[info] app start
-2023-06-15 15:27:33.182[info] DB connection success
-2023-06-15 15:27:33.192[info] Sequelize sync success
-2023-06-15 15:27:37.597[info] (user.list.params) {}
-2023-06-15 15:27:37.610[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:27:38.693[info] (user.list.params) {}
-2023-06-15 15:27:38.697[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:27:39.727[info] (user.list.params) {}
-2023-06-15 15:27:39.736[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:30:13.610[info] app start
-2023-06-15 15:30:13.661[info] DB connection success
-2023-06-15 15:30:13.670[info] Sequelize sync success
-2023-06-15 15:30:16.689[info] (user.list.params)     
-2023-06-15 15:30:16.705[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:30:23.211[info] app start
-2023-06-15 15:30:23.262[info] DB connection success
-2023-06-15 15:30:23.272[info] Sequelize sync success
-2023-06-15 15:30:24.350[info] app start
-2023-06-15 15:30:24.418[info] DB connection success
-2023-06-15 15:30:24.429[info] Sequelize sync success
-2023-06-15 15:30:24.991[info] app start
-2023-06-15 15:30:25.041[info] DB connection success
-2023-06-15 15:30:25.051[info] Sequelize sync success
-2023-06-15 15:30:27.908[info] app start
-2023-06-15 15:30:27.958[info] DB connection success
-2023-06-15 15:30:27.968[info] Sequelize sync success
-2023-06-15 15:30:36.362[info] app start
-2023-06-15 15:30:36.409[info] DB connection success
-2023-06-15 15:30:36.421[info] Sequelize sync success
-2023-06-15 15:30:38.454[info] (user.list.params)     
-2023-06-15 15:30:38.468[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:31:24.736[info] app start
-2023-06-15 15:31:24.784[info] DB connection success
-2023-06-15 15:31:24.794[info] Sequelize sync success
-2023-06-15 15:31:27.028[info] (user.list.params)     
-2023-06-15 15:31:27.043[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:31:48.692[info] app start
-2023-06-15 15:31:48.741[info] DB connection success
-2023-06-15 15:31:48.751[info] Sequelize sync success
-2023-06-15 15:31:51.099[info] (users.list.params)     
-2023-06-15 15:31:51.112[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:31:52.097[info] (users.list.params)     
-2023-06-15 15:31:52.102[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:33:16.309[info] app start
-2023-06-15 15:33:16.360[info] DB connection success
-2023-06-15 15:33:16.370[info] Sequelize sync success
-2023-06-15 15:36:27.952[info] (user.list.params)     
-2023-06-15 15:36:27.978[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:36:43.866[info] (user.list.params)     
-2023-06-15 15:36:43.876[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:36:47.651[info] (user.list.params)     
-2023-06-15 15:36:47.656[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:37:28.129[info] app start
-2023-06-15 15:37:28.179[info] DB connection success
-2023-06-15 15:37:28.191[info] Sequelize sync success
-2023-06-15 15:37:41.798[info] (user.list.params)     
-2023-06-15 15:37:41.815[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:37:50.317[info] (user.list.params)     
-2023-06-15 15:37:50.323[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:37:59.541[info] (user.list.params)     
-2023-06-15 15:37:59.547[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:38:02.973[info] (user.list.params)     
-2023-06-15 15:38:02.981[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:38:57.160[info] app start
-2023-06-15 15:38:57.207[info] DB connection success
-2023-06-15 15:38:57.218[info] Sequelize sync success
-2023-06-15 15:39:29.540[info] app start
-2023-06-15 15:39:29.603[info] DB connection success
-2023-06-15 15:39:29.611[info] Sequelize sync success
-2023-06-15 15:39:31.857[info] (user.list.params)     
-2023-06-15 15:39:31.870[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:39:36.691[info] (user.list.params)     
-2023-06-15 15:39:36.697[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:39:46.717[info] app start
-2023-06-15 15:39:46.764[info] DB connection success
-2023-06-15 15:39:46.774[info] Sequelize sync success
-2023-06-15 15:39:48.379[info] (user.list.params)     
-2023-06-15 15:39:48.391[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:40:45.472[info] app start
-2023-06-15 15:40:45.520[info] DB connection success
-2023-06-15 15:40:45.533[info] Sequelize sync success
-2023-06-15 15:40:47.112[info] (user.list.params)     
-2023-06-15 15:40:47.126[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:40:54.190[info] (user.list.params)     
-2023-06-15 15:40:54.198[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:41:01.396[info] (user.list.params)     
-2023-06-15 15:41:01.404[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 15:43:14.924[info] app start
-2023-06-15 15:43:14.976[info] DB connection success
-2023-06-15 15:43:14.987[info] Sequelize sync success
-2023-06-15 15:43:18.919[info] (user.list.params)     
-2023-06-15 15:43:18.933[error] (userService.list) SequelizeDatabaseError: Unknown column 'Users.id' in 'order clause'
-2023-06-15 15:43:35.006[info] app start
-2023-06-15 15:43:35.055[info] DB connection success
-2023-06-15 15:43:35.065[info] Sequelize sync success
-2023-06-15 15:43:38.858[info] app start
-2023-06-15 15:43:38.907[info] DB connection success
-2023-06-15 15:43:38.917[info] Sequelize sync success
-2023-06-15 15:43:40.561[info] (user.list.params)     
-2023-06-15 15:43:40.573[error] (userService.list) SequelizeDatabaseError: Unknown column 'Users.id' in 'order clause'
-2023-06-15 15:43:42.070[info] (user.list.params)     
-2023-06-15 15:43:42.075[error] (userService.list) SequelizeDatabaseError: Unknown column 'Users.id' in 'order clause'
-2023-06-15 15:43:52.751[info] app start
-2023-06-15 15:43:52.798[info] DB connection success
-2023-06-15 15:43:52.809[info] Sequelize sync success
-2023-06-15 15:43:54.142[info] (users.list.params)     
-2023-06-15 15:43:54.156[error] (userService.list) SequelizeDatabaseError: Unknown column 'Users.id' in 'order clause'
-2023-06-15 15:43:58.152[info] app start
-2023-06-15 15:43:58.203[info] DB connection success
-2023-06-15 15:43:58.212[info] Sequelize sync success
-2023-06-15 15:45:56.806[info] (user.list.params)     
-2023-06-15 15:45:56.823[error] (userService.list) SequelizeDatabaseError: Unknown column 'Users.id' in 'order clause'
-2023-06-15 15:53:17.090[info] app start
-2023-06-15 15:53:17.144[info] DB connection success
-2023-06-15 15:53:17.154[info] Sequelize sync success
-2023-06-15 15:54:21.773[info] app start
-2023-06-15 15:54:21.838[info] DB connection success
-2023-06-15 15:54:21.846[info] Sequelize sync success
-2023-06-15 15:54:26.484[info] (user.list.params)     
-2023-06-15 15:54:26.496[error] (userService.list) SequelizeDatabaseError: Unknown column 'Users.id' in 'order clause'
-2023-06-15 15:54:53.139[info] (user.list.params)     
-2023-06-15 15:54:53.150[error] (userService.list) SequelizeDatabaseError: Unknown column 'Users.id' in 'order clause'
-2023-06-15 15:59:12.636[info] (user.list.params)     
-2023-06-15 15:59:12.647[error] (userService.list) SequelizeDatabaseError: Unknown column 'Users.id' in 'order clause'
-2023-06-15 15:59:51.648[info] app start
-2023-06-15 15:59:51.697[info] DB connection success
-2023-06-15 15:59:51.708[info] Sequelize sync success
-2023-06-15 16:00:02.965[info] app start
-2023-06-15 16:00:03.016[info] DB connection success
-2023-06-15 16:00:03.025[info] Sequelize sync success
-2023-06-15 16:00:21.292[info] app start
-2023-06-15 16:00:21.345[info] DB connection success
-2023-06-15 16:00:21.354[info] Sequelize sync success
-2023-06-15 16:00:23.336[info] (user.list.params)     
-2023-06-15 16:00:23.350[error] (userService.list) SequelizeDatabaseError: Unknown column 'Users.id' in 'order clause'
-2023-06-15 16:00:35.961[info] app start
-2023-06-15 16:00:36.015[info] DB connection success
-2023-06-15 16:00:36.026[info] Sequelize sync success
-2023-06-15 16:00:40.386[info] (user.list.params)     
-2023-06-15 16:00:40.400[error] (userService.list) SequelizeDatabaseError: Unknown column 'Users.id' in 'order clause'
-2023-06-15 16:00:53.358[info] app start
-2023-06-15 16:00:53.409[info] DB connection success
-2023-06-15 16:00:53.419[info] Sequelize sync success
-2023-06-15 16:00:55.624[info] (user.list.params)     
-2023-06-15 16:00:55.637[error] (userService.list) SequelizeDatabaseError: Unknown column 'Users.id' in 'order clause'
-2023-06-15 16:01:25.147[info] app start
-2023-06-15 16:01:25.199[info] DB connection success
-2023-06-15 16:01:25.208[info] Sequelize sync success
-2023-06-15 16:01:27.215[info] (user.list.params)     
-2023-06-15 16:01:27.231[error] (userService.list) SequelizeDatabaseError: Unknown column 'Users.id' in 'order clause'
-2023-06-15 16:05:30.957[info] (user.list.params)     
-2023-06-15 16:05:30.987[error] (userService.list) SequelizeDatabaseError: Unknown column 'Users.id' in 'order clause'
-2023-06-15 16:09:45.869[info] app start
-2023-06-15 16:09:45.921[info] DB connection success
-2023-06-15 16:09:45.932[info] Sequelize sync success
-2023-06-15 16:09:48.916[info] (user.list.params)     
-2023-06-15 16:09:48.936[error] (userService.list) SequelizeDatabaseError: Unknown column 'Users.id' in 'order clause'
-2023-06-15 16:11:24.165[info] app start
-2023-06-15 16:11:24.218[info] DB connection success
-2023-06-15 16:11:24.227[info] Sequelize sync success
-2023-06-15 16:11:26.258[info] (user.list.params)     
-2023-06-15 16:11:26.272[error] (userService.list) SequelizeDatabaseError: Unknown column 'Users.id' in 'order clause'
-2023-06-15 16:14:16.599[info] app start
-2023-06-15 16:14:16.647[info] DB connection success
-2023-06-15 16:14:16.658[info] Sequelize sync success
-2023-06-15 16:14:18.465[info] (user.list.params)     
-2023-06-15 16:15:34.653[info] (user.list.params)     
-2023-06-15 16:15:42.601[info] app start
-2023-06-15 16:15:42.654[info] DB connection success
-2023-06-15 16:15:42.666[info] Sequelize sync success
-2023-06-15 16:15:44.065[info] (user.list.params)     
-2023-06-15 16:15:44.082[error] (userService.list) SequelizeDatabaseError: Unknown column 'Users.id' in 'order clause'
-2023-06-15 16:35:07.304[info] (user.list.params)     
-2023-06-15 16:35:07.318[error] (userService.list) SequelizeDatabaseError: Unknown column 'Users.id' in 'order clause'
-2023-06-15 16:36:51.629[info] app start
-2023-06-15 16:36:51.677[info] DB connection success
-2023-06-15 16:36:51.686[info] Sequelize sync success
-2023-06-15 16:36:55.021[info] (user.list.params)     
-2023-06-15 16:36:55.050[error] (userService.list) SequelizeDatabaseError: Unknown column 'Users.id' in 'order clause'
-2023-06-15 16:48:56.834[info] app start
-2023-06-15 16:48:56.884[info] DB connection success
-2023-06-15 16:48:56.894[info] Sequelize sync success
-2023-06-15 16:49:00.008[info] app start
-2023-06-15 16:49:00.059[info] DB connection success
-2023-06-15 16:49:00.070[info] Sequelize sync success
-2023-06-15 16:49:04.763[info] (user.list.params)     
-2023-06-15 16:49:04.778[error] (userService.list) SequelizeDatabaseError: Unknown column 'Users.id' in 'order clause'
-2023-06-15 16:49:07.907[info] app start
-2023-06-15 16:49:07.957[info] DB connection success
-2023-06-15 16:49:07.966[info] Sequelize sync success
-2023-06-15 16:49:27.203[info] app start
-2023-06-15 16:49:27.255[info] DB connection success
-2023-06-15 16:49:27.266[info] Sequelize sync success
-2023-06-15 16:49:28.541[info] (user.list.params)     
-2023-06-15 16:49:28.555[error] (userService.list) SequelizeDatabaseError: Unknown column 'Users.id' in 'order clause'
-2023-06-15 16:50:15.469[info] app start
-2023-06-15 16:50:15.515[info] DB connection success
-2023-06-15 16:50:15.525[info] Sequelize sync success
-2023-06-15 16:53:26.780[info] (user.list.params)     
-2023-06-15 16:53:26.803[error] (userService.list) SequelizeDatabaseError: Unknown column 'Users.id' in 'order clause'
-2023-06-15 16:54:34.306[info] (user.list.params)     
-2023-06-15 16:54:34.320[error] (userService.list) SequelizeDatabaseError: Unknown column 'Users.id' in 'order clause'
-2023-06-15 17:04:21.759[info] app start
-2023-06-15 17:04:21.814[info] DB connection success
-2023-06-15 17:04:21.824[info] Sequelize sync success
-2023-06-15 17:05:20.314[info] app start
-2023-06-15 17:05:20.361[info] DB connection success
-2023-06-15 17:05:20.372[info] Sequelize sync success
-2023-06-15 17:08:30.452[info] app start
-2023-06-15 17:08:30.503[info] DB connection success
-2023-06-15 17:08:30.513[info] Sequelize sync success
-2023-06-15 17:09:06.515[info] app start
-2023-06-15 17:09:06.589[info] DB connection success
-2023-06-15 17:09:06.597[info] Sequelize sync success
-2023-06-15 17:09:07.898[info] app start
-2023-06-15 17:09:07.950[info] DB connection success
-2023-06-15 17:09:07.958[info] Sequelize sync success
-2023-06-15 17:09:46.954[info] app start
-2023-06-15 17:09:47.005[info] DB connection success
-2023-06-15 17:09:47.015[info] Sequelize sync success
-2023-06-15 17:10:52.100[info] app start
-2023-06-15 17:10:52.147[info] DB connection success
-2023-06-15 17:10:52.155[info] Sequelize sync success
-2023-06-15 17:13:33.653[info] app start
-2023-06-15 17:13:33.704[info] DB connection success
-2023-06-15 17:13:33.716[info] Sequelize sync success
-2023-06-15 17:14:09.172[info] app start
-2023-06-15 17:14:09.224[info] DB connection success
-2023-06-15 17:14:09.233[info] Sequelize sync success
-2023-06-15 17:14:29.833[info] app start
-2023-06-15 17:14:29.880[info] DB connection success
-2023-06-15 17:14:29.891[info] Sequelize sync success
-2023-06-15 17:14:40.014[info] app start
-2023-06-15 17:14:40.065[info] DB connection success
-2023-06-15 17:14:40.077[info] Sequelize sync success
-2023-06-15 17:19:05.740[info] app start
-2023-06-15 17:19:05.791[info] DB connection success
-2023-06-15 17:19:05.802[info] Sequelize sync success
-2023-06-15 17:19:17.818[info] app start
-2023-06-15 17:19:17.868[info] DB connection success
-2023-06-15 17:19:17.877[info] Sequelize sync success
-2023-06-15 17:19:56.875[info] (user.reg.params) {"name":"test","password":"2345","email":"test@naver.com","gender":"false"}
-2023-06-15 17:19:56.878[debug] (userService.makePassword) "2345"
-2023-06-15 17:19:56.903[debug] (userService.reg) {"user_id":3,"name":"test","email":"test@naver.com","gender":false,"updatedAt":"2023-06-15T08:19:56.880Z","createdAt":"2023-06-15T08:19:56.880Z"}
-2023-06-15 17:19:56.904[info] (user.reg.result) {"user_id":3,"name":"test","email":"test@naver.com","gender":false,"updatedAt":"2023-06-15T08:19:56.880Z","createdAt":"2023-06-15T08:19:56.880Z"}
-2023-06-15 17:20:59.484[info] (user.list.params) {}
-2023-06-15 17:20:59.501[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 17:21:15.216[info] (user.list.params) {}
-2023-06-15 17:21:15.225[error] (userService.list) SequelizeDatabaseError: Unknown column 'User.id' in 'order clause'
-2023-06-15 17:24:20.998[info] app start
-2023-06-15 17:24:21.078[info] DB connection success
-2023-06-15 17:24:21.089[info] Sequelize sync success
-2023-06-15 17:24:23.055[info] (user.list.params) {}
-2023-06-15 17:24:23.070[debug] (userService.list) {"count":3,"rows":[{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null}]}
-2023-06-15 17:24:23.072[info] (user.list.result) {"count":3,"rows":[{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null}]}
-2023-06-15 17:25:56.338[info] (user.list.params) {}
-2023-06-15 17:25:56.350[debug] (userService.list) {"count":3,"rows":[{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null}]}
-2023-06-15 17:25:56.351[info] (user.list.result) {"count":3,"rows":[{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null}]}
-2023-06-15 17:26:42.448[info] app start
-2023-06-15 17:26:42.501[info] DB connection success
-2023-06-15 17:26:42.510[info] Sequelize sync success
-2023-06-15 17:26:44.567[info] (user.list.params) {}
-2023-06-15 17:26:44.581[debug] (userService.list) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 17:26:44.583[info] (user.list.result) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 17:29:21.373[info] app start
-2023-06-15 17:29:21.426[info] DB connection success
-2023-06-15 17:29:21.434[info] Sequelize sync success
-2023-06-15 17:29:34.533[info] app start
-2023-06-15 17:29:34.584[info] DB connection success
-2023-06-15 17:29:34.595[info] Sequelize sync success
-2023-06-15 17:29:44.395[info] app start
-2023-06-15 17:29:44.445[info] DB connection success
-2023-06-15 17:29:44.454[info] Sequelize sync success
-2023-06-15 17:29:45.868[info] (user.list.params) {}
-2023-06-15 17:29:45.883[debug] (userService.list) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 17:29:45.884[info] (user.list.result) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 17:30:54.535[info] app start
-2023-06-15 17:30:54.584[info] DB connection success
-2023-06-15 17:30:54.593[info] Sequelize sync success
-2023-06-15 17:33:57.960[info] app start
-2023-06-15 17:33:58.009[info] DB connection success
-2023-06-15 17:33:58.018[info] Sequelize sync success
-2023-06-15 17:34:00.204[info] (user.list.params) {}
-2023-06-15 17:34:00.215[debug] (userService.list) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 17:34:00.217[info] (user.list.result) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 17:34:29.780[info] app start
-2023-06-15 17:34:29.830[info] DB connection success
-2023-06-15 17:34:29.842[info] Sequelize sync success
-2023-06-15 17:34:32.194[info] (user.list.params) {}
-2023-06-15 17:34:32.210[debug] (userService.list) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 17:34:32.212[info] (user.list.result) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 17:35:31.122[info] (user.list.params) {}
-2023-06-15 17:35:31.135[debug] (userService.list) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 17:35:31.136[info] (user.list.result) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 17:35:54.659[info] (user.list.params) {}
-2023-06-15 17:35:54.669[debug] (userService.list) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 17:35:54.670[info] (user.list.result) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 17:36:19.305[info] (user.list.params) {}
-2023-06-15 17:36:19.324[debug] (userService.list) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 17:36:19.327[info] (user.list.result) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 17:37:35.267[info] (user.list.params) {}
-2023-06-15 17:37:35.276[debug] (userService.list) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 17:37:35.278[info] (user.list.result) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 17:40:13.413[info] app start
-2023-06-15 17:40:13.465[info] DB connection success
-2023-06-15 17:40:13.474[info] Sequelize sync success
-2023-06-15 17:40:17.560[info] (user.detail.params) {"userid":"1"}
-2023-06-15 17:46:18.491[info] app start
-2023-06-15 17:46:18.541[info] DB connection success
-2023-06-15 17:46:18.552[info] Sequelize sync success
-2023-06-15 17:46:21.270[info] (user.detail.params) {"userid":"1"}
-2023-06-15 17:46:22.629[info] (user.detail.params) {"userid":"1"}
-2023-06-15 17:47:06.126[info] app start
-2023-06-15 17:47:06.176[info] DB connection success
-2023-06-15 17:47:06.185[info] Sequelize sync success
-2023-06-15 17:53:30.911[info] app start
-2023-06-15 17:53:30.966[info] DB connection success
-2023-06-15 17:53:30.979[info] Sequelize sync success
-2023-06-15 17:53:32.467[info] (user.detail.params) {"userid":"1"}
-2023-06-15 17:57:09.040[info] app start
-2023-06-15 17:57:09.092[info] DB connection success
-2023-06-15 17:57:09.103[info] Sequelize sync success
-2023-06-15 17:57:10.311[info] (user.detail.params) {"userid":"1"}
-2023-06-15 17:57:16.539[info] (user.list.params) {}
-2023-06-15 17:57:16.558[debug] (userService.list) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 17:57:16.559[info] (user.list.result) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 17:57:21.821[info] app start
-2023-06-15 17:57:21.871[info] DB connection success
-2023-06-15 17:57:21.880[info] Sequelize sync success
-2023-06-15 17:59:11.782[info] (user.list.params) {}
-2023-06-15 17:59:11.805[debug] (userService.list) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 17:59:11.808[info] (user.list.result) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 17:59:17.520[info] (user.list.params) {}
-2023-06-15 17:59:17.526[debug] (userService.list) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 17:59:17.528[info] (user.list.result) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 17:59:28.098[info] (user.detail.params) {"userid":"1"}
-2023-06-15 18:09:06.074[info] app start
-2023-06-15 18:09:06.130[info] DB connection success
-2023-06-15 18:09:06.139[info] Sequelize sync success
-2023-06-15 18:09:11.579[info] (user.detail.params) {"userid":"1"}
-2023-06-15 18:10:17.247[info] app start
-2023-06-15 18:10:17.297[info] DB connection success
-2023-06-15 18:10:17.306[info] Sequelize sync success
-2023-06-15 18:10:28.257[info] (user.detail.params) {"userid":"1"}
-2023-06-15 18:10:36.103[info] (user.detail.params) {"userid":"1"}
-2023-06-15 18:10:39.491[info] (user.detail.params) {"userid":"1"}
-2023-06-15 18:10:46.181[info] (user.list.params) {}
-2023-06-15 18:10:46.215[debug] (userService.list) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 18:10:46.217[info] (user.list.result) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 18:10:51.293[info] (user.detail.params) {"userid":"1"}
-2023-06-15 18:12:05.677[info] app start
-2023-06-15 18:12:05.723[info] DB connection success
-2023-06-15 18:12:05.732[info] Sequelize sync success
-2023-06-15 18:12:09.256[info] (user.detail.params) {"userid":"1"}
-2023-06-15 18:12:23.251[info] app start
-2023-06-15 18:12:23.298[info] DB connection success
-2023-06-15 18:12:23.309[info] Sequelize sync success
-2023-06-15 18:12:29.123[info] app start
-2023-06-15 18:12:29.170[info] DB connection success
-2023-06-15 18:12:29.181[info] Sequelize sync success
-2023-06-15 18:17:22.700[info] (user.detail.params) {"userid":"1"}
-2023-06-15 19:10:30.891[info] (user.detail.params) {"userid":"1"}
-2023-06-15 19:15:19.002[info] (user.list.params) {}
-2023-06-15 19:15:19.076[debug] (userService.list) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 19:15:19.083[info] (user.list.result) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 19:45:45.998[info] app start
-2023-06-15 19:45:46.082[info] DB connection success
-2023-06-15 19:45:46.103[info] Sequelize sync success
-2023-06-15 20:08:14.463[info] (user.detail.params) {"userid":"1"}
-2023-06-15 20:19:13.803[info] (user.detail.params) {"userid":"log-test"}
-2023-06-15 20:21:36.174[error] This message is error
-2023-06-15 20:21:36.176[warn] This message is warn
-2023-06-15 20:21:36.178[info] This message is info
-2023-06-15 20:21:36.179[verbose] This message is verbose
-2023-06-15 20:21:36.181[debug] This message is debug
-2023-06-15 20:52:14.241[info] (user.reg.params) {"name":"test1","password":"","email":"test1@naver.com","gender":"false"}
-2023-06-15 21:46:49.236[info] app start
-2023-06-15 21:46:49.319[info] DB connection success
-2023-06-15 21:46:49.333[info] Sequelize sync success
-2023-06-15 21:47:30.001[info] (user.list.params) {}
-2023-06-15 21:47:30.075[debug] (userService.list) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 21:47:30.079[info] (user.list.result) {"count":3,"rows":[{"user_id":1,"name":"강우","email":"rkddn@naver.com","gender":false,"createdAt":"2023-06-15T05:58:28.000Z","updatedAt":"2023-06-15T05:58:28.000Z","deletedAt":null},{"user_id":2,"name":"태영","email":"xodud@naver.com","gender":false,"createdAt":"2023-06-15T05:58:47.000Z","updatedAt":"2023-06-15T05:58:47.000Z","deletedAt":null},{"user_id":3,"name":"test","email":"test@naver.com","gender":false,"createdAt":"2023-06-15T08:19:56.000Z","updatedAt":"2023-06-15T08:19:56.000Z","deletedAt":null}]}
-2023-06-15 21:47:35.908[info] (user.reg.params) {"name":"test2","password":"1234","email":"test2@naver.com","gender":"false"}
-2023-06-15 21:47:35.918[debug] (userService.makePassword) "1234"
-2023-06-15 21:47:35.965[debug] (userService.reg) {"user_id":4,"name":"test2","email":"test2@naver.com","gender":false,"updatedAt":"2023-06-15T12:47:35.926Z","createdAt":"2023-06-15T12:47:35.926Z"}
-2023-06-15 21:47:35.969[info] (user.reg.result) {"user_id":4,"name":"test2","email":"test2@naver.com","gender":false,"updatedAt":"2023-06-15T12:47:35.926Z","createdAt":"2023-06-15T12:47:35.926Z"}
-2023-06-15 21:48:46.702[info] (user.detail.params) {"userid":"1"}
-2023-06-15 21:58:13.503[info] app start
-2023-06-15 21:58:13.572[info] DB connection success
-2023-06-15 21:58:13.588[info] Sequelize sync success
-2023-06-15 21:58:18.422[info] app start
-2023-06-15 21:58:18.498[info] DB connection success
-2023-06-15 21:58:18.516[info] Sequelize sync success
-2023-06-15 21:59:19.713[info] app start
-2023-06-15 21:59:19.788[info] DB connection success
-2023-06-15 21:59:19.804[info] Sequelize sync success
-2023-06-15 21:59:23.063[info] app start
-2023-06-15 21:59:23.139[info] DB connection success
-2023-06-15 21:59:23.157[info] Sequelize sync success
+2023-06-15 19:35:14.577[info] app start
+2023-06-15 19:35:14.665[info] DB connection success
+2023-06-15 19:35:14.697[info] Sequelize sync success
+2023-06-15 19:43:18.825[info] app start
+2023-06-15 19:43:18.897[info] DB connection success
+2023-06-15 19:43:18.919[info] Sequelize sync success
+2023-06-15 19:43:24.389[info] (user.list.params) {}
+2023-06-15 19:43:24.391[error] (userService.list) ReferenceError: Department is not defined
+2023-06-15 19:43:45.611[info] (user.reg.params) {"password":"test1234"}
+2023-06-15 19:43:45.613[error] Error: Not allowed null (name, email, password)
+2023-06-15 19:43:45.620[debug] (userService.makePassword) "test1234"
+2023-06-15 21:19:23.431[info] app start
+2023-06-15 21:19:23.560[info] DB connection success
+2023-06-15 21:19:23.644[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_2' in the referenced table 'users'
+2023-06-15 21:20:00.688[info] app start
+2023-06-15 21:20:00.799[info] DB connection success
+2023-06-15 21:20:00.857[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_2' in the referenced table 'users'
+2023-06-15 21:22:01.085[info] app start
+2023-06-15 21:22:01.192[info] DB connection success
+2023-06-15 21:22:01.245[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_2' in the referenced table 'users'
+2023-06-15 21:22:12.655[info] app start
+2023-06-15 21:22:12.774[info] DB connection success
+2023-06-15 21:22:12.825[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_2' in the referenced table 'users'
+2023-06-15 21:22:59.389[info] app start
+2023-06-15 21:22:59.490[info] DB connection success
+2023-06-15 21:22:59.545[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_2' in the referenced table 'users'
+2023-06-15 21:24:46.529[info] app start
+2023-06-15 21:24:46.674[info] DB connection success
+2023-06-15 21:24:46.724[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_2' in the referenced table 'users'
+2023-06-15 21:25:23.851[info] app start
+2023-06-15 21:25:23.948[info] DB connection success
+2023-06-15 21:25:24.005[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_2' in the referenced table 'users'
+2023-06-15 21:25:53.038[info] app start
+2023-06-15 21:25:53.156[info] DB connection success
+2023-06-15 21:25:53.226[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_1' in the referenced table 'users'
+2023-06-15 21:26:02.553[info] app start
+2023-06-15 21:26:02.667[info] DB connection success
+2023-06-15 21:26:02.728[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_1' in the referenced table 'users'
+2023-06-15 21:26:17.815[info] app start
+2023-06-15 21:26:17.922[info] DB connection success
+2023-06-15 21:26:17.970[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_1' in the referenced table 'users'
+2023-06-15 21:30:12.263[info] app start
+2023-06-15 21:30:12.400[info] DB connection success
+2023-06-15 21:30:12.446[error] Sequelize sync error Referencing column 'user_id' and referenced column 'userid' in foreign key constraint 'play_lists_ibfk_1' are incompatible.
+2023-06-15 21:33:04.797[info] app start
+2023-06-15 21:33:04.933[info] DB connection success
+2023-06-15 21:33:04.988[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_1' in the referenced table 'users'
+2023-06-15 21:33:19.369[info] app start
+2023-06-15 21:33:19.479[info] DB connection success
+2023-06-15 21:33:19.539[error] Sequelize sync error Failed to add the foreign key constraint. Missing column 'user_id' for constraint 'play_lists_ibfk_1' in the referenced table 'users'

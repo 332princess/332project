@@ -1,12 +1,15 @@
 const express = require('express');
 const logger = require('../lib/logger');
 const userRouter = require('./user');
+const playlistRouter = require('./playlist');
+const likeRouter = require('./like');
+// const songRouter = require('./song');
+// const loginRouter = require('./login');
 const loginRouter = require('./login');
 // const postRouter = require('./post');
 // const weatherRouter = require('./weather');
 const router = express.Router();
 
-/* GET home page. */
 router.get('/', (req, res, next) => {
   res.render('index', { title: 'Express' });
 });
@@ -22,13 +25,12 @@ router.get('/log-test', (req, res, next) => {
   res.send('log test');
 });
 
-// router.use('/departments', departmentRouter);
 router.use('/users', userRouter);
+router.use('/playlist', playlistRouter);
+router.use('/like', likeRouter);
+// router.use('./song', songRouter);
+// router.use('/logins', loginRouter);
 router.use('/logins', loginRouter);
 // router.use('/auths', authRouter);
-// router.use('/boards', boardRouter);
-// router.use('/posts', postRouter);
-// router.use('/uploads', uploadRouter);
-// router.use('/weather', weatherRouter);
 
 module.exports = router;

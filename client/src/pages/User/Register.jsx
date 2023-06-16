@@ -24,12 +24,14 @@ const Register = () => {
 
   const fetchEmailList = async () => {
     try {
-      const response = await axios.get('/api/users');
-      setEmailList(response.data);
+      const response = await axios.get('/api/user');
+      setEmailList(response.data.email);
     } catch (error) {
       console.error('Failed to fetch email list:', error);
     }
   };
+
+  console.log(emailList);
 
   const nameChange = ({ target: { value } }) => setName(value);
   const emailChange = ({ target: { value } }) => setEmail(value);
@@ -53,7 +55,7 @@ const Register = () => {
       if (password !== password2) alert('비밀번호를 재확인해주세요!');
     } else {
       try {
-        const response = await axios.post('/api/users', {
+        await axios.post('/api/user', {
           name,
           email,
           password,
