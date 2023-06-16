@@ -37,7 +37,7 @@ const service = {
   // selectList
   async list(params) {
     let result = null;
-
+    console.log(params);
     try {
       result = await userDao.selectList(params);
       logger.debug(`(userService.list) ${JSON.stringify(result)}`);
@@ -85,6 +85,23 @@ const service = {
 
     return Promise.resolve(user);
   },
+
+      //   상세조회
+  async getUser(userid) {
+    return new Promise((resolve, reject) => {
+      User.findOne({
+        attributes: ['userid', 'name', 'email', 'role'],
+        where: { userid },
+      })
+        .then((selectedOne) => {
+          resolve(selectedOne);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    })
+
+  }
 };
 
 module.exports = service;

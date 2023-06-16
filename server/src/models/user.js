@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-module.exports = class User extends Sequelize.Model {
+module.exports = class Users extends Sequelize.Model {
     static init(sequelize) {
     return super.init({
     user_id: {
@@ -43,6 +43,6 @@ module.exports = class User extends Sequelize.Model {
 //   }
 //관계설정을 나중에 해주자구
 
-  static includeAttributes = ['id', 'name', 'role', 'email', 'phone'];
+  // static includeAttributes = ['user_id', 'name', 'role', 'email', 'phone'];
   //static includeAttributes는 User 클래스의 정적 속성으로, 조회 작업에서 포함할 속성들을 배열로 정의한 것입니다.
 };

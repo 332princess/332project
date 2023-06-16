@@ -16,30 +16,31 @@ const dao = {
     });
   },
   selectList(params) { 
-    // where 검색 조건
+    // where 검색 조건s
     const setQuery = {};
-    if (params.name) {
+    console.log(params.user_id);
+    if (params.user_id) {
       setQuery.where = {
         ...setQuery.where,
-        name: { [Op.like]: `%${params.name}%` }, // like검색
+        user_id: { [Op.like]: `%${params.user_id}%` }, // like검색
       };
     }
-    if (params.userId) {
+    if (params.user_id) {
       setQuery.where = {
         ...setQuery.where,
-        userId: params.userId, // like검색
+        user_id: params.user_id, // like검색
       };
     }
-    setQuery.order = [['id', 'DESC']];
+    setQuery.order = [['user_id', 'ASC']];
     return new Promise((resolve, reject) => {
       User.findAndCountAll({
         ...setQuery,
         attributes: { exclude: ['password'] },
-        include: [{
-          model: Department,
-          as: 'Department',
-        },
-        ],
+        // include: [{
+        //   model: Department,
+        //   as: 'Department',
+        // },
+        // ],
       })
         .then((selectedList) => {
           resolve(selectedList);
@@ -99,8 +100,8 @@ const dao = {
   selectUser(params) {
     return new Promise((resolve, reject) => {
       User.findOne({
-        attributes: ['id', 'userId', 'password', 'name', 'role'],
-        where: { userid: params.userid },
+        attributes: ['password', 'user_id','email','gender'],
+        where: { user_id: params.user_id },
       }).then((selectedOne) => {
         resolve(selectedOne);
       }).catch((err) => {
@@ -108,6 +109,18 @@ const dao = {
       });
     });
   },
-};
 
+
+};
+  // selectInfo(params) {
+  //   return new Promise((resolve, reject) => {
+  //     // Department.findAll
+  //     User.findByPk(params.id, {
+  //       include: [
+  //         {
+  //           model: Department,
+  //           as: 'Department',
+  //         },
+  //       ],
+  //     })
 module.exports = dao;
