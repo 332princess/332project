@@ -80,4 +80,31 @@ router.get('/:user_id', async (req, res) => {
     }
   });
 
+
+router.delete('/:user_id', async (req, res) => {
+  try {
+    const params = {
+      user_id: req.params.user_id,
+    };
+    logger.info(`(user.delete.params) ${JSON.stringify(params)}`);
+
+    const result = await userService.deleteUser(params);
+    logger.info(`(user.delete.result) ${JSON.stringify(result)}`);
+
+    // 삭제된 사용자가 없을 경우 에러 처리
+    if (result === 0) {
+      const err = new Error('User not found');
+      logger.error(err.toString());
+      res.status(404).json({ err: err.toString() });
+      return;
+    }
+
+    // 최종 응답
+    res.status(200).json({ message: 'User deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ err: err.toString() });
+  }
+});
+
+
 module.exports = router;

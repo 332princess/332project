@@ -141,6 +141,21 @@ async login(params) {
     return Promise.reject(err);
   }
 },
+
+
+async deleteUser(params) {
+  return new Promise((resolve, reject) => {
+    userDao.deleteUser(params)
+      .then((result) => {
+        resolve(result);
+      })
+      .catch((err) => {
+        logger.error(`(userService.deleteUser) ${err.toString()}`);
+        reject(err);
+      });
+  });
+}
+
 };
 
 module.exports = service;
