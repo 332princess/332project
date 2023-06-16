@@ -1,6 +1,6 @@
 const { sequelize } = require('./connection');
 
-// const Join = require('./login');
+const Login = require('./login');
 // const Department = require('./department');
 const User = require('./user');
 // const Board = require('./board');
@@ -12,7 +12,7 @@ db.sequelize = sequelize;
 
 // db.Department = Department;
 db.User = User;
-// db.Login = Login;
+db.Login = Login;
 // db.Board = Board;
 // db.Post = Post;
 // db.Comment = Comment;

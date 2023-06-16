@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const { Login } = require('../models/index');
+const { Login,User } = require('../models/index');
 
 const dao = {
   insert(params) {
@@ -12,15 +12,14 @@ const dao = {
     });
   },
 
-  // 라스트 조회
-  selectList(params) {
-    const setQuery = {};
-    if (params.name) {
-      setQuery.where = {
-        ...setQuery.where,
-        name: { [Op.like]: `%${params.name}%` },
-      };
-    }
+  // 라스트 조회 
+  //list는 나중에 만들고 아래는 그냥 select로 변경하기
+  async selectList(params) {
+    
+      const setQuery = await User.findOne({
+      where: {email: params.email},
+    });
+    console.log(setQuery);
     setQuery.order = [['id', 'DESC']];
     return new Promise((resolve, reject) => {
       Login.findAndCountAll({
@@ -34,9 +33,20 @@ const dao = {
   },
   selectInfo(params) {
     return new Promise((resolve, reject) => {
-      Login.findByPk(
-        params.id,
-      ).then((selectedInfo) => {
+      User.findOne({
+        where: {email: params.email},
+      }).then((selectedInfo) => {
+        resolve(selectedInfo);
+      }).catch((err) => {
+        reject(err);
+      });
+    });
+  },
+  selectInfoByEmail(params) {
+    return new Promise((resolve, reject) => {
+      User.findOne({
+        where: {email: params.email},
+      }).then((selectedInfo) => {
         resolve(selectedInfo);
       }).catch((err) => {
         reject(err);

@@ -1,17 +1,8 @@
 const Sequelize = require('sequelize');
 
-module.exports = class Users extends Sequelize.Model {
+module.exports = class Login extends Sequelize.Model {
     static init(sequelize) {
     return super.init({
-    user_id: {
-    type: Sequelize.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-    },
-    name: {
-    type: Sequelize.STRING(500),
-    allowNull: false,
-    },
     email: {
     type: Sequelize.STRING(500),
     allowNull: false,
@@ -19,9 +10,6 @@ module.exports = class Users extends Sequelize.Model {
     password: {
     type: Sequelize.STRING(500),
     allowNull: false,
-    },
-    gender:{
-        type:Sequelize.BOOLEAN,
     },
     }, {
       sequelize,
@@ -36,13 +24,13 @@ module.exports = class Users extends Sequelize.Model {
 //테이블 생성
 
 //   static associate(db) {
-//     db.User.belongsTo(db.Department, { foreignKey: { name: 'departmentId', onDelete: 'SET NULL', as: 'Department' } });
-//     db.User.hasMany(db.Board, { foreignKey: { name: 'userId', onDelete: 'SET NULL', as: 'Boards' } });
-//     db.User.hasMany(db.Post, { foreignKey: { name: 'userId', onDelete: 'SET NULL', as: 'Posts' } });
-//     db.User.hasMany(db.Comment, { foreignKey: { name: 'userId', onDelete: 'SET NULL', as: 'Comments' } });
+//     db.Login.belongsTo(db.Department, { foreignKey: { name: 'departmentId', onDelete: 'SET NULL', as: 'Department' } });
+//     db.Login.hasMany(db.Board, { foreignKey: { name: 'loginId', onDelete: 'SET NULL', as: 'Boards' } });
+//     db.Login.hasMany(db.Post, { foreignKey: { name: 'loginId', onDelete: 'SET NULL', as: 'Posts' } });
+//     db.Login.hasMany(db.Comment, { foreignKey: { name: 'loginId', onDelete: 'SET NULL', as: 'Comments' } });
 //   }
 //관계설정을 나중에 해주자구
 
-  // static includeAttributes = ['user_id', 'name', 'role', 'email', 'phone'];
+  // static includeAttributes = ['id', 'name', 'role', 'email', 'phone'];
   //static includeAttributes는 User 클래스의 정적 속성으로, 조회 작업에서 포함할 속성들을 배열로 정의한 것입니다.
 };

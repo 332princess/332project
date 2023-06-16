@@ -12,6 +12,7 @@ const makeHash = async (password, saltRounds = 10) => {
 
 // bcrypt 검증
 const checkHash = async (password, hashedPassword) => {
+    console.log(1);
     // const hashedPassword = makeHash(password, saltRounds=10);
     return await bcrypt.compare(password, hashedPassword);
 }

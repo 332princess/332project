@@ -1,7 +1,7 @@
 const express = require('express');
 const logger = require('../lib/logger');
 const userRouter = require('./user');
-// const loginRouter = require('./login');
+const loginRouter = require('./login');
 // const postRouter = require('./post');
 // const weatherRouter = require('./weather');
 const router = express.Router();
@@ -24,7 +24,7 @@ router.get('/log-test', (req, res, next) => {
 
 // router.use('/departments', departmentRouter);
 router.use('/users', userRouter);
-// router.use('/logins', loginRouter);
+router.use('/logins', loginRouter);
 // router.use('/auths', authRouter);
 // router.use('/boards', boardRouter);
 // router.use('/posts', postRouter);
