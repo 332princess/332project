@@ -24,7 +24,8 @@ const Register = () => {
 
   const fetchEmailList = async () => {
     try {
-      const response = await axios.get('/api/user');
+      const response = await axios.get('http://localhost:8081/users');
+      console.log(response.data);
       setEmailList(response.data.email);
     } catch (error) {
       console.error('Failed to fetch email list:', error);
@@ -55,7 +56,7 @@ const Register = () => {
       if (password !== password2) alert('비밀번호를 재확인해주세요!');
     } else {
       try {
-        await axios.post('/api/user', {
+        await axios.post('http://localhost:8081/users', {
           name,
           email,
           password,
