@@ -1,19 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, Box, Song, Bar, MoreBtn } from '../../components/Detail';
+import {
+  Container,
+  Box,
+  Song,
+  Bar,
+  BarBtn,
+  MoreBtn,
+} from '../../components/Detail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faHeart } from '@fortawesome/free-solid-svg-icons';
+import {
+  faPlay,
+  faHeart,
+  faPause,
+  faMinus,
+  faPlus,
+} from '@fortawesome/free-solid-svg-icons';
 import { MyPage } from '../../components/MyPage';
 import Side from './Side';
 
 const Like = () => {
   const [songs, setSongs] = useState([]);
   const [currentSong, setCurrentSong] = useState(false);
-  const [playList, setPlayList] = useState([]);
+  const [likedSongs, setLikedSongs] = useState([]);
+
   useEffect(() => {
     const fetchSongs = async () => {
       try {
-        const response = await axios.get('/data/song.json');
+        // const response = await axios.get('http://localhost:8081/song');
+        const response = await axios.get('/data/like.json');
         setSongs(response.data);
       } catch (error) {
         console.log(error);
@@ -21,6 +36,7 @@ const Like = () => {
     };
     fetchSongs();
   }, []);
+
   const handleSongClick = (song) => {
     if (currentSong && currentSong.id === song.id) {
       setCurrentSong(null);
@@ -28,31 +44,25 @@ const Like = () => {
       setCurrentSong(song);
     }
   };
-  const handlePlayList = (song) => {
-    const index = playList.findIndex((item) => item.id === song.id);
+
+  const handleLike = (song) => {
+    const index = likedSongs.findIndex((item) => item.id === song.id);
     if (index === -1) {
-      const updatedPlayList = [...playList, song];
-      setPlayList(updatedPlayList);
-      updatePlayList(updatedPlayList);
+      setLikedSongs((prevLikedSongs) => [...prevLikedSongs, song]);
     } else {
-      const updatedPlayList = [...playList];
-      updatedPlayList.splice(index, 1);
-      setPlayList(updatedPlayList);
-      updatePlayList(updatedPlayList);
+      setLikedSongs((prevLikedSongs) => {
+        const updatedLikedSongs = [...prevLikedSongs];
+        updatedLikedSongs.splice(index, 1);
+        return updatedLikedSongs;
+      });
     }
   };
-  const updatePlayList = async (updatedPlayList) => {
-    try {
-      await axios.post('/data/playlist.json', updatedPlayList);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
   useEffect(() => {
     if (currentSong) {
       const updateCurrentSong = async () => {
         try {
-          await axios.post('/data/currentsong.json', [currentSong]);
+          await axios.post('http://localhost:8081/currentsong', [currentSong]);
         } catch (error) {
           console.log(error);
         }
@@ -60,22 +70,67 @@ const Like = () => {
       updateCurrentSong();
     }
   }, [currentSong]);
+
   useEffect(() => {
-    updatePlayList(playList);
-  }, [playList]);
+    const updateLikedSongs = async () => {
+      try {
+        await axios.post('/api/likes', likedSongs);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    updateLikedSongs();
+  }, [likedSongs]);
 
   return (
     <MyPage>
       <Side />
       <Container>
-        <Box>
-          <Song>노래 제목 - 가수</Song>
-          <Bar>
-            <FontAwesomeIcon icon={faPlay} />
-            <FontAwesomeIcon icon={faHeart} />
-          </Bar>
-        </Box>
-        <MoreBtn>More</MoreBtn>
+        {songs.map((song) => (
+          <Box key={song.id}>
+            <Song>
+              {song.title} - {song.singer}
+            </Song>
+            <Bar>
+              <BarBtn>
+                {currentSong && currentSong.id === song.id ? (
+                  currentSong.playing ? (
+                    <FontAwesomeIcon
+                      icon={faPause}
+                      color="#ff6060"
+                      onClick={() =>
+                        setCurrentSong({ ...currentSong, playing: false })
+                      }
+                    />
+                  ) : (
+                    <FontAwesomeIcon
+                      icon={faPlay}
+                      onClick={() =>
+                        setCurrentSong({ ...currentSong, playing: true })
+                      }
+                    />
+                  )
+                ) : (
+                  <FontAwesomeIcon
+                    icon={faPlay}
+                    onClick={() => handleSongClick(song)}
+                  />
+                )}
+              </BarBtn>
+              <BarBtn>
+                <FontAwesomeIcon
+                  icon={faHeart}
+                  color={
+                    likedSongs.find((item) => item.id === song.id)
+                      ? 'white'
+                      : '#ff6060'
+                  }
+                  onClick={() => handleLike(song)}
+                ></FontAwesomeIcon>
+              </BarBtn>
+            </Bar>
+          </Box>
+        ))}
       </Container>
     </MyPage>
   );

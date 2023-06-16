@@ -10,6 +10,14 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
+  @font-face {
+    font-family: 'HSJiptokki-Round';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/HSJiptokki-Round.woff2')
+      format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+  font-family: 'HSJiptokki-Round';
   font-size: 70px;
   margin-top: 25vh;
   color: #fff;
@@ -47,7 +55,7 @@ export const Chat = styled.div`
 
 export const WhiteBox = styled.div`
   width: 100%;
-  height: 42vh;
+  height: 40vh;
   background-color: white;
   position: fixed;
   bottom: 0;
@@ -56,15 +64,12 @@ export const WhiteBox = styled.div`
 
 export const ImageWithTextContainer = styled.div`
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  height: 100%;
+  height: 90%;
   justify-content: space-evenly;
-  margin-top: 5vh;
 `;
 
 export const ImageWrapper = styled.div`
-  // width: 100px;
   height: 200px;
   background-size: cover;
   align-items: center;
@@ -72,12 +77,13 @@ export const ImageWrapper = styled.div`
 `;
 
 export const Text = styled.button`
-  border: none;
   font-family: 'HSJiptokki-Round';
-  background-color: #ff6060;
-  color: #fff;
   border-radius: 5px;
+  background-color: transparent;
+  color: #ff6060;
+  font-weight: bold;
   font-size: 20px;
+  margin-top: 10px;
 `;
 
 export const activeStyle = {

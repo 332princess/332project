@@ -15,23 +15,22 @@ const Info = () => {
   return (
     <MyPage>
       <Side />
-      <Container>
+      <Container className="info">
         <h1>000님, 안녕하세용!</h1>
         <Box>
-          <Text>아이디 변경</Text>
-          <Input placeholder="please" />
-          <Modi>수정</Modi>
+          <Text>이메일 확인</Text>
+          <Input placeholder="please check your email" />
+        </Box>
+        <Modi>확인</Modi>
+        <Box>
+          <Text>비밀번호 변경</Text>
+          <Input placeholder="please enter new password" />
         </Box>
         <Box>
-          <Text>아이디 변경</Text>
-          <Input placeholder="please" />
-          <Modi>수정</Modi>
+          <Text>비밀번호 확인</Text>
+          <Input placeholder="please check new password" />
         </Box>
-        <Box>
-          <Text>아이디 변경</Text>
-          <Input placeholder="please" />
-          <Modi>수정</Modi>
-        </Box>
+        <Modi>수정</Modi>
         <MoreBtn>회원 탈퇴</MoreBtn>
       </Container>
     </MyPage>
