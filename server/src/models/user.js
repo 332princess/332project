@@ -1,10 +1,10 @@
 const Sequelize = require('sequelize');
 
-module.exports = class User extends Sequelize.Model {
+module.exports = class Users extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        userId: {
+        user_id: {
           type: Sequelize.INTEGER,
           primaryKey: true,
           autoIncrement: true,
