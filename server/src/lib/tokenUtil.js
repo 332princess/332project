@@ -12,7 +12,7 @@ const tokenUtil = {
       id: user.id,
       userid: user.userid,
       name: user.name,
-      role: user.role,
+      gender: user.gender,
     };
 
     const token = jwt.sign(payload, secretKey, options);
