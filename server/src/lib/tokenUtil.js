@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 
-const secretKey = 'taeyoung';
+const secretKey =
+  '24432646294A404E635166546A576E5A7234753778214125442A472D4B615064';
 const options = {
   expiresIn: '9000h', // 만료시간
 };
@@ -10,6 +11,7 @@ const tokenUtil = {
   makeToken(user) {
     const payload = {
       id: user.id,
+      userid: user.userid,
       name: user.name,
       gender: user.gender,
     };
