@@ -7,7 +7,7 @@ const { isLoggedIn } = require('../lib/middleware');
 
 // 등록
 router.post('/', isLoggedIn, async (req, res) => {
-  const loginUserId = res.get('userId' || null);
+  const loginUserId = res.get('user_id' || null);
   try {
     const params = {
       title: req.body.title,
@@ -34,7 +34,6 @@ router.post('/', isLoggedIn, async (req, res) => {
     res.status(500).json({ err: err.toString() });
   }
 });
-
 // 리스트 조회
 router.get('/', async (req, res) => {
   try {

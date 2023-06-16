@@ -26,10 +26,10 @@ module.exports = class PlayList extends Sequelize.Model {
   }
   static associate(db) {
     db.PlayList.belongsTo(db.Song, {
-      foreignKey: { name: 'songId', onDelete: 'SET NULL', as: 'Song' },
+      foreignKey: { name: 'songId', onDelete: 'SET NULL', as: 'Songs' },
     });
     db.PlayList.belongsTo(db.User, {
-      foreignKey: { name: 'userId', onDelete: 'SET NULL', as: 'User' },
+      foreignKey: { name: 'user_id', onDelete: 'SET NULL', as: 'Users' },
     });
   }
 };

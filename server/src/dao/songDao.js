@@ -1,10 +1,10 @@
 const { Op } = require('sequelize');
-const { Like, User } = require('../models/index');
+const { Song, User } = require('../models/index');
 
 const dao = {
   insert(params) {
     return new Promise((resolve, reject) => {
-      Like.create(params)
+      Song.create(params)
         .then((inserted) => {
           const insertedResult = { ...inserted };
           delete insertedResult.dataValues.password;
@@ -21,18 +21,18 @@ const dao = {
     if (params.name) {
       setQuery.where = {
         ...setQuery.where,
-        name: { [Op.like]: `%${params.name}%` }, // like검색
+        name: { [Op.song]: `%${params.name}%` }, // song검색
       };
     }
     if (params.userId) {
       setQuery.where = {
         ...setQuery.where,
-        userId: params.userId, // like검색
+        userId: params.userId, // song검색
       };
     }
     setQuery.order = [['id', 'DESC']];
     return new Promise((resolve, reject) => {
-      Like.findAndCountAll({
+      Song.findAndCountAll({
         ...setQuery,
         attributes: { exclude: ['password'] },
         include: [
@@ -53,7 +53,7 @@ const dao = {
   selectInfo(params) {
     return new Promise((resolve, reject) => {
       // User.findAll
-      Like.findByPk(params.id, {
+      Song.findByPk(params.id, {
         include: [
           {
             model: User,
@@ -71,8 +71,8 @@ const dao = {
   },
   update(params) {
     return new Promise((resolve, reject) => {
-      // Like.findAll
-      Like.update(params, {
+      // Song.findAll
+      Song.update(params, {
         where: { id: params.id },
       })
         .then(([updated]) => {
@@ -85,8 +85,8 @@ const dao = {
   },
   delete(params) {
     return new Promise((resolve, reject) => {
-      // Like.findAll
-      Like.destroy({
+      // Song.findAll
+      Song.destroy({
         where: { id: params.id },
       })
         .then((deleted) => {
@@ -97,11 +97,11 @@ const dao = {
         });
     });
   },
-  selectLike(params) {
+  selectSong(params) {
     return new Promise((resolve, reject) => {
-      Like.findOne({
-        attributes: ['id', 'likeId', 'password', 'name', 'role'],
-        where: { likeid: params.likeid },
+      Song.findOne({
+        attributes: ['id', 'songId', 'password', 'name', 'role'],
+        where: { songid: params.songid },
       })
         .then((selectedOne) => {
           resolve(selectedOne);
