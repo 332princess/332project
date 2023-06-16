@@ -26,8 +26,8 @@ router.get('/log-test', (req, res, next) => {
 });
 
 router.use('/users', userRouter);
-router.use('/playlist', playlistRouter);
-router.use('/like', likeRouter);
+router.use('/playlists', playlistRouter);
+router.use('/likes', likeRouter);
 // router.use('./song', songRouter);
 // router.use('/logins', loginRouter);
 router.use('/logins', loginRouter);
