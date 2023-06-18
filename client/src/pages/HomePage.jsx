@@ -24,7 +24,7 @@ const Home = () => {
       <WhiteBox>
         <ImageWithTextContainer>
           <ImageWrapper>
-            <Link to={ROUTE.SONG.path}>
+            <Link to={ROUTE.VIDEO.path}>
               <Music />
               <Text>음악</Text>
             </Link>
