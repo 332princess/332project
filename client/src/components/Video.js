@@ -17,7 +17,7 @@ export const Box = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  margin-top: 7%;
+  margin-top: 10%;
 `;
 export const WhiteBox = styled.div`
   display: flex;
@@ -25,8 +25,8 @@ export const WhiteBox = styled.div`
   align-items: center;
   border-radius: 10px;
   background-color: white;
-  padding-top: 10px;
-  width: 500px;
+  padding: 10px;
+  width: 700px;
   height: 550px;
 
   overflow-y: auto;
@@ -36,22 +36,33 @@ export const WhiteBox = styled.div`
   &::-webkit-scrollbar-thumb {
     border-radius: 2px;
     background: #ccc;
+    display: none;
   }
 `;
-export const SongContainer = styled.div`
+export const VideoContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 2vh;
 `;
-export const SongBox = styled.div`
+export const VideoBox = styled.div`
   background-color: #d9d9d9;
   border-radius: 10px 0px 0px 10px;
   border: none;
-
   height: 5vh;
   width: 25vw;
   text-align: center;
   line-height: 2;
+
+  overflow-x: auto;
+  white-space: no-wrap;
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: #ccc;
+    display: none;
+  }
 `;
 export const Bar = styled.div`
   background-color: #000;
@@ -71,7 +82,7 @@ export const BarBtn = styled.button`
   color: #fff;
 `;
 
-export const SongDetail = styled.div`
+export const VideoDetail = styled.div`
   display: flex;
   align-items: flex-end;
   gap: 10px;

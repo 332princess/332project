@@ -6,9 +6,9 @@ import Info from './pages/MyPage/Info';
 import PlayList from './pages/MyPage/PlayList';
 import Running from './pages/MyPage/Chatting';
 import Home from './pages/HomePage';
-import Song from './pages/SongPage';
 import ChatList from './pages/MyPage/Chatting';
 import Chat from './pages/Chatting';
+import Video from './pages/SongPage';
 
 export const ROUTE = {
   HOME: {
@@ -26,10 +26,10 @@ export const ROUTE = {
     link: '/login',
     element: Login,
   },
-  SONG: {
-    path: '/song',
-    link: '/song',
-    element: Song,
+  VIDEO: {
+    path: '/video',
+    link: '/video',
+    element: Video,
   },
   MYPAGE: {
     path: '/mypage',
@@ -75,10 +75,10 @@ export const PUBLIC_ROUTE = {
   },
 };
 export const PRIVATE_ROUTE = {
-  SONG: {
-    path: '/song',
-    link: '/song',
-    element: Song,
+  VIDEO: {
+    path: '/video',
+    link: '/video',
+    element: Video,
   },
   CHAT: {
     path: '/chat',
