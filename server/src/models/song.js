@@ -12,10 +12,10 @@ module.exports = class Song extends Sequelize.Model {
           type: Sequelize.STRING(50),
           allowNull: false,
         },
-        Music_no: {
+        Musicno: {
           type: Sequelize.INTEGER,
         },
-        play_time: {
+        playtime: {
           type: Sequelize.TIME,
         },
       },
@@ -31,12 +31,12 @@ module.exports = class Song extends Sequelize.Model {
     db.Song.hasMany(db.PlayList, {
       foreignKey: { name: 'songId' },
       onDelete: 'SET NULL',
-      as: 'PlayList',
+      as: 'PlayLists',
     });
     db.Song.hasMany(db.Like, {
       foreignKey: { name: 'songId' },
       onDelete: 'SET NULL',
-      as: 'Like',
+      as: 'Likes',
     });
   }
 };

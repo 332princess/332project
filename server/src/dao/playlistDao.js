@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const { PlayList } = require('../models/index');
+const { PlayList, User } = require('../models/index');
 
 const dao = {
   insert(params) {
@@ -21,18 +21,18 @@ const dao = {
     if (params.name) {
       setQuery.where = {
         ...setQuery.where,
-        name: { [Op.like]: `%${params.name}%` }, // like검색
+        name: { [Op.like]: `%${params.name}%` }, // like 검색
       };
     }
     if (params.userId) {
       setQuery.where = {
         ...setQuery.where,
-        userId: params.userId, // like검색
+        userId: params.userId, // like 검색
       };
     }
     setQuery.order = [['id', 'DESC']];
     return new Promise((resolve, reject) => {
-      User.findAndCountAll({
+      PlayList.findAndCountAll({
         ...setQuery,
         attributes: { exclude: ['password'] },
         include: [

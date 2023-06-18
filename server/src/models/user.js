@@ -49,12 +49,12 @@ module.exports = class Users extends Sequelize.Model {
     db.User.hasMany(db.PlayList, {
       foreignKey: { name: 'userId' },
       onDelete: 'SET NULL',
-      as: 'PlayList',
+      as: 'PlayLists',
     });
     db.User.hasMany(db.Like, {
       foreignKey: { name: 'userId' },
       onDelete: 'SET NULL',
-      as: 'Like',
+      as: 'Likes',
     });
   }
   // static includeAttributes = ['id', 'name', 'role', 'email', 'phone'];
