@@ -11,7 +11,8 @@ const tokenUtil = {
   makeToken(user) {
     const payload = {
       id: user.id,
-      userid: user.userid,
+      user_id: user.user_id,
+      email: user.email,
       name: user.name,
       gender: user.gender,
     };
