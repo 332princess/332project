@@ -46,15 +46,20 @@ const Login = () => {
         email,
         password,
       });
-      // 로그인 성공 시 토큰을 받아옴
-      const { token } = response.data;
+      // console.log(response.data);
+      if (response.data.success) {
+        // 로그인 성공
+        const { token } = response.data;
+        const cookies = new Cookies();
+        cookies.set('token', token);
+        localStorage.setItem('token', token);
 
-      // 토큰을 쿠키에 저장 (예시: react-cookie 라이브러리 사용)
-      const cookies = new Cookies();
-      cookies.set('token', token);
-
-      alert('로그인 성공!');
-      navigate(ROUTE.HOME.path);
+        alert('로그인 성공!');
+        navigate(ROUTE.HOME.path);
+      } else {
+        // 로그인 실패
+        alert(response.data.message);
+      }
     } catch (error) {
       console.error('Failed to login:', error);
       alert('로그인 실패!');
