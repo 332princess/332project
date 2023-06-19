@@ -16,7 +16,9 @@ const PlayList = () => {
   useEffect(() => {
     const fetchVideo = async () => {
       try {
-        const response = await axios.get('http://localhost:8081/playlists');
+        const response = await axios.get(
+          `http://localhost:8081/${user_id}/playlists`
+        );
         setVideo(response.data.rows);
       } catch (error) {
         console.log(error);
@@ -35,21 +37,21 @@ const PlayList = () => {
     }
   };
 
-  const handleVideoDelete = async (clickedVideo, id) => {
+  const handleVideoDelete = async (clickedVideo) => {
     try {
-      await axios.delete(`http://localhost:8081/${user_id}/playlists/${id}`, {
-        data: [clickedVideo],
-      });
+      await axios.delete(
+        `http://localhost:8081/${user_id}/playlists/${clickedVideo.id}`
+      );
       setVideo((prevVideo) =>
         prevVideo.filter((item) => item.id !== clickedVideo.id)
       );
       const newList = deleteList.filter((v) => v.id !== clickedVideo);
       setDeleteList(newList);
 
-      // if (currentVideo && currentVideo.id === clickedVideo.id) {
-      //   setCurrentVideo(null);
-      //   setModalOpen(false);
-      // }
+      if (currentVideo && currentVideo.id === clickedVideo.id) {
+        setCurrentVideo(null);
+        setModalOpen(false);
+      }
     } catch (error) {
       console.log(error);
     }
