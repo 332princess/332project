@@ -28,7 +28,9 @@ export const WhiteBox = styled.div`
   padding: 10px;
   width: 700px;
   height: 60vh;
-
+  .non_scroll {
+    overflow: hidden;
+  }
   overflow-y: auto;
   &::-webkit-scrollbar {
     width: 4px;
@@ -68,7 +70,8 @@ export const Bar = styled.div`
   background-color: #000;
   opacity: 90%;
   border-radius: 0px 10px 10px 0px;
-  width: 5vw;
+  width: 20%;
+  padding-right: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -78,7 +81,7 @@ export const Bar = styled.div`
 
 export const BarBtn = styled.button`
   background-color: #000;
-  width: 50%;
+  width: 10%;
   color: #fff;
 `;
 
