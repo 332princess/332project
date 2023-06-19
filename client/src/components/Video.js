@@ -27,7 +27,7 @@ export const WhiteBox = styled.div`
   background-color: white;
   padding: 10px;
   width: 700px;
-  height: 550px;
+  height: 60vh;
 
   overflow-y: auto;
   &::-webkit-scrollbar {

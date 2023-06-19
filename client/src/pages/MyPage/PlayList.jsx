@@ -28,7 +28,7 @@ const PlayList = () => {
       try {
         // const response = await axios.get('http://localhost:8081/playlists');
 
-        const response = await axios.get('/data/like.json');
+        const response = await axios.get('/api/playlists');
         setSongs(response.data);
       } catch (error) {
         console.log(error);
@@ -59,23 +59,12 @@ const PlayList = () => {
   };
   const updatePlayList = async (updatedPlayList) => {
     try {
-      await axios.post('http://localhost:8081/playlist', updatedPlayList);
+      await axios.post('http://localhost:8081/playlists', updatedPlayList);
     } catch (error) {
       console.log(error);
     }
   };
-  useEffect(() => {
-    if (currentSong) {
-      const updateCurrentSong = async () => {
-        try {
-          await axios.post('http://localhost:8081/currentsong', [currentSong]);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      updateCurrentSong();
-    }
-  }, [currentSong]);
+
   useEffect(() => {
     updatePlayList(playList);
   }, [playList]);

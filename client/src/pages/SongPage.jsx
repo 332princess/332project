@@ -36,6 +36,7 @@ const Video = () => {
   const [currentVideo, setCurrentVideo] = useState(false);
   const [playList, setPlayList] = useState([]);
   const [liked, setLiked] = useState([]);
+  const user_id = localStorage.getItem('user_id');
 
   useEffect(() => {
     const fetchVideos = async () => {
@@ -44,7 +45,7 @@ const Video = () => {
           params: {
             part: 'snippet',
             playlistId: 'PLc_2DBEEb9ofX7p4Mq7_z-p5Pta1gBiSH',
-            maxResults: 5,
+            maxResults: 10,
           },
         });
         console.log(response.data.items);
@@ -64,10 +65,16 @@ const Video = () => {
     }
   };
 
-  const handlePlayList = (Video) => {
+  const handlePlayList = async (Video) => {
     const index = playList.findIndex((item) => item.id === Video.id);
     if (index === -1) {
       setPlayList((prevPlayList) => [...prevPlayList, Video]);
+      try {
+        await axios.post(`/api/playlists/${user_id}`, Video);
+        console.log('비디오가 성공적으로 추가되었습니다.');
+      } catch (error) {
+        console.log('비디오 추가 중 오류가 발생했습니다.', error);
+      }
     } else {
       setPlayList((prevPlayList) => {
         const updatedPlayList = [...prevPlayList];
@@ -93,7 +100,7 @@ const Video = () => {
   useEffect(() => {
     const updatePlayList = async () => {
       try {
-        await axios.post('/api/playlist', playList);
+        await axios.post('/api/playlists', playList);
       } catch (error) {
         console.log(error);
       }
@@ -184,30 +191,31 @@ const Video = () => {
             </VideoContainer>
           ))}
         </WhiteBox>
-
-        {currentVideo && (
-          <WhiteBox>
-            <VideoDetail>
-              <Title>{currentVideo.snippet.title}</Title>
-            </VideoDetail>
-            <YouTube
-              videoId={currentVideo.snippet.resourceId.videoId}
-              opts={opts}
-              onPlay={handlePlay}
-              onPause={handlePause}
-            />
-            <Lyrics></Lyrics>
-            {currentVideo.playing ? (
-              <FontAwesomeIcon
-                icon={faPause}
-                color="#ff6060"
-                onClick={handlePause}
+        <WhiteBox>
+          {currentVideo && (
+            <WhiteBox>
+              <VideoDetail>
+                <Title>{currentVideo.snippet.title}</Title>
+              </VideoDetail>
+              <YouTube
+                videoId={currentVideo.snippet.resourceId.videoId}
+                opts={opts}
+                onPlay={handlePlay}
+                onPause={handlePause}
               />
-            ) : (
-              <FontAwesomeIcon icon={faPlay} onClick={handlePlay} />
-            )}
-          </WhiteBox>
-        )}
+              <Lyrics></Lyrics>
+              {currentVideo.playing ? (
+                <FontAwesomeIcon
+                  icon={faPause}
+                  color="#ff6060"
+                  onClick={handlePause}
+                />
+              ) : (
+                <FontAwesomeIcon icon={faPlay} onClick={handlePlay} />
+              )}
+            </WhiteBox>
+          )}
+        </WhiteBox>
       </Box>
     </Container>
   );

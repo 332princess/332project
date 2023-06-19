@@ -43,24 +43,33 @@ const service = {
       const user = await loginDao.selectInfoByEmail(params);
       console.log(`user: ${user}`);
       if (!user) {
-        return Promise.resolve({ success: false, message: 'Invalid email or password' });
+        return Promise.resolve({
+          success: false,
+          message: 'Invalid email or password',
+        });
       }
 
-      const passwordMatched = await bcryptUtil.checkHash(params.password, user.password);
-      
+      const passwordMatched = await bcryptUtil.checkHash(
+        params.password,
+        user.password
+      );
+
       console.log(`passwordMatched: ${passwordMatched}`);
 
       if (!passwordMatched) {
-        return Promise.resolve({ success: false, message: 'Invalid email or password' });
+        return Promise.resolve({
+          success: false,
+          message: 'Invalid email or password',
+        });
       }
       console.log(passwordMatched);
       // 로그인 성공 - 토큰 생성
       const token = tokenUtil.makeToken(user);
       console.log(token);
-      return ({ token });
+      return { success: true, token };
     } catch (err) {
       logger.error(`(loginService.login) ${err.toString()}`);
-      return Promise.reject(err);
+      return { success: false, message: 'Failed to login' };
     }
   },
 };
