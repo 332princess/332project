@@ -55,7 +55,7 @@ const Login = () => {
         localStorage.setItem('token', token);
 
         alert('로그인 성공!');
-        navigate(ROUTE.HOME.path);
+        window.location.href = '/'; // 페이지 새로고침 및 리다이렉트
       } else {
         // 로그인 실패
         alert(response.data.message);
