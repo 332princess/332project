@@ -11,7 +11,8 @@ const tokenUtil = {
   makeToken(user) {
     const payload = {
       id: user.id,
-      userid: user.userid,
+      user_id: user.user_id,
+      email: user.email,
       name: user.name,
       gender: user.gender,
     };
@@ -20,11 +21,21 @@ const tokenUtil = {
 
     return token;
   },
+  // verifyToken(token) {
+  //   try {
+  //     const decoded = jwt.verify(token, secretKey);
+  //     jwt.payload.id
+
+  //     return decoded;
+  //   } catch (err) {
+  //     return null;
+  //   }
+  // },
   verifyToken(token) {
     try {
       const decoded = jwt.verify(token, secretKey);
-
-      return decoded;
+      const id = decoded.id;
+      return id;
     } catch (err) {
       return null;
     }
