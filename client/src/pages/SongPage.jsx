@@ -36,7 +36,7 @@ const Video = () => {
   const [currentVideo, setCurrentVideo] = useState(false);
   const [playList, setPlayList] = useState([]);
   const [liked, setLiked] = useState([]);
-  const user_id = localStorage.getItem('user_id');
+  // const user_id = localStorage.getItem('user_id');
 
   useEffect(() => {
     const fetchVideos = async () => {
@@ -65,12 +65,15 @@ const Video = () => {
     }
   };
 
+  // 1. 플러스 버튼을 클릭하면 음악 리스트의 아이템 한 개가 마이페이지에 담김(=장바구니)
+  // 2. 마이페이지에서 담긴 리스트 확인
+
   const handlePlayList = async (Video) => {
     const index = playList.findIndex((item) => item.id === Video.id);
     if (index === -1) {
       setPlayList((prevPlayList) => [...prevPlayList, Video]);
       try {
-        await axios.post(`/api/playlists/${user_id}`, Video);
+        await axios.post(`/api/playlists`, Video);
         console.log('비디오가 성공적으로 추가되었습니다.');
       } catch (error) {
         console.log('비디오 추가 중 오류가 발생했습니다.', error);
@@ -145,7 +148,7 @@ const Video = () => {
               <VideoBox>{video.snippet.title}</VideoBox>
               <Bar>
                 <BarBtn>
-                  {currentVideo && currentVideo.id === video.id ? (
+                  {currentVideo.id === video.id ? (
                     currentVideo.playing ? (
                       <FontAwesomeIcon
                         icon={faPause}
@@ -191,9 +194,9 @@ const Video = () => {
             </VideoContainer>
           ))}
         </WhiteBox>
-        <WhiteBox>
+        <WhiteBox className="non_scroll">
           {currentVideo && (
-            <WhiteBox>
+            <>
               <VideoDetail>
                 <Title>{currentVideo.snippet.title}</Title>
               </VideoDetail>
@@ -203,17 +206,7 @@ const Video = () => {
                 onPlay={handlePlay}
                 onPause={handlePause}
               />
-              <Lyrics></Lyrics>
-              {currentVideo.playing ? (
-                <FontAwesomeIcon
-                  icon={faPause}
-                  color="#ff6060"
-                  onClick={handlePause}
-                />
-              ) : (
-                <FontAwesomeIcon icon={faPlay} onClick={handlePlay} />
-              )}
-            </WhiteBox>
+            </>
           )}
         </WhiteBox>
       </Box>

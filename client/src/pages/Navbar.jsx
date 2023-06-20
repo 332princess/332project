@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { useCookies } from 'react-cookie';
 
 const Container = styled.nav`
   background-color: #000;
@@ -17,8 +18,8 @@ const NavList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
-  justify-content: space-between; /* 텍스트를 오른쪽으로 이동 */
-  align-items: center; /* 가운데 정렬 */
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const NavItem = styled.li`
@@ -35,29 +36,65 @@ const NavLinkWrapper = styled(NavLink)`
     color: #ff0000;
   }
 `;
+
 export const LogoHome = styled.div`
   background-image: url('/logoMyu.png');
   background-size: cover;
   width: 40px;
   height: 40px;
   border-radius: 100%;
-  // margin-right: 1330px; /* 이미지 오른쪽 여백 설정 */
 `;
 
 const Navbar = () => {
+  const [cookies, setCookie, removeCookie] = useCookies(['token']);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const checkLoginStatus = () => {
+      setIsLoggedIn(!!cookies.token);
+    };
+
+    checkLoginStatus();
+  }, [cookies.token]);
+
+  const handleLogout = () => {
+    removeCookie('token');
+    window.location.href = '/'; // '/'로 리다이렉트하여 이동
+  };
+
   return (
     <Container>
       <NavList>
-        <NavLinkWrapper to="/">
+        <NavLinkWrapper to="/" exact>
           <LogoHome />
         </NavLinkWrapper>
         <NavItem>
-          <NavLinkWrapper to="/login" activeClassName="active">
-            Login
-          </NavLinkWrapper>
-          <NavLinkWrapper to="/mypage" activeClassName="active">
-            My Page
-          </NavLinkWrapper>
+          {isLoggedIn ? (
+            <>
+              <NavLinkWrapper
+                to="/logout"
+                activeClassName="active"
+                onClick={handleLogout}
+              >
+                Logout
+              </NavLinkWrapper>
+              <NavLinkWrapper to="/" exact>
+                Home
+              </NavLinkWrapper>
+              <NavLinkWrapper to="/mypage" activeClassName="active">
+                My Page
+              </NavLinkWrapper>
+            </>
+          ) : (
+            <>
+              <NavLinkWrapper to="/login" activeClassName="active">
+                Login
+              </NavLinkWrapper>
+              <NavLinkWrapper to="/register" activeClassName="active">
+                Signup
+              </NavLinkWrapper>
+            </>
+          )}
         </NavItem>
       </NavList>
     </Container>

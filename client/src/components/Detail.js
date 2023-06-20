@@ -35,7 +35,7 @@ export const Box = styled.div`
   flex-direction: row;
 `;
 
-export const Song = styled.div`
+export const Video = styled.div`
   background-color: #d9d9d9;
   border-radius: 10px 0px 0px 10px;
   border: none;

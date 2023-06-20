@@ -3,7 +3,7 @@ import axios from 'axios';
 import {
   Container,
   Box,
-  Song,
+  Video,
   Bar,
   BarBtn,
   MoreBtn,
@@ -19,7 +19,7 @@ const ChatList = () => {
       <Side />
       <Container>
         <Box>
-          <Song>사우나 보이 - 이강우</Song>
+          <Video>사우나 보이 - 이강우</Video>
           <Bar>
             <BarBtn>
               <FontAwesomeIcon icon={faPlay} />
@@ -30,7 +30,7 @@ const ChatList = () => {
           </Bar>
         </Box>
         <Box>
-          <Song>열심히 배워가는 중 - 윤태영</Song>
+          <Video>열심히 배워가는 중 - 윤태영</Video>
           <Bar>
             <BarBtn>
               <FontAwesomeIcon icon={faPlay} />
@@ -41,7 +41,7 @@ const ChatList = () => {
           </Bar>
         </Box>
         <Box>
-          <Song>이미 죽어 있는 - 김혜지</Song>
+          <Video>이미 죽어 있는 - 김혜지</Video>
           <Bar>
             <BarBtn>
               <FontAwesomeIcon icon={faPlay} />

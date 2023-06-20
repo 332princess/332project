@@ -3,7 +3,7 @@ import axios from 'axios';
 import {
   Container,
   Box,
-  Song,
+  Video,
   Bar,
   BarBtn,
   MoreBtn,
@@ -20,112 +20,86 @@ import { MyPage } from '../../components/MyPage';
 import Side from './Side';
 
 const Like = () => {
-  const [songs, setSongs] = useState([]);
-  const [currentSong, setCurrentSong] = useState(false);
-  const [likedSongs, setLikedSongs] = useState([]);
+  const [video, setVideo] = useState([]);
+  const [currentVideo, setCurrentVideo] = useState(false);
 
   useEffect(() => {
-    const fetchSongs = async () => {
+    const fetchvideo = async () => {
       try {
-        // const response = await axios.get('http://localhost:8081/song');
-        const response = await axios.get('/data/like.json');
-        setSongs(response.data);
+        const response = await axios.get('http://localhost:8081/likes');
+        setVideo(response.data.rows);
       } catch (error) {
         console.log(error);
       }
     };
-    fetchSongs();
+    fetchvideo();
   }, []);
 
-  const handleSongClick = (song) => {
-    if (currentSong && currentSong.id === song.id) {
-      setCurrentSong(null);
+  const handleVideoClick = (video) => {
+    if (currentVideo && currentVideo.id === video.id) {
+      setCurrentVideo(null);
     } else {
-      setCurrentSong(song);
+      setCurrentVideo(video);
     }
   };
 
-  const handleLike = (song) => {
-    const index = likedSongs.findIndex((item) => item.id === song.id);
-    if (index === -1) {
-      setLikedSongs((prevLikedSongs) => [...prevLikedSongs, song]);
-    } else {
-      setLikedSongs((prevLikedSongs) => {
-        const updatedLikedSongs = [...prevLikedSongs];
-        updatedLikedSongs.splice(index, 1);
-        return updatedLikedSongs;
+  const handleVideoDelete = async (clickedVideo) => {
+    try {
+      await axios.delete('http://localhost:8081/playlists', {
+        data: [clickedVideo],
       });
+      setVideo((prevVideo) =>
+        prevVideo.filter((item) => item.id !== clickedVideo.id)
+      );
+
+      if (currentVideo && currentVideo.id === clickedVideo.id) {
+        setCurrentVideo(null);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
-
-  useEffect(() => {
-    if (currentSong) {
-      const updateCurrentSong = async () => {
-        try {
-          await axios.post('http://localhost:8081/currentsong', [currentSong]);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      updateCurrentSong();
-    }
-  }, [currentSong]);
-
-  useEffect(() => {
-    const updateLikedSongs = async () => {
-      try {
-        await axios.post('/api/likes', likedSongs);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    updateLikedSongs();
-  }, [likedSongs]);
 
   return (
     <MyPage>
       <Side />
       <Container>
-        {songs.map((song) => (
-          <Box key={song.id}>
-            <Song>
-              {song.title} - {song.singer}
-            </Song>
+        {video.map((video) => (
+          <Box key={video.id}>
+            <Video>
+              {video.title} - {video.singer}
+            </Video>
             <Bar>
               <BarBtn>
-                {currentSong && currentSong.id === song.id ? (
-                  currentSong.playing ? (
+                {currentVideo && currentVideo.id === video.id ? (
+                  currentVideo.playing ? (
                     <FontAwesomeIcon
                       icon={faPause}
                       color="#ff6060"
                       onClick={() =>
-                        setCurrentSong({ ...currentSong, playing: false })
+                        setCurrentVideo({ ...currentVideo, playing: false })
                       }
                     />
                   ) : (
                     <FontAwesomeIcon
                       icon={faPlay}
                       onClick={() =>
-                        setCurrentSong({ ...currentSong, playing: true })
+                        setCurrentVideo({ ...currentVideo, playing: true })
                       }
                     />
                   )
                 ) : (
                   <FontAwesomeIcon
                     icon={faPlay}
-                    onClick={() => handleSongClick(song)}
+                    onClick={() => handleVideoClick(video)}
                   />
                 )}
               </BarBtn>
               <BarBtn>
                 <FontAwesomeIcon
                   icon={faHeart}
-                  color={
-                    likedSongs.find((item) => item.id === song.id)
-                      ? 'white'
-                      : '#ff6060'
-                  }
-                  onClick={() => handleLike(song)}
+                  color="#ff6060"
+                  onClick={() => handleVideoDelete(video)}
                 ></FontAwesomeIcon>
               </BarBtn>
             </Bar>

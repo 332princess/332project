@@ -6,7 +6,8 @@ const playlistService = require('../services/playlistService');
 const { isLoggedIn } = require('../lib/middleware');
 
 // 등록
-router.post('/', isLoggedIn, async (req, res) => {
+router.use(isLoggedIn);
+router.post('/', async (req, res) => {
   const loginUserId = res.get('user_id' || null);
   try {
     const params = {
