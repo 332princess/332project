@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import YouTube from 'react-youtube';
-import { Cookies } from 'react-cookie';
 import axios from 'axios';
 import {
   Container,
@@ -10,14 +8,10 @@ import {
   VideoBox,
   Bar,
   VideoContainer,
-  PlayBox,
-  Lyrics,
-  Singer,
   Title,
   VideoDetail,
   BarBtn,
 } from '../components/Video';
-import Navbar from './Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPlus,
@@ -59,81 +53,13 @@ const Video = () => {
   }, []);
 
   // 비디오 열기 버튼
-  const handleVideoClick = (Video) => {
-    if (currentVideo && currentVideo.id === Video.id) {
+  const handleVideoClick = (video) => {
+    if (currentVideo && currentVideo.id === video.id) {
       setCurrentVideo(null);
     } else {
-      setCurrentVideo({ ...Video, playing: true });
+      setCurrentVideo({ ...video, playing: true });
     }
   };
-
-  // 1. 플러스 버튼을 클릭하면 음악 리스트의 아이템 한 개가 마이페이지에 담김(=장바구니)
-  // 2. 마이페이지에서 담긴 리스트 확인
-
-  // 플레이리스트에 넣기
-  const handlePlayList = async (video) => {
-    const index = playList.findIndex((item) => item.id === Video.id);
-    if (index === -1) {
-      const updatedVideo = { ...video, playing: false };
-      setPlayList((prevPlayList) => [...prevPlayList, Video]);
-      try {
-        await axios.post(`/api/playlists`, updatedVideo);
-        console.log('비디오가 성공적으로 추가되었습니다.');
-      } catch (error) {
-        console.log('비디오 추가 중 오류가 발생했습니다.', error);
-      }
-    } else {
-      setPlayList((prevPlayList) => {
-        const updatedPlayList = [...prevPlayList];
-        updatedPlayList.splice(index, 1);
-        return updatedPlayList;
-      });
-      try {
-        await axios.delete(`/api/playlists/${video.id}`);
-        console.log('비디오가 성공적으로 제거되었습니다.');
-      } catch (error) {
-        console.log('비디오 제거 중 오류가 발생했습니다.', error);
-      }
-    }
-  };
-
-  // 좋아요에 넣기
-  const handleLike = (Video) => {
-    const index = liked.findIndex((item) => item.id === Video.id);
-    if (index === -1) {
-      setLiked((prevLiked) => [...prevLiked, Video]);
-    } else {
-      setLiked((prevLiked) => {
-        const updatedLiked = [...prevLiked];
-        updatedLiked.splice(index, 1);
-        return updatedLiked;
-      });
-    }
-  };
-
-  // 플레이리스트에 넣기
-  useEffect(() => {
-    const updatePlayList = async () => {
-      try {
-        await axios.post('/api/playlists', playList);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    updatePlayList();
-  }, [playList]);
-
-  // 좋아요에 넣기
-  useEffect(() => {
-    const updateLiked = async () => {
-      try {
-        await axios.post('/api/likes', liked);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    updateLiked();
-  }, [liked]);
 
   // 플레이, 멈추기
   const handlePlay = () => {
@@ -151,6 +77,43 @@ const Video = () => {
   const opts = {
     height: '315',
     width: '560',
+  };
+  // 플레이리스트 추가/제거
+  const handlePlayList = async (video) => {
+    try {
+      const videoId = video.snippet.resourceId.videoId;
+      if (playList.find((item) => item.id === video.id)) {
+        // Remove from playlist
+        await axios.delete(`http://localhost:8081/api/playlists/${videoId}`);
+        setPlayList((prevList) =>
+          prevList.filter((item) => item.id !== video.id)
+        );
+      } else {
+        // Add to playlist
+        await axios.post('http://localhost:8081/api/playlists', { videoId });
+        setPlayList((prevList) => [...prevList, video]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleLike = async (video) => {
+    try {
+      const videoId = video.snippet.resourceId.videoId;
+      if (playList.find((item) => item.id === video.id)) {
+        // Remove from playlist
+        await axios.delete(`http://localhost:8081/api/playlists/${videoId}`);
+        setPlayList((prevList) =>
+          prevList.filter((item) => item.id !== video.id)
+        );
+      } else {
+        // Add to playlist
+        await axios.post('http://localhost:8081/api/playlists', { videoId });
+        setPlayList((prevList) => [...prevList, video]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

@@ -6,6 +6,11 @@ import { faPlay, faMinus, faPause } from '@fortawesome/free-solid-svg-icons';
 import { MyPage } from '../../components/MyPage';
 import Side from './Side';
 
+const apiClient = axios.create({
+  baseURL: 'https://youtube.googleapis.com/youtube/v3',
+  params: { key: process.env.REACT_APP_API_KEY },
+});
+
 const PlayList = () => {
   const [video, setVideo] = useState([]);
   const [currentVideo, setCurrentVideo] = useState(null);
@@ -17,7 +22,17 @@ const PlayList = () => {
       try {
         const response = await axios.get('http://localhost:8081/api/playlists');
         setVideo(response.data.rows);
-        // const video =
+        if (response.data.rows.length > 0) {
+          const videoIds = response.data.rows.map((video) => video.videoId);
+          const videoParams = {
+            part: 'snippet',
+            id: videoIds.join(','),
+          };
+          const videoResponse = await apiClient.get('videos', {
+            params: videoParams,
+          });
+          console.log(videoResponse.data.items);
+        }
       } catch (error) {
         console.log(error);
       }

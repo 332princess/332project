@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { ROUTE } from '../../Route';
 import { Cookies } from 'react-cookie';
 import { Box, Container, SubmitBtn, Title } from '../../components/UserStyle';
 import { Find, FindBox, Input } from '../../components/Login';
@@ -11,7 +10,6 @@ import {
 } from '../../components/util/usefulFunction';
 
 const Login = () => {
-  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
