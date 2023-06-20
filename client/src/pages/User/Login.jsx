@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ROUTE } from '../../Route';
@@ -46,14 +46,12 @@ const Login = () => {
         email,
         password,
       });
-      // console.log(response.data);
       if (response.data.success) {
         // 로그인 성공
         const { token } = response.data;
         const cookies = new Cookies();
-        cookies.set('token', token);
-        localStorage.setItem('token', token);
-
+        cookies.set('token', token, { path: '/' });
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         alert('로그인 성공!');
         window.location.href = '/'; // 페이지 새로고침 및 리다이렉트
       } else {
