@@ -21,25 +21,25 @@ const tokenUtil = {
 
     return token;
   },
-  // verifyToken(token) {
-  //   try {
-  //     const decoded = jwt.verify(token, secretKey);
-  //     jwt.payload.id
-
-  //     return decoded;
-  //   } catch (err) {
-  //     return null;
-  //   }
-  // },
   verifyToken(token) {
     try {
       const decoded = jwt.verify(token, secretKey);
-      const id = decoded.id;
-      return id;
+      console.log(decoded);
+
+      return decoded;
     } catch (err) {
       return null;
     }
   },
+  // verifyToken(token) {
+  //   try {
+  //     const decoded = jwt.verify(token, secretKey);
+  //     const id = decoded.id;
+  //     return id;
+  //   } catch (err) {
+  //     return null;
+  //   }
+  // },
 };
 
 module.exports = tokenUtil;
