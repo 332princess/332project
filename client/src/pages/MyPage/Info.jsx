@@ -10,63 +10,52 @@ import {
 } from '../../components/Detail';
 import { MyPage } from '../../components/MyPage';
 import Side from './Side';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const Info = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const [user, setUser] = useState(null);
-  useEffect(() => {
-    const fetchUserInfo = async () => {
-      try {
-        const user_id = location.pathname.split('/').pop(); // URL에서 사용자 ID 추출
-        const response = await axios.get(
-          `http://localhost:8081/users/${user_id}`,
-          {
-            headers: {
-              Authorization: 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'),
-            },
-          }
-        );
-        console.log(response);
-        setUser(response.data); // 응답에서 사용자 정보를 가져와 상태에 저장
-      } catch (err) {
-        console.log(err);
-        // 에러 처리
-      }
-    };
+const getUserIdFromCookie = () => {
+  const cookies = document.cookie.split(';');
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].trim();
+    if (cookie.startsWith('user_id=')) {
+      return cookie.substring('user_id='.length, cookie.length);
+    }
+  }
+  return null; // 쿠키에서 user_id를 찾지 못한 경우
+};
 
-    fetchUserInfo();
-  }, []);
-
-  const handleDeleteProfile = async (e) => {
-    e.preventDefault();
-
+const handleDeleteProfile = (e, navigate) => {
+  e.preventDefault();
+  const user_id = getUserIdFromCookie(); // 동적으로 user_id 가져오기
+  if (user_id) {
     if (window.confirm('확인을 누르면 회원 정보가 삭제됩니다.')) {
-      try {
-        await axios.delete(`http://localhost:8081/users/${user.user_id}`, {
+      axios
+        .delete(`http://localhost:8081/users/${user_id}`, {
           headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token'),
           },
-        });
-        localStorage.clear();
-        alert('그동안 이용해주셔서 감사합니다.');
-        navigate('/');
-      } catch (err) {
-        alert(err.response.data.message);
-      }
+        })
+        .then(() => {
+          localStorage.clear();
+          alert('그동안 이용해주셔서 감사합니다.');
+          navigate('/');
+        })
+        .catch((err) => alert(err.response.data.message));
     } else {
       return;
     }
-  };
-  if (!user) {
-    return <div>Loading...</div>; // 사용자 정보가 로딩 중일 때의 처리
+  } else {
+    // user_id가 없는 경우에 대한 처리
+    alert('user_id를 가져올 수 없습니다.');
   }
+};
+
+const Info = () => {
+  const navigate = useNavigate();
   return (
     <MyPage>
       <Side />
       <Container className="info">
-        <h1>{user.name}님, 안녕하세용!</h1>
+        <h1>님, 안녕하세용!</h1>
         <Box>
           <Text>이메일 확인</Text>
           <Input placeholder="please check your email" />
@@ -81,7 +70,9 @@ const Info = () => {
           <Input placeholder="please check new password" />
         </Box>
         <Modi>수정</Modi>
-        <MoreBtn onClick={handleDeleteProfile}>회원 탈퇴</MoreBtn>
+        <MoreBtn onClick={(e) => handleDeleteProfile(e, navigate)}>
+          회원 탈퇴
+        </MoreBtn>
       </Container>
     </MyPage>
   );
