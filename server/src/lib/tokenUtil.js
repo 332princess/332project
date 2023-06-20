@@ -17,7 +17,7 @@ const tokenUtil = {
       gender: user.gender,
     };
 
-    const token = jwt.sign(payload, secretKey, options);
+    const token = jwt.sign(payload, secretKey);
 
     return token;
   },

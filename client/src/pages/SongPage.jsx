@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import YouTube from 'react-youtube';
+import { Cookies } from 'react-cookie';
 import axios from 'axios';
 import {
   Container,
@@ -36,8 +37,8 @@ const Video = () => {
   const [currentVideo, setCurrentVideo] = useState(false);
   const [playList, setPlayList] = useState([]);
   const [liked, setLiked] = useState([]);
-  // const user_id = localStorage.getItem('user_id');
 
+  // 유튭 불러오기
   useEffect(() => {
     const fetchVideos = async () => {
       try {
@@ -57,6 +58,7 @@ const Video = () => {
     fetchVideos();
   }, []);
 
+  // 비디오 열기 버튼
   const handleVideoClick = (Video) => {
     if (currentVideo && currentVideo.id === Video.id) {
       setCurrentVideo(null);
@@ -68,12 +70,14 @@ const Video = () => {
   // 1. 플러스 버튼을 클릭하면 음악 리스트의 아이템 한 개가 마이페이지에 담김(=장바구니)
   // 2. 마이페이지에서 담긴 리스트 확인
 
-  const handlePlayList = async (Video) => {
+  // 플레이리스트에 넣기
+  const handlePlayList = async (video) => {
     const index = playList.findIndex((item) => item.id === Video.id);
     if (index === -1) {
+      const updatedVideo = { ...video, playing: false };
       setPlayList((prevPlayList) => [...prevPlayList, Video]);
       try {
-        await axios.post(`/api/playlists`, Video);
+        await axios.post(`/api/playlists`, updatedVideo);
         console.log('비디오가 성공적으로 추가되었습니다.');
       } catch (error) {
         console.log('비디오 추가 중 오류가 발생했습니다.', error);
@@ -84,9 +88,16 @@ const Video = () => {
         updatedPlayList.splice(index, 1);
         return updatedPlayList;
       });
+      try {
+        await axios.delete(`/api/playlists/${video.id}`);
+        console.log('비디오가 성공적으로 제거되었습니다.');
+      } catch (error) {
+        console.log('비디오 제거 중 오류가 발생했습니다.', error);
+      }
     }
   };
 
+  // 좋아요에 넣기
   const handleLike = (Video) => {
     const index = liked.findIndex((item) => item.id === Video.id);
     if (index === -1) {
@@ -100,6 +111,7 @@ const Video = () => {
     }
   };
 
+  // 플레이리스트에 넣기
   useEffect(() => {
     const updatePlayList = async () => {
       try {
@@ -111,6 +123,7 @@ const Video = () => {
     updatePlayList();
   }, [playList]);
 
+  // 좋아요에 넣기
   useEffect(() => {
     const updateLiked = async () => {
       try {
@@ -122,6 +135,7 @@ const Video = () => {
     updateLiked();
   }, [liked]);
 
+  // 플레이, 멈추기
   const handlePlay = () => {
     setCurrentVideo((prevVideo) => ({ ...prevVideo, playing: true }));
   };

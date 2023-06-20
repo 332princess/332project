@@ -4,11 +4,6 @@ import axios from 'axios';
 import { ROUTE } from '../../Route';
 import { Container, Title, Box, SubmitBtn } from '../../components/UserStyle';
 import { CheckBtn, Input, InputBox } from '../../components/Register';
-import {
-  validateNickname,
-  validateEmail,
-  validatePassword,
-} from '../../components/util/usefulFunction';
 
 const Register = () => {
   const navigate = useNavigate();

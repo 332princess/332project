@@ -8,6 +8,7 @@ const userService = require('../services/userService');
 router.post('/', async (req, res) => {
   try {
     const params = {
+      user_id: req.params.user_id,
       name: req.body.name,
       // userid: req.body.userid,
       password: req.body.password,
@@ -39,6 +40,7 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     const params = {
+      user_id: req.params.user_id,
       name: req.query.name,
       userid: req.query.userid,
     };
@@ -56,34 +58,35 @@ router.get('/', async (req, res) => {
 
 // 상세 조회
 router.get('/:user_id', async (req, res) => {
-    try {
-      const params = {
-        user_id: req.params.user_id,
-      };
-      logger.info(`(user.detail.params) ${JSON.stringify(params)}`);
-  
-      const result = await userService.getUser(params);
-      logger.info(`(user.detail.result) ${JSON.stringify(result)}`);
-  
-      // 사용자가 존재하지 않을 경우 에러 처리
-      if (!result) {
-        const err = new Error('User not found');
-        logger.error(err.toString());
-        res.status(404).json({ err: err.toString() });
-        return;
-      }
-  
-      // 최종 응답
-      res.status(200).json(result);
-    } catch (err) {
-      res.status(500).json({ err: err.toString() });
-    }
-  });
+  try {
+    const params = {
+      user_id: req.params.user_id,
+      user_id: req.params.user_id,
+    };
+    logger.info(`(user.detail.params) ${JSON.stringify(params)}`);
 
+    const result = await userService.getUser(params);
+    logger.info(`(user.detail.result) ${JSON.stringify(result)}`);
+
+    // 사용자가 존재하지 않을 경우 에러 처리
+    if (!result) {
+      const err = new Error('User not found');
+      logger.error(err.toString());
+      res.status(404).json({ err: err.toString() });
+      return;
+    }
+
+    // 최종 응답
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(500).json({ err: err.toString() });
+  }
+});
 
 router.delete('/:user_id', async (req, res) => {
   try {
     const params = {
+      user_id: req.params.user_id,
       user_id: req.params.user_id,
     };
     logger.info(`(user.delete.params) ${JSON.stringify(params)}`);
@@ -105,6 +108,5 @@ router.delete('/:user_id', async (req, res) => {
     res.status(500).json({ err: err.toString() });
   }
 });
-
 
 module.exports = router;

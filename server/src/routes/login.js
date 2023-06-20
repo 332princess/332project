@@ -3,16 +3,15 @@ const express = require('express');
 const router = express.Router();
 const logger = require('../lib/logger');
 const loginService = require('../services/loginService');
-const { isLoggedIn } = require('../lib/middleware');
+// const { isLoggedIn } = require('../lib/middleware');
 // 등록
-router.use(isLoggedIn);
+// router.use(isLoggedIn);
 router.post('/', async (req, res) => {
   try {
     const params = {
-
+      user_id: req.params.user_id,
       password: req.body.password,
       email: req.body.email,
-
     };
     logger.info(`(login.reg.params) ${JSON.stringify(params)}`);
 
@@ -40,6 +39,7 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     const params = {
+      user_id: req.params.user_id,
       email: req.query.email,
       loginid: req.query.loginid,
     };
