@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import YouTube from 'react-youtube';
 import axios from 'axios';
-import { Container, Box, Video, Bar, BarBtn } from '../../components/Detail';
+import {
+  Container,
+  Box,
+  Video,
+  Bar,
+  BarBtn,
+  BigBox,
+} from '../../components/Detail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faMinus, faPause } from '@fortawesome/free-solid-svg-icons';
 import { MyPage } from '../../components/MyPage';
 import Side from './Side';
+// 서버 연결 시 수정할 코드 주석처리
 
 const apiClient = axios.create({
   baseURL: 'https://youtube.googleapis.com/youtube/v3',
@@ -14,117 +23,121 @@ const apiClient = axios.create({
 const PlayList = () => {
   const [video, setVideo] = useState([]);
   const [currentVideo, setCurrentVideo] = useState(null);
-  const [deleteList, setDeleteList] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [deleteList, setDeleteList] = useState([]);
 
   useEffect(() => {
-    const fetchVideo = async () => {
+    const fetchSongs = async () => {
       try {
-        const response = await axios.get('http://localhost:8081/api/playlists');
-        setVideo(response.data.rows);
-        if (response.data.rows.length > 0) {
-          const videoIds = response.data.rows.map((video) => video.videoId);
-          const videoParams = {
+        // const response = await axios.get('http://localhost:8081/song');
+        const response = await axios.get('/data/playlist.json');
+        setVideo(response.data);
+        // const videoIds = response.data.map((item) => item.videoId);
+        // const youtubeVideo = await apiClient.get('videos', {
+        //   params: {
+        //     part: 'snippet',
+        //     videoId: videoIds.join(','),
+        //   },
+        // });
+        const videoIds = response.data.map((item) => item.videoId);
+        const youtubeVideo = await apiClient.get('videos', {
+          params: {
             part: 'snippet',
-            id: videoIds.join(','),
-          };
-          const videoResponse = await apiClient.get('videos', {
-            params: videoParams,
-          });
-          console.log(videoResponse.data.items);
-        }
+            id: videoIds,
+          },
+        });
+        setCurrentVideo(youtubeVideo.data);
       } catch (error) {
         console.log(error);
       }
     };
-    fetchVideo();
+    fetchSongs();
   }, []);
 
   const handleVideoClick = (video) => {
     if (currentVideo && currentVideo.id === video.id) {
       setCurrentVideo({ ...currentVideo, playing: !currentVideo.playing });
-      setModalOpen(!currentVideo.playing);
     } else {
       setCurrentVideo(video);
-      setModalOpen(true);
     }
   };
 
-  const handleVideoDelete = async (clickedVideo) => {
-    try {
-      await axios.delete(`http://localhost:8081/playlists/${clickedVideo.id}`);
-      setVideo((prevVideo) =>
-        prevVideo.filter((item) => item.id !== clickedVideo.id)
-      );
-      const newList = deleteList.filter((v) => v.id !== clickedVideo);
-      setDeleteList(newList);
+  const handleVideoDelete = (clickedVideo) => {
+    const newList = deleteList.concat(clickedVideo.id);
+    setDeleteList(newList);
+    setVideo(video.filter((item) => item.id !== clickedVideo.id));
 
-      if (currentVideo && currentVideo.id === clickedVideo.id) {
-        setCurrentVideo(null);
-        setModalOpen(false);
-      }
-    } catch (error) {
-      console.log(error);
+    if (currentVideo && currentVideo.id === clickedVideo.id) {
+      setCurrentVideo(null);
     }
   };
 
-  const handleModalOpen = () => {
-    setModalOpen(true);
-  };
+  // const handleVideoDelete = async (clickedVideo) => {
+  //   try {
+  //     await axios.delete('http://localhost:8081/playlists', {
+  //       data: [clickedVideo],
+  //     });
+  //     setVideo((prevVideo) =>
+  //       prevVideo.filter((item) => item.id !== clickedVideo.id)
+  //     );
 
-  const handleModalClose = () => {
-    setModalOpen(false);
-  };
+  //     if (currentVideo && currentVideo.id === clickedVideo.id) {
+  //       setCurrentVideo(null);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <MyPage>
       <Side />
-      <Container>
-        {video.map((video) => (
-          <Box
-            key={video.id}
-            style={{
-              display:
-                currentVideo && currentVideo.id === video.id ? 'none' : 'flex',
-            }}
-          >
-            <Video>{video.title}</Video>
-            <Bar>
-              <BarBtn>
-                {currentVideo && currentVideo.id === video.id ? (
-                  currentVideo.playing ? (
-                    <FontAwesomeIcon
-                      icon={faPause}
-                      color="#ff6060"
-                      onClick={() =>
-                        setCurrentVideo({ ...currentVideo, playing: false })
-                      }
-                    />
+      <Container className="list">
+        {currentVideo ? (
+          <YouTube videoId={currentVideo.videoId} />
+        ) : (
+          <YouTube />
+        )}
+        <BigBox>
+          {video.map((video) => (
+            <Box key={video.id}>
+              <Video>{video.title}</Video>
+              <Bar>
+                <BarBtn>
+                  {currentVideo && currentVideo.id === video.id ? (
+                    currentVideo.playing ? (
+                      <FontAwesomeIcon
+                        icon={faPause}
+                        color="#ff6060"
+                        onClick={() =>
+                          setCurrentVideo({ ...currentVideo, playing: false })
+                        }
+                      />
+                    ) : (
+                      <FontAwesomeIcon
+                        icon={faPlay}
+                        onClick={() =>
+                          setCurrentVideo({ ...currentVideo, playing: true })
+                        }
+                      />
+                    )
                   ) : (
                     <FontAwesomeIcon
                       icon={faPlay}
-                      onClick={() =>
-                        setCurrentVideo({ ...currentVideo, playing: true })
-                      }
+                      onClick={() => handleVideoClick(video)}
                     />
-                  )
-                ) : (
+                  )}
+                </BarBtn>
+                <BarBtn>
                   <FontAwesomeIcon
-                    icon={faPlay}
-                    onClick={() => handleVideoClick(video)}
+                    icon={faMinus}
+                    color="#ff6060"
+                    onClick={() => handleVideoDelete(video)}
                   />
-                )}
-              </BarBtn>
-              <BarBtn>
-                <FontAwesomeIcon
-                  icon={faMinus}
-                  color="#ff6060"
-                  onClick={() => handleVideoDelete(video)}
-                />
-              </BarBtn>
-            </Bar>
-          </Box>
-        ))}
+                </BarBtn>
+              </Bar>
+            </Box>
+          ))}
+        </BigBox>
       </Container>
     </MyPage>
   );
