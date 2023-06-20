@@ -25,7 +25,7 @@ export const Title = styled.div`
   line-height: 60px;
 `;
 
-export const Box = styled.div`
+export const Box = styled.form`
   position: absolute;
   top: 33%;
 
@@ -40,15 +40,8 @@ export const SubmitBtn = styled.button`
   position: absolute;
   bottom: 18%;
   height: 8%;
-
-  border: none;
-  background-color: #ff6060;
-  border-radius: 10px;
   width: 18vw;
 
-  color: #ffffff;
   font-weight: 100;
   font-size: 35px;
-  text-align: center;
-  cursor: pointer;
 `;

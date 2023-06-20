@@ -1,99 +1,69 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { ROUTE } from '../../Route';
 import { Cookies } from 'react-cookie';
+import { Box, Container, SubmitBtn, Title } from '../../components/UserStyle';
+import { Find, FindBox, Input } from '../../components/Login';
 import {
   validateEmail,
   validatePassword,
 } from '../../components/util/usefulFunction';
-import { Box, Container, SubmitBtn, Title } from '../../components/UserStyle';
-import { Find, FindBox, Input } from '../../components/Login';
-import Navbar from '../Navbar';
 
 const Login = () => {
-  const navigate = useNavigate();
-  const [info, setInfo] = useState({
-    email: '',
-    password: '',
-  });
-
-  const [error, setError] = useState({
-    emailError: '',
-    passwordError: '',
-  });
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleChange = (e) => {
-    if (e.target.name === 'email') {
-      if (!validateEmail(e.target.value)) {
-        setError((prev) => ({
-          ...prev,
-          emailError: 'This is not a valid email',
-        }));
-      } else {
-        setError((prev) => ({
-          ...prev,
-          emailError: '',
-        }));
-        setInfo((prev) => ({
-          ...prev,
-          [e.target.name]: e.target.value,
-        }));
-      }
-    } else if (e.target.name === 'password') {
-      if (!validatePassword(e.target.value)) {
-        setError((prev) => ({
-          ...prev,
-          passwordError: 'Must be at 8 characters',
-        }));
-      } else {
-        setError((prev) => ({
-          ...prev,
-          passwordError: '',
-        }));
-        setInfo((prev) => ({
-          ...prev,
-          [e.target.name]: e.target.value,
-        }));
-      }
+    const { name, value } = e.target;
+    if (name === 'id') {
+      setEmail(value);
+    } else if (name === 'password') {
+      setPassword(value);
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (
-      error.emailError === '' &&
-      error.passwordError === '' &&
-      info.email !== '' &&
-      info.password !== ''
-    ) {
-      axios
-        .post('http://localhost:3000/login', info)
-        .then((res) => {
-          const cookies = new Cookies();
-          const token = res.data.user.refreshToken;
-          const userNum = res.data.user.user.userNum;
-          const userName = res.data.user.user.name;
-          const userCountry = res.data.user.user.country;
-          cookies.set('token', token);
-          localStorage.setItem('userNum', userNum);
-          localStorage.setItem('userName', userName);
-          localStorage.setItem('userCountry', userCountry);
-          alert('Success Login!');
-          navigate(`${ROUTE.HOME.link}`);
-        })
-        .catch((error) => {
-          console.log(error);
-          alert('Please Check Your Email or Password!');
-        });
-    } else {
-      alert('Please Check Your Email or Password!');
+  const handleSubmit = async () => {
+    if (!email || !password) {
+      alert('이메일과 비밀번호를 입력해주세요!');
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      alert('유효한 이메일 주소를 입력해주세요!');
+      return;
+    }
+
+    if (!validatePassword(password)) {
+      alert('비밀번호는 최소 8자 이상이어야 합니다!');
+      return;
+    }
+
+    try {
+      // 로그인 요청을 보내고 응답을 받아옴
+      const response = await axios.post('http://localhost:8081/logins', {
+        email,
+        password,
+      });
+      if (response.data.success) {
+        // 로그인 성공
+        const { token } = response.data;
+        const cookies = new Cookies();
+        cookies.set('token', token, { path: '/' });
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        alert('로그인 성공!');
+        window.location.href = '/'; // 페이지 새로고침 및 리다이렉트
+      } else {
+        // 로그인 실패
+        alert(response.data.message);
+      }
+    } catch (error) {
+      console.error('Failed to login:', error);
+      alert('로그인 실패!');
     }
   };
 
   return (
     <Container>
-      <Navbar></Navbar>
       <Title>로그인</Title>
       <Box style={{ gap: '40px' }}>
         <Input
@@ -112,13 +82,13 @@ const Login = () => {
         />
       </Box>
       <FindBox>
-        <Link>
-          <Find href="">아이디 찾기</Find>
-        </Link>
+        <Find>
+          <Link to="#">아이디 찾기</Link>
+        </Find>
         &nbsp;|&nbsp;
-        <Link>
-          <Find href="">비밀번호 찾기</Find>
-        </Link>
+        <Find>
+          <Link to="#">비밀번호 찾기</Link>
+        </Find>
         &nbsp;|&nbsp;
         <Find>
           <Link to={'/register'}>회원가입</Link>

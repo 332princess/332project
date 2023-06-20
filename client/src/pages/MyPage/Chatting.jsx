@@ -3,7 +3,7 @@ import axios from 'axios';
 import {
   Container,
   Box,
-  Song,
+  Video,
   Bar,
   BarBtn,
   MoreBtn,
@@ -13,13 +13,35 @@ import { faPlay, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { MyPage } from '../../components/MyPage';
 import Side from './Side';
 
-const Running = () => {
+const ChatList = () => {
   return (
     <MyPage>
       <Side />
       <Container>
         <Box>
-          <Song>0610 - 이강우 달리기 (10000 걸음)</Song>
+          <Video>사우나 보이 - 이강우</Video>
+          <Bar>
+            <BarBtn>
+              <FontAwesomeIcon icon={faPlay} />
+            </BarBtn>
+            <BarBtn>
+              <FontAwesomeIcon icon={faMinus} />
+            </BarBtn>
+          </Bar>
+        </Box>
+        <Box>
+          <Video>열심히 배워가는 중 - 윤태영</Video>
+          <Bar>
+            <BarBtn>
+              <FontAwesomeIcon icon={faPlay} />
+            </BarBtn>
+            <BarBtn>
+              <FontAwesomeIcon icon={faMinus} />
+            </BarBtn>
+          </Bar>
+        </Box>
+        <Box>
+          <Video>이미 죽어 있는 - 김혜지</Video>
           <Bar>
             <BarBtn>
               <FontAwesomeIcon icon={faPlay} />
@@ -34,4 +56,4 @@ const Running = () => {
     </MyPage>
   );
 };
-export default Running;
+export default ChatList;

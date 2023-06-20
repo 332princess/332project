@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Navbar from './Navbar';
+import React from 'react';
 import {
   Container,
   Title,
@@ -8,46 +6,45 @@ import {
   WhiteBox,
   Music,
   PlayList,
-  Running,
+  Chat,
   Text,
   ImageWithTextContainer,
   ImageWrapper,
 } from '../components/Home';
 import { Routes, Route, Link } from 'react-router-dom';
-import { ROUTE } from '../Route';
+import { ROUTE, PRIVATE_ROUTE } from '../Route';
 
 const Home = () => {
   return (
     <Container>
-      <Title>런메이트</Title>
+      <Title>뮤메이트</Title>
       <H1>Made by 삼삼한 녀석 둘</H1>
-      <Navbar></Navbar>
       <WhiteBox>
         <ImageWithTextContainer>
-          <Link to={ROUTE.SONG.path}>
-            <ImageWrapper>
+          <ImageWrapper>
+            <Link to={ROUTE.VIDEO.path}>
               <Music />
               <Text>음악</Text>
-            </ImageWrapper>
-          </Link>
-          <Link to={ROUTE.PLAYLIST.path}>
-            <ImageWrapper>
+            </Link>
+          </ImageWrapper>
+          <ImageWrapper>
+            <Link to={PRIVATE_ROUTE.PLAYLIST.path}>
               <PlayList />
               <Text>플레이리스트</Text>
-            </ImageWrapper>
-          </Link>
-          <Link to={ROUTE.RUNNING.path}>
-            <ImageWrapper>
-              <Running />
-              <Text>런닝</Text>
-            </ImageWrapper>
-          </Link>
+            </Link>
+          </ImageWrapper>
+          <ImageWrapper>
+            <Link to={PRIVATE_ROUTE.CHAT.path}>
+              <Chat />
+              <Text>채팅</Text>
+            </Link>
+          </ImageWrapper>
         </ImageWithTextContainer>
       </WhiteBox>
       <Routes>
         <Route path="/music" />
         <Route path="/playlist" />
-        <Route path="/running" />
+        <Route path="/chat" />
       </Routes>
     </Container>
   );
