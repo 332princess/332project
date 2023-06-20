@@ -16,6 +16,12 @@ export const Container = styled.div`
   padding-top: 2.5%;
   gap: 4%;
 
+  &.info {
+    text-align: center;
+    align-items: center;
+  }
+`;
+export const BigBox = styled.div`
   overflow-y: auto;
   &::-webkit-scrollbar {
     width: 4px;
@@ -24,15 +30,11 @@ export const Container = styled.div`
     border-radius: 2px;
     background: #ccc;
   }
-
-  &.info {
-    text-align: center;
-    align-items: center;
-  }
 `;
 export const Box = styled.div`
   display: flex;
   flex-direction: row;
+  padding-bottom: 4%;
 `;
 
 export const Video = styled.div`
@@ -43,7 +45,16 @@ export const Video = styled.div`
   height: 5vh;
   width: 38vw;
   text-align: center;
-  line-height: 2;
+  line-height: 2.5;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: #ccc;
+    display: none;
+  }
 `;
 
 export const Bar = styled.div`

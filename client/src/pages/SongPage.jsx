@@ -83,15 +83,13 @@ const Video = () => {
     try {
       const videoId = video.snippet.resourceId.videoId;
       if (playList.find((item) => item.id === video.id)) {
-        // Remove from playlist
-        await axios.delete(`http://localhost:8081/api/playlists/${videoId}`);
         setPlayList((prevList) =>
           prevList.filter((item) => item.id !== video.id)
         );
+        await axios.delete(`http://localhost:8081/api/playlists/${videoId}`);
       } else {
-        // Add to playlist
-        await axios.post('http://localhost:8081/api/playlists', { videoId });
         setPlayList((prevList) => [...prevList, video]);
+        await axios.post('http://localhost:8081/api/playlists', { videoId });
       }
     } catch (error) {
       console.log(error);
@@ -100,16 +98,12 @@ const Video = () => {
   const handleLike = async (video) => {
     try {
       const videoId = video.snippet.resourceId.videoId;
-      if (playList.find((item) => item.id === video.id)) {
-        // Remove from playlist
+      if (liked.find((item) => item.id === video.id)) {
+        setLiked((prevList) => prevList.filter((item) => item.id !== video.id));
         await axios.delete(`http://localhost:8081/api/playlists/${videoId}`);
-        setPlayList((prevList) =>
-          prevList.filter((item) => item.id !== video.id)
-        );
       } else {
-        // Add to playlist
+        setLiked((prevList) => [...prevList, video]);
         await axios.post('http://localhost:8081/api/playlists', { videoId });
-        setPlayList((prevList) => [...prevList, video]);
       }
     } catch (error) {
       console.log(error);
