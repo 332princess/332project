@@ -6,25 +6,9 @@ import {
   Container,
   Box,
   WhiteBox,
-  VideoBox,
-  Bar,
-  VideoContainer,
-  PlayBox,
-  Lyrics,
-  Singer,
   Title,
   VideoDetail,
-  BarBtn,
 } from '../components/Video';
-import Navbar from './Navbar';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faPlus,
-  faPlay,
-  faPause,
-  faMinus,
-  faHeart,
-} from '@fortawesome/free-solid-svg-icons';
 
 const apiClient = axios.create({
   baseURL: 'https://youtube.googleapis.com/youtube/v3',

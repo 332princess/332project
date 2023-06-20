@@ -1,21 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {
-  Container,
-  Box,
-  Video,
-  Bar,
-  BarBtn,
-  MoreBtn,
-} from '../../components/Detail';
+import { Container, Box, Video, Bar, BarBtn } from '../../components/Detail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faPlay,
-  faHeart,
-  faPause,
-  faMinus,
-  faPlus,
-} from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faHeart, faPause } from '@fortawesome/free-solid-svg-icons';
 import { MyPage } from '../../components/MyPage';
 import Side from './Side';
 
