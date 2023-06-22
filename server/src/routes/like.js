@@ -7,18 +7,16 @@ const { isLoggedIn } = require('../lib/middleware');
 
 // 등록
 router.post('/', isLoggedIn, async (req, res) => {
-  const loginUserId = res.get('user_id' || null);
   try {
     const params = {
-      title: req.body.title,
-      singer: req.body.singer,
-      userId: req.body.userId || loginUserId,
+      userId: req.body.userId,
+      songId: req.body.songId,
     };
     logger.info(`(post.reg.params) ${JSON.stringify(params)}`);
 
     // 필수값 체크
-    if (!params.singer || !params.title) {
-      const err = new Error('Not allowed null (singer, title)');
+    if (!params.userId || !params.songId) {
+      const err = new Error('Not allowed null (userId, songId)');
       logger.error(err.toString());
 
       res.status(500).json({ err: err.toString() });

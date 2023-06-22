@@ -17,12 +17,12 @@ router.post('/', isLoggedIn, async (req, res) => {
     logger.info(`(post.reg.params) ${JSON.stringify(params)}`);
 
     // 필수값 체크
-    if (!params.singer || !params.title) {
-      const err = new Error('Not allowed null (singer, title)');
-      logger.error(err.toString());
+    // if (!params.id) {
+    //   const err = new Error('Not allowed null (id, title)');
+    //   logger.error(err.toString());
 
-      res.status(500).json({ err: err.toString() });
-    }
+    //   res.status(500).json({ err: err.toString() });
+    // }
 
     // 비즈니스 로직 호출
     const result = await likeService.reg(params);

@@ -4,14 +4,14 @@ module.exports = class Like extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        title: {
-          type: Sequelize.STRING(),
-          allowNull: false,
-        },
-        singer: {
-          type: Sequelize.STRING(),
-          allowNull: false,
-        },
+        // title: {
+        //   type: Sequelize.STRING(),
+        //   allowNull: false,
+        // },
+        // singer: {
+        //   type: Sequelize.STRING(),
+        //   allowNull: false,
+        // },
       },
       {
         sequelize,
@@ -19,7 +19,7 @@ module.exports = class Like extends Sequelize.Model {
         // freezeTableName: true, // true: table명의 복수형 변환을 막음
         underscored: true, // true: underscored, false: camelCase
         timestamps: true, // createAt, updatedAt
-        paranoid: true, // deletedAt
+        // paranoid: true, // deletedAt
       }
     );
   }
