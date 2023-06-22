@@ -93,7 +93,7 @@ router.delete('/deleteI',isLoggedIn, async (req, res) => {
        user_id: user_id,
     
     };
-    logger.info(`(user.deleteUser.params) ${JSON.stringify(params)}`);
+   logger.info(`(user.deleteUser.params) ${JSON.stringify(params)}`);
     const result = await userService.deleteUser(params);
     logger.info(`(user.deleteUser.result) ${JSON.stringify(result)}`);
 
