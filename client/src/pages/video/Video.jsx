@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import YouTube from 'react-youtube';
 import axios from 'axios';
+import { Cookies } from 'react-cookie';
 import {
   Container,
   Box,
@@ -11,7 +12,7 @@ import {
   Title,
   VideoDetail,
   BarBtn,
-} from '../components/Video';
+} from '../../components/video/Video';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPlus,
@@ -20,11 +21,13 @@ import {
   faMinus,
   faHeart,
 } from '@fortawesome/free-solid-svg-icons';
-
-const apiClient = axios.create({
-  baseURL: 'https://youtube.googleapis.com/youtube/v3',
-  params: { key: process.env.REACT_APP_API_KEY },
-});
+import {
+  addToLiked,
+  addToPlayList,
+  updateLiked,
+  updatePlayList,
+  videoList,
+} from '../../services/video/Video';
 
 const Video = () => {
   const [videos, setVideos] = useState([]);
@@ -32,19 +35,12 @@ const Video = () => {
   const [playList, setPlayList] = useState([]);
   const [liked, setLiked] = useState([]);
 
-  // 유튭 불러오기
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await apiClient.get('playlistItems', {
-          params: {
-            part: 'snippet',
-            playlistId: 'PLc_2DBEEb9ofX7p4Mq7_z-p5Pta1gBiSH',
-            maxResults: 10,
-          },
-        });
-        console.log(response.data.items);
-        setVideos(response.data.items);
+        const response = await videoList();
+        console.log(response);
+        setVideos(response);
       } catch (error) {
         console.log(error);
       }
@@ -52,16 +48,72 @@ const Video = () => {
     fetchVideos();
   }, []);
 
-  // 비디오 열기 버튼
-  const handleVideoClick = (video) => {
-    if (currentVideo && currentVideo.id === video.id) {
+  const handleVideoClick = (Video) => {
+    if (currentVideo && currentVideo.id === Video.id) {
       setCurrentVideo(null);
     } else {
-      setCurrentVideo({ ...video, playing: true });
+      setCurrentVideo({ ...Video, playing: true });
     }
   };
 
-  // 플레이, 멈추기
+  const handlePlayList = async (video) => {
+    const index = playList.findIndex((item) => item.id === video.id);
+    if (index === -1) {
+      setPlayList((prevPlayList) => [...prevPlayList, video]);
+      try {
+        await addToPlayList(video);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      setPlayList((prevPlayList) => {
+        const updatedPlayList = [...prevPlayList];
+        updatedPlayList.splice(index, 1);
+        return updatedPlayList;
+      });
+    }
+  };
+
+  useEffect(() => {
+    const updatePlayListVideos = async () => {
+      try {
+        // await updatePlayList(playList);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    updatePlayListVideos();
+  }, [playList]);
+
+  const handleLike = async (video) => {
+    const index = liked.findIndex((item) => item.id === video.id);
+    if (index === -1) {
+      setLiked((prevLiked) => [...prevLiked, video]);
+      try {
+        await addToLiked(video);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      setLiked((prevLiked) => {
+        const updatedLiked = [...prevLiked];
+        updatedLiked.splice(index, 1);
+        return updatedLiked;
+      });
+    }
+  };
+
+  useEffect(() => {
+    const updateLikedVideos = async () => {
+      try {
+        // await updateLiked(liked);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    updateLikedVideos();
+  }, [liked]);
+
   const handlePlay = () => {
     setCurrentVideo((prevVideo) => ({ ...prevVideo, playing: true }));
   };
@@ -77,37 +129,6 @@ const Video = () => {
   const opts = {
     height: '315',
     width: '560',
-  };
-  // 플레이리스트 추가/제거
-  const handlePlayList = async (video) => {
-    try {
-      const videoId = video.snippet.resourceId.videoId;
-      if (playList.find((item) => item.id === video.id)) {
-        setPlayList((prevList) =>
-          prevList.filter((item) => item.id !== video.id)
-        );
-        await axios.delete(`http://localhost:8081/api/playlists/${videoId}`);
-      } else {
-        setPlayList((prevList) => [...prevList, video]);
-        await axios.post('http://localhost:8081/api/playlists', { videoId });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const handleLike = async (video) => {
-    try {
-      const videoId = video.snippet.resourceId.videoId;
-      if (liked.find((item) => item.id === video.id)) {
-        setLiked((prevList) => prevList.filter((item) => item.id !== video.id));
-        await axios.delete(`http://localhost:8081/api/playlists/${videoId}`);
-      } else {
-        setLiked((prevList) => [...prevList, video]);
-        await axios.post('http://localhost:8081/api/playlists', { videoId });
-      }
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (

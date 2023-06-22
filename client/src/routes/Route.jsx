@@ -1,14 +1,14 @@
-import Register from './pages/User/Register';
-import Login from './pages/User/Login';
-import MyPage from './pages/MyPage/MyPage';
-import Like from './pages/MyPage/Like';
-import Info from './pages/MyPage/Info';
-import PlayList from './pages/MyPage/PlayList';
-import Running from './pages/MyPage/Chatting';
-import Home from './pages/HomePage';
-import ChatList from './pages/MyPage/Chatting';
-import Chat from './pages/Chatting';
-import Video from './pages/SongPage';
+import Register from '../pages/user/Register';
+import Login from '../pages/user/Login';
+import MyPage from '../pages/mypage/MyPage';
+import Like from '../pages/mypage/Like';
+import Info from '../pages/mypage/Info';
+import PlayList from '../pages/mypage/PlayList';
+import Running from '../pages/mypage/Chatting';
+import Home from '../pages/home/HomePage';
+import ChatList from '../pages/mypage/Chatting';
+import Chat from '../pages/chat/Chatting';
+import Video from '../pages/video/Video';
 
 export const ROUTE = {
   HOME: {

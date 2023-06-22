@@ -7,8 +7,8 @@ import {
   MoreBtn,
   Input,
   Modi,
-} from '../../components/Detail';
-import { MyPage } from '../../components/MyPage';
+} from '../../components/mypage/Detail';
+import { MyPage } from '../../components/mypage/MyPage';
 import Side from './Side';
 import { useNavigate } from 'react-router-dom';
 

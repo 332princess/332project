@@ -7,11 +7,17 @@ import {
   Video,
   Bar,
   BarBtn,
-  BigBox,
-} from '../../components/Detail';
+  MoreBtn,
+} from '../../components/mypage/Detail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faHeart, faPause } from '@fortawesome/free-solid-svg-icons';
-import { MyPage } from '../../components/MyPage';
+import {
+  faPlay,
+  faHeart,
+  faPause,
+  faMinus,
+  faPlus,
+} from '@fortawesome/free-solid-svg-icons';
+import { MyPage } from '../../components/mypage/MyPage';
 import Side from './Side';
 
 const apiClient = axios.create({

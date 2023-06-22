@@ -7,11 +7,10 @@ import {
   Video,
   Bar,
   BarBtn,
-  BigBox,
-} from '../../components/Detail';
+} from '../../components/mypage/Detail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faMinus, faPause } from '@fortawesome/free-solid-svg-icons';
-import { MyPage } from '../../components/MyPage';
+import { MyPage } from '../../components/mypage/MyPage';
 import Side from './Side';
 // 서버 연결 시 수정할 코드 주석처리
 

@@ -6,8 +6,8 @@ import {
   Title,
   ChatContainer,
   Logo,
-} from '../components/Chatting';
-import { PRIVATE_ROUTE_ARR } from '../Route';
+} from '../../components/chat/Chatting';
+import { PRIVATE_ROUTE_ARR } from '../../routes/Route';
 
 const Chat = () => {
   return (

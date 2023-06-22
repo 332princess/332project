@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Navbar from '../../components/header/Navbar';
 import {
   Container,
   Title,
@@ -10,9 +12,9 @@ import {
   Text,
   ImageWithTextContainer,
   ImageWrapper,
-} from '../components/Home';
+} from '../../components/home/Home';
 import { Routes, Route, Link } from 'react-router-dom';
-import { ROUTE, PRIVATE_ROUTE } from '../Route';
+import { ROUTE, PRIVATE_ROUTE } from '../../routes/Route';
 
 const Home = () => {
   return (

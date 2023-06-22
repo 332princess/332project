@@ -7,10 +7,10 @@ import {
   Bar,
   BarBtn,
   MoreBtn,
-} from '../../components/Detail';
+} from '../../components/mypage/Detail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faMinus } from '@fortawesome/free-solid-svg-icons';
-import { MyPage } from '../../components/MyPage';
+import { MyPage } from '../../components/mypage/MyPage';
 import Side from './Side';
 
 const ChatList = () => {

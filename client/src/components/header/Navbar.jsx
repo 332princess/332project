@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { useCookies, Cookies } from 'react-cookie';
+import { useCookies } from 'react-cookie';
 import axios from 'axios';
-
-const cookie = new Cookies();
 
 const Container = styled.nav`
   background-color: #000;
@@ -51,14 +49,9 @@ export const LogoHome = styled.div`
 const Navbar = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['token']);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const token = cookies['token'];
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   useEffect(() => {
-    const getCookie = cookie.get('token');
-    if (!!getCookie === true) {
-      // token이 빈 값이 아니라면
-      setIsLoggedIn(true);
-      axios.defaults.headers.common.Authorization = `Bearer ${getCookie}`;
-    }
     const checkLoginStatus = () => {
       setIsLoggedIn(!!cookies.token);
     };

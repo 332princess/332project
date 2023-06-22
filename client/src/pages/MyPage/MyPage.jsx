@@ -1,7 +1,8 @@
-import React from 'react';
-import { MyPage } from '../../components/MyPage';
+import React, { useState, useEffect } from 'react';
+import { MyPage } from '../../components/mypage/MyPage';
 import Side from './Side';
-import { Container } from '../../components/Detail';
+import { Container } from '../../components/mypage/Detail';
+import Navbar from '../../components/header/Navbar';
 
 const MyPages = () => {
   return (
