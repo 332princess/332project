@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { useCookies } from 'react-cookie';
+import axios from 'axios';
 
 const Container = styled.nav`
   background-color: #000;
@@ -48,7 +49,8 @@ export const LogoHome = styled.div`
 const Navbar = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['token']);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const token = cookies['token'];
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   useEffect(() => {
     const checkLoginStatus = () => {
       setIsLoggedIn(!!cookies.token);

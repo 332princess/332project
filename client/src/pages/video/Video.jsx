@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import YouTube from 'react-youtube';
 import axios from 'axios';
+import { Cookies } from 'react-cookie';
 import {
   Container,
   Box,
@@ -9,14 +9,10 @@ import {
   VideoBox,
   Bar,
   VideoContainer,
-  PlayBox,
-  Lyrics,
-  Singer,
   Title,
   VideoDetail,
   BarBtn,
-} from '../components/Video';
-import Navbar from './Navbar';
+} from '../../components/video/Video';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPlus,
@@ -25,31 +21,26 @@ import {
   faMinus,
   faHeart,
 } from '@fortawesome/free-solid-svg-icons';
-
-const apiClient = axios.create({
-  baseURL: 'https://youtube.googleapis.com/youtube/v3',
-  params: { key: process.env.REACT_APP_API_KEY },
-});
+import {
+  addToLiked,
+  addToPlayList,
+  updateLiked,
+  updatePlayList,
+  videoList,
+} from '../../services/video/Video';
 
 const Video = () => {
   const [videos, setVideos] = useState([]);
   const [currentVideo, setCurrentVideo] = useState(false);
   const [playList, setPlayList] = useState([]);
   const [liked, setLiked] = useState([]);
-  // const user_id = localStorage.getItem('user_id');
 
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await apiClient.get('playlistItems', {
-          params: {
-            part: 'snippet',
-            playlistId: 'PLc_2DBEEb9ofX7p4Mq7_z-p5Pta1gBiSH',
-            maxResults: 10,
-          },
-        });
-        console.log(response.data.items);
-        setVideos(response.data.items);
+        const response = await videoList();
+        console.log(response);
+        setVideos(response);
       } catch (error) {
         console.log(error);
       }
@@ -65,18 +56,14 @@ const Video = () => {
     }
   };
 
-  // 1. 플러스 버튼을 클릭하면 음악 리스트의 아이템 한 개가 마이페이지에 담김(=장바구니)
-  // 2. 마이페이지에서 담긴 리스트 확인
-
-  const handlePlayList = async (Video) => {
-    const index = playList.findIndex((item) => item.id === Video.id);
+  const handlePlayList = async (video) => {
+    const index = playList.findIndex((item) => item.id === video.id);
     if (index === -1) {
-      setPlayList((prevPlayList) => [...prevPlayList, Video]);
+      setPlayList((prevPlayList) => [...prevPlayList, video]);
       try {
-        await axios.post(`/api/playlists`, Video);
-        console.log('비디오가 성공적으로 추가되었습니다.');
+        await addToPlayList(video);
       } catch (error) {
-        console.log('비디오 추가 중 오류가 발생했습니다.', error);
+        console.log(error);
       }
     } else {
       setPlayList((prevPlayList) => {
@@ -87,10 +74,26 @@ const Video = () => {
     }
   };
 
-  const handleLike = (Video) => {
-    const index = liked.findIndex((item) => item.id === Video.id);
+  useEffect(() => {
+    const updatePlayListVideos = async () => {
+      try {
+        // await updatePlayList(playList);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    updatePlayListVideos();
+  }, [playList]);
+
+  const handleLike = async (video) => {
+    const index = liked.findIndex((item) => item.id === video.id);
     if (index === -1) {
-      setLiked((prevLiked) => [...prevLiked, Video]);
+      setLiked((prevLiked) => [...prevLiked, video]);
+      try {
+        await addToLiked(video);
+      } catch (error) {
+        console.log(error);
+      }
     } else {
       setLiked((prevLiked) => {
         const updatedLiked = [...prevLiked];
@@ -101,25 +104,14 @@ const Video = () => {
   };
 
   useEffect(() => {
-    const updatePlayList = async () => {
+    const updateLikedVideos = async () => {
       try {
-        await axios.post('/api/playlists', playList);
+        // await updateLiked(liked);
       } catch (error) {
         console.log(error);
       }
     };
-    updatePlayList();
-  }, [playList]);
-
-  useEffect(() => {
-    const updateLiked = async () => {
-      try {
-        await axios.post('/api/likes', liked);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    updateLiked();
+    updateLikedVideos();
   }, [liked]);
 
   const handlePlay = () => {
