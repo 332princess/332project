@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import {
+  Page,
   Container,
   Box,
   Video,
   Bar,
   BarBtn,
   MoreBtn,
-} from '../../components/mypage/Detail';
+} from '../../styles/mypage';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faMinus } from '@fortawesome/free-solid-svg-icons';
-import { MyPage } from '../../components/mypage/MyPage';
-import Side from './Side';
+import Side from '../../components/mypage/Side';
 
 const ChatList = () => {
   return (
-    <MyPage>
+    <Page>
       <Side />
       <Container>
         <Box>
@@ -53,7 +52,7 @@ const ChatList = () => {
         </Box>
         <MoreBtn>More</MoreBtn>
       </Container>
-    </MyPage>
+    </Page>
   );
 };
 export default ChatList;

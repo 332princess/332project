@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import {
+  Page,
   Container,
   Box,
   Text,
   MoreBtn,
   Input,
   Modi,
-} from '../../components/mypage/Detail';
-import { MyPage } from '../../components/mypage/MyPage';
-import Side from './Side';
+} from '../../styles/mypage';
+import Side from '../../components/mypage/Side';
 import { useNavigate } from 'react-router-dom';
 
 const getUserIdFromCookie = () => {
@@ -52,7 +52,7 @@ const handleDeleteProfile = (e, navigate) => {
 const Info = () => {
   const navigate = useNavigate();
   return (
-    <MyPage>
+    <Page>
       <Side />
       <Container className="info">
         <h1>님, 안녕하세용!</h1>
@@ -74,7 +74,7 @@ const Info = () => {
           회원 탈퇴
         </MoreBtn>
       </Container>
-    </MyPage>
+    </Page>
   );
 };
 export default Info;

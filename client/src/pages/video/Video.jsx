@@ -1,26 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import YouTube from 'react-youtube';
-import axios from 'axios';
-import { Cookies } from 'react-cookie';
-import {
-  Container,
-  Box,
-  WhiteBox,
-  VideoBox,
-  Bar,
-  VideoContainer,
-  Title,
-  VideoDetail,
-  BarBtn,
-} from '../../components/video/Video';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faPlus,
-  faPlay,
-  faPause,
-  faMinus,
-  faHeart,
-} from '@fortawesome/free-solid-svg-icons';
+import { Container, Box, WhiteBox } from '../../styles/video';
 import {
   addToLiked,
   addToPlayList,
@@ -28,6 +7,8 @@ import {
   updatePlayList,
   videoList,
 } from '../../services/video/Video';
+import VideoList from '../../components/video/VideoList';
+import CurrentVideo from '../../components/video/CurrentVideo';
 
 const Video = () => {
   const [videos, setVideos] = useState([]);
@@ -135,71 +116,23 @@ const Video = () => {
     <Container>
       <Box>
         <WhiteBox>
-          {videos.map((video) => (
-            <VideoContainer key={video.id}>
-              <VideoBox>{video.snippet.title}</VideoBox>
-              <Bar>
-                <BarBtn>
-                  {currentVideo.id === video.id ? (
-                    currentVideo.playing ? (
-                      <FontAwesomeIcon
-                        icon={faPause}
-                        color="#ff6060"
-                        onClick={handlePause}
-                      />
-                    ) : (
-                      <FontAwesomeIcon icon={faPlay} onClick={handlePlay} />
-                    )
-                  ) : (
-                    <FontAwesomeIcon
-                      icon={faPlay}
-                      onClick={() => handleVideoClick(video)}
-                    />
-                  )}
-                </BarBtn>
-                <BarBtn>
-                  {playList.find((item) => item.id === video.id) ? (
-                    <FontAwesomeIcon
-                      icon={faMinus}
-                      color="#ff6060"
-                      onClick={() => handlePlayList(video)}
-                    />
-                  ) : (
-                    <FontAwesomeIcon
-                      icon={faPlus}
-                      onClick={() => handlePlayList(video)}
-                    />
-                  )}
-                </BarBtn>
-                <BarBtn>
-                  <FontAwesomeIcon
-                    icon={faHeart}
-                    color={
-                      liked.find((item) => item.id === video.id)
-                        ? '#ff6060'
-                        : 'white'
-                    }
-                    onClick={() => handleLike(video)}
-                  ></FontAwesomeIcon>
-                </BarBtn>
-              </Bar>
-            </VideoContainer>
-          ))}
+          <VideoList
+            videos={videos}
+            currentVideo={currentVideo}
+            playList={playList}
+            liked={liked}
+            handleVideoClick={handleVideoClick}
+            handlePlayList={handlePlayList}
+            handleLike={handleLike}
+          />
         </WhiteBox>
         <WhiteBox className="non_scroll">
-          {currentVideo && (
-            <>
-              <VideoDetail>
-                <Title>{currentVideo.snippet.title}</Title>
-              </VideoDetail>
-              <YouTube
-                videoId={currentVideo.snippet.resourceId.videoId}
-                opts={opts}
-                onPlay={handlePlay}
-                onPause={handlePause}
-              />
-            </>
-          )}
+          <CurrentVideo
+            currentVideo={currentVideo}
+            opts={opts}
+            handlePlay={handlePlay}
+            handlePause={handlePause}
+          />
         </WhiteBox>
       </Box>
     </Container>
