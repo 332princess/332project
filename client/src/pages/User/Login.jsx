@@ -7,8 +7,10 @@ import {
   Container,
   SubmitBtn,
   Title,
-} from '../../components/user/UserStyle';
-import { Find, FindBox, Input } from '../../components/user/Login';
+  Find,
+  FindBox,
+  Input,
+} from '../../styles/user';
 import { validateEmail, validatePassword } from '../../util/usefulFunction';
 import { login } from '../../services/user/Login';
 
@@ -68,6 +70,7 @@ const Login = () => {
           name="id"
           onChange={handleChange}
           placeholder="please enter your id"
+          className="login"
           style={{ borderRadius: '10px' }}
         />
         <Input
@@ -75,6 +78,7 @@ const Login = () => {
           name="password"
           onChange={handleChange}
           placeholder="please enter your password"
+          className="login"
           style={{ borderRadius: '10px' }}
         />
       </Box>

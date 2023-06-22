@@ -7,8 +7,10 @@ import {
   Title,
   Box,
   SubmitBtn,
-} from '../../components/user/UserStyle';
-import { CheckBtn, Input, InputBox } from '../../components/user/Register';
+  CheckBtn,
+  Input,
+  InputBox,
+} from '../../styles/user';
 import {
   validateNickname,
   validateEmail,
@@ -96,44 +98,41 @@ const Register = () => {
     <Container>
       <Title>회원가입</Title>
       <Box style={{ top: '27%' }}>
-        <InputBox>
-          <Input
-            type="text"
-            name="name"
-            value={name}
-            onChange={nameChange}
-            placeholder=" Please Enter Your Name"
-          />
-        </InputBox>
+        <Input
+          type="text"
+          name="name"
+          value={name}
+          onChange={nameChange}
+          className="register"
+          placeholder=" Please Enter Your Name"
+        />
         <InputBox>
           <Input
             type="text"
             name="email"
             value={email}
             onChange={emailChange}
-            className="email"
+            className="register email"
             placeholder=" Please Enter Your Email"
           />
           <CheckBtn onClick={handleCheckEmail}>확인</CheckBtn>
         </InputBox>
-        <InputBox>
-          <Input
-            type="password"
-            name="password"
-            value={password}
-            onChange={passwordChange}
-            placeholder=" Please Enter Your Password"
-          />
-        </InputBox>
-        <InputBox>
-          <Input
-            type="password"
-            name="confirmPassword"
-            value={password2}
-            onChange={password2Change}
-            placeholder=" Please Enter Your Password Again"
-          />
-        </InputBox>
+        <Input
+          type="password"
+          name="password"
+          value={password}
+          onChange={passwordChange}
+          className="register"
+          placeholder=" Please Enter Your Password"
+        />
+        <Input
+          type="password"
+          name="confirmPassword"
+          value={password2}
+          onChange={password2Change}
+          className="register"
+          placeholder=" Please Enter Your Password Again"
+        />
       </Box>
       <SubmitBtn type="submit" onClick={handleSubmit}>
         Submit
