@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Cookies } from 'react-cookie';
 import {
@@ -17,7 +17,6 @@ import { login } from '../../services/user/Login';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -44,13 +43,13 @@ const Login = () => {
 
     try {
       const response = await login(email, password);
-      if (response.data.success) {
-        const { token } = response.data;
+      if (response.success) {
+        const { token } = response;
         const cookies = new Cookies();
         cookies.set('token', token, { path: '/' });
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         alert('로그인 성공!');
-        navigate('/');
+        window.location.href = '/';
       } else {
         // 로그인 실패
         alert(response.data.message);
