@@ -30,7 +30,7 @@ export const H1 = styled.h1`
 `;
 
 export const Music = styled.div`
-  background-image: url('/image1.png');
+  background-image: url('/assets/image1.png');
   background-size: cover;
   margin-top: 30%;
   width: 100px;
@@ -38,7 +38,7 @@ export const Music = styled.div`
 `;
 
 export const PlayList = styled.div`
-  background-image: url('/image2.png');
+  background-image: url('/assets/image2.png');
   background-size: cover;
   margin-top: 30%;
   width: 100px;
@@ -46,7 +46,7 @@ export const PlayList = styled.div`
 `;
 
 export const Chat = styled.div`
-  background-image: url('/image3.png');
+  background-image: url('/assets/image3.png');
   background-size: cover;
   margin-top: 30%;
   width: 100px;

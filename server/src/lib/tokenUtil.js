@@ -42,7 +42,6 @@ const tokenUtil = {
       return null;
     }
   },
-
 };
 
 module.exports = tokenUtil;
