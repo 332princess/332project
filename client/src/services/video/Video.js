@@ -22,7 +22,7 @@ export const videoList = async () => {
 
 export const addToPlayList = async (video) => {
   try {
-    await axios.post('/api/playlists', video);
+    await axios.post('/playlists', video);
     console.log('비디오가 성공적으로 추가되었습니다.');
   } catch (error) {
     console.log('비디오 추가 중 오류가 발생했습니다.', error);
@@ -32,7 +32,7 @@ export const addToPlayList = async (video) => {
 
 export const updatePlayList = async (playList) => {
   try {
-    await axios.post('/api/playlists', playList);
+    await axios.post('/playlists', playList);
   } catch (error) {
     console.log(error);
     throw error;
@@ -41,7 +41,7 @@ export const updatePlayList = async (playList) => {
 
 export const addToLiked = async (video) => {
   try {
-    await axios.post('/api/likes', video);
+    await axios.post('/likes', video);
     console.log('비디오가 성공적으로 추가되었습니다.');
   } catch (error) {
     console.log('비디오 추가 중 오류가 발생했습니다.', error);
@@ -51,7 +51,7 @@ export const addToLiked = async (video) => {
 
 export const updateLiked = async (liked) => {
   try {
-    await axios.post('/api/likes', liked);
+    await axios.post('/likes', liked);
   } catch (error) {
     console.log(error);
     throw error;

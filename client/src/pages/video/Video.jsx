@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Box, WhiteBox } from '../../styles/video';
+import { Container, WhiteBox } from '../../styles/video';
 import {
   addToLiked,
   addToPlayList,
@@ -114,27 +114,25 @@ const Video = () => {
 
   return (
     <Container>
-      <Box>
-        <WhiteBox>
-          <VideoList
-            videos={videos}
-            currentVideo={currentVideo}
-            playList={playList}
-            liked={liked}
-            handleVideoClick={handleVideoClick}
-            handlePlayList={handlePlayList}
-            handleLike={handleLike}
-          />
-        </WhiteBox>
-        <WhiteBox className="non_scroll">
-          <CurrentVideo
-            currentVideo={currentVideo}
-            opts={opts}
-            handlePlay={handlePlay}
-            handlePause={handlePause}
-          />
-        </WhiteBox>
-      </Box>
+      <WhiteBox className="non_scroll">
+        <CurrentVideo
+          currentVideo={currentVideo}
+          opts={opts}
+          handlePlay={handlePlay}
+          handlePause={handlePause}
+        />
+      </WhiteBox>
+      <WhiteBox>
+        <VideoList
+          videos={videos}
+          currentVideo={currentVideo}
+          playList={playList}
+          liked={liked}
+          handleVideoClick={handleVideoClick}
+          handlePlayList={handlePlayList}
+          handleLike={handleLike}
+        />
+      </WhiteBox>
     </Container>
   );
 };

@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   SideContainer,
   SideBox,
-  URLs,
   Title,
   ChatContainer,
   Logo,
 } from '../../components/chat/Chatting';
-import { PRIVATE_ROUTE_ARR } from '../../routes/Route';
 
 const Chat = () => {
   return (
