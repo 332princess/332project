@@ -34,11 +34,17 @@ const dao = {
     return new Promise((resolve, reject) => {
       PlayList.findAndCountAll({
         ...setQuery,
-        attributes: { exclude: ['password'] },
+        attributes: { exclude: ['id', 'createdAt', 'updatedAt'] },
         include: [
+            // {
+            //   model: User,
+            //   as: 'User',
+            //   attributes: ['user_id'],
+            // },
           {
-            model: User,
-            as: 'User',
+            model: Song,
+            as: 'Song',
+            attributes: ['videoId'],
           },
         ],
       })
