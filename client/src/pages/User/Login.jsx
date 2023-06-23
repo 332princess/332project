@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Cookies } from 'react-cookie';
 import {
@@ -17,7 +17,6 @@ import { login } from '../../services/user/Login';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -52,7 +51,7 @@ const Login = () => {
         localStorage.setItem('token', token); // 토큰을 로컬 스토리지에 저장
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         alert('로그인 성공!');
-        navigate('/');
+        window.location.href = '/';
       } else {
         // 로그인 실패
         alert(response.data.message);

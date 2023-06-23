@@ -1,63 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
-
-const Container = styled.nav`
-  background-color: #000;
-  opacity: 90%;
-  padding: 10px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-`;
-
-const NavList = styled.ul`
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const NavItem = styled.li`
-  margin-right: 10px;
-`;
-
-const NavLinkWrapper = styled(NavLink)`
-  text-decoration: none;
-  color: #ddd;
-  font-weight: bold;
-  margin: 0 1.2vw 0 1.2vw;
-
-  &.active {
-    color: #ff0000;
-  }
-`;
-
-export const LogoHome = styled.div`
-  background-image: url('/logoMyu.png');
-  background-size: cover;
-  width: 40px;
-  height: 40px;
-  border-radius: 100%;
-`;
+import {
+  Container,
+  LogoHome,
+  NavItem,
+  NavLinkWrapper,
+  NavList,
+} from '../../styles/header';
 
 const Navbar = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['token']);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const token = cookies['token'];
-  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-  useEffect(() => {
-    const checkLoginStatus = () => {
-      setIsLoggedIn(!!cookies.token);
-    };
 
-    checkLoginStatus();
-  }, [cookies.token]);
+  useEffect(() => {
+    const token = cookies['token'];
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    setIsLoggedIn(!!token);
+  }, [cookies]);
 
   const handleLogout = () => {
     removeCookie('token');

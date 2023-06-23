@@ -19,30 +19,17 @@ const tokenUtil = {
 
     return token;
   },
-  // decryptToken(encryptedToken) {
-  //   try {
-  //     const decodedToken = jwt.verify(encryptedToken, secretKey);
-  //     return {
-  //       user_id: decodedToken.user_id,
-  //       name: decodedToken.name,
-  //       email: decodedToken.email,
-  //     };
-  //   } catch (error) {
-  //     console.error('토큰 복호화 오류:', error.message);
-  //     return null;
-  //   }
-  // },
+
   verifyToken(token) {
     try {
-      const decoded = jwt.verify(token, secretKey);
-      // console.log(decoded);
+      const decoded = jwt.verify(token, secretKey, options);
+      console.log(decoded);
 
       return decoded;
     } catch (err) {
       return null;
     }
   },
-
 };
 
 module.exports = tokenUtil;

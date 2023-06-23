@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Navbar from '../../components/header/Navbar';
+import React from 'react';
 import {
   Container,
   Title,
@@ -12,7 +10,7 @@ import {
   Text,
   ImageWithTextContainer,
   ImageWrapper,
-} from '../../components/home/Home';
+} from '../../styles/homestyle';
 import { Routes, Route, Link } from 'react-router-dom';
 import { ROUTE, PRIVATE_ROUTE } from '../../routes/Route';
 
