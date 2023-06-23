@@ -22,6 +22,7 @@ const Navbar = () => {
   const handleLogout = () => {
     removeCookie('token');
     localStorage.removeItem('token'); // 토큰 삭제
+    setIsLoggedIn(false); // 로그인 상태 변경
     window.location.href = '/'; // '/'로 리다이렉트하여 이동
   };
 

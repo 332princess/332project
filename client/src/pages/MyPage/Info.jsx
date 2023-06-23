@@ -11,13 +11,13 @@ import {
 } from '../../styles/mypage';
 import Side from '../../components/mypage/Side';
 import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
-const handleDeleteProfile = (e, navigate) => {
+const handleDeleteProfile = (e, navigate, removeCookie) => {
   e.preventDefault();
 
   if (window.confirm('확인을 누르면 회원 정보가 삭제됩니다.')) {
-    const token = localStorage.getItem('token'); // 토큰 가져오기
-
+    const token = localStorage.getItem('token');
     axios
       .delete('http://localhost:8081/users/deleteI', {
         headers: {
@@ -26,7 +26,8 @@ const handleDeleteProfile = (e, navigate) => {
       })
       .then(() => {
         alert('그동안 이용해주셔서 감사합니다.');
-        localStorage.removeItem('token'); // 토큰 삭제
+        removeCookie('token');
+        localStorage.removeItem('token');
         navigate('/');
       })
       .catch((err) => alert(err.response.data.message));
@@ -37,6 +38,8 @@ const handleDeleteProfile = (e, navigate) => {
 
 const Info = () => {
   const navigate = useNavigate();
+  const [, , removeCookie] = useCookies(['token']);
+
   return (
     <Page>
       <Side />
@@ -56,11 +59,14 @@ const Info = () => {
           <Input placeholder="please check new password" />
         </Box>
         <Modi>수정</Modi>
-        <MoreBtn onClick={(e) => handleDeleteProfile(e, navigate)}>
+        <MoreBtn
+          onClick={(e) => handleDeleteProfile(e, navigate, removeCookie)}
+        >
           회원 탈퇴
         </MoreBtn>
       </Container>
     </Page>
   );
 };
+
 export default Info;

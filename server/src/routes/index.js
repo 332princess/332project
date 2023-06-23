@@ -4,10 +4,7 @@ const userRouter = require('./user');
 const playlistRouter = require('./playlist');
 const likeRouter = require('./like');
 const songRouter = require('./song');
-// const loginRouter = require('./login');
 const loginRouter = require('./login');
-// const postRouter = require('./post');
-// const weatherRouter = require('./weather');
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
@@ -29,8 +26,6 @@ router.use('/users', userRouter);
 router.use('/playlists', playlistRouter);
 router.use('/likes', likeRouter);
 router.use('/songs', songRouter);
-// router.use('/logins', loginRouter);
 router.use('/logins', loginRouter);
-// router.use('/auths', authRouter);
 
 module.exports = router;
