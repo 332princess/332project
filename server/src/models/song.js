@@ -8,16 +8,7 @@ module.exports = class Song extends Sequelize.Model {
           type: Sequelize.STRING(255),
           allowNull: false,
         },
-        // singer: {
-        //   type: Sequelize.STRING(50),
-        //   // allowNull: false,
-        // },
-        // Musicno: {
-        //   type: Sequelize.INTEGER,
-        // },
-        // playtime: {
-        //   type: Sequelize.TIME,
-        // },
+ 
       },
       {
         sequelize,

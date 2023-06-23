@@ -4,17 +4,17 @@ const { Song, User } = require('../models/index');
 const dao = {
   insert(params) {
     return new Promise((resolve, reject) => {
-      Song.create(params)
-        .then((inserted) => {
-          const insertedResult = { ...inserted };
-          delete insertedResult.dataValues.password;
+      Song.create({
+        videoId : params.videoId,
+
+      }).then((inserted) => {
           resolve(inserted);
-        })
-        .catch((err) => {
+        }).catch((err) => {
           reject(err);
         });
     });
   },
+
   selectList(params) {
     // where 검색 조건
     const setQuery = {};
