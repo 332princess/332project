@@ -45,8 +45,10 @@ const Login = () => {
       const response = await login(email, password);
       if (response.success) {
         const { token } = response;
+        console.log(token);
         const cookies = new Cookies();
         cookies.set('token', token, { path: '/' });
+        localStorage.setItem('token', token); // 토큰을 로컬 스토리지에 저장
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         alert('로그인 성공!');
         window.location.href = '/';

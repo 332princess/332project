@@ -21,6 +21,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     removeCookie('token');
+    localStorage.removeItem('token'); // 토큰 삭제
     window.location.href = '/'; // '/'로 리다이렉트하여 이동
   };
 

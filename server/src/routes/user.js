@@ -86,8 +86,9 @@ router.get('/:user_id', async (req, res) => {
 });
 
 router.delete('/deleteI',isLoggedIn, async (req, res) => {
-  const decoded = tokenUtil.verifyToken(req.headers.token)
-  const user_id = decoded.user_id
+  const token = req.headers.authorization.replace('Bearer ', '');
+  const decoded = tokenUtil.verifyToken(token);
+  const user_id = decoded.user_id;
   try {
     const params = {
        user_id: user_id,
@@ -98,12 +99,12 @@ router.delete('/deleteI',isLoggedIn, async (req, res) => {
     logger.info(`(user.deleteUser.result) ${JSON.stringify(result)}`);
 
     // 삭제된 사용자가 없을 경우 에러 처리
-    // if (result === 0) {
-    //   const err = new Error('User not found');
-    //   logger.error(err.toString());
-    //   res.status(404).json({ err: err.toString() });
-    //   return;
-    // }
+    if (result === 0) {
+      const err = new Error('User not found');
+      logger.error(err.toString());
+      res.status(404).json({ err: err.toString() });
+      return;
+    }
 
     // 최종 응답
     res.status(200).json({ message: 'User deleted successfully' });
@@ -111,20 +112,5 @@ router.delete('/deleteI',isLoggedIn, async (req, res) => {
     res.status(500).json({ err: err.toString() });
   }
 });
-
-// // 암호화 된 토큰을 복호화하고 user_id와 name 값 추출
-// router.get('/decryptToken', (req, res) => {
-//   const encryptedToken = req.headers.authorization.replace('Bearer','');
-//   const decodedToken = decryptToken(encryptedToken);
-//   console.log(encryptedToken)
-//   console.log(encryptedToken,decoded)
-// console.log(decodedToken);
-//   if (decodedToken) {
-//     const { user_id, name } = decodedToken;
-//     res.status(200).json({ user_id, name });
-//   } else {
-//     res.status(401).json({ message: 'Invalid token' });
-//   }
-// });
 
 module.exports = router;
