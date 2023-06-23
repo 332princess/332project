@@ -12,7 +12,6 @@ export const Container = styled.div`
   font-size: 20px;
   font-weight: 500;
 
-  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -23,25 +22,17 @@ export const Container = styled.div`
   &::-webkit-scrollbar-thumb {
     border-radius: 2px;
     background: #ccc;
+    display: none;
   }
   @media (min-width: 880px) {
     margin-top: 10%;
-    overflow-y: auto;
-    &::-webkit-scrollbar {
-      width: 4px;
-    }
-    &::-webkit-scrollbar-thumb {
-      border-radius: 2px;
-      background: #ccc;
-      display: none;
-    }
   }
   @media (max-width: 880px) {
-    background-color: #000;
+    background-color: #bbf;
     width: 100%;
   }
   @media (max-width: 740px) {
-    background-color: orange;
+    background-color: #000;
   }
 `;
 
@@ -51,11 +42,12 @@ export const WhiteBox = styled.div`
   align-items: center;
   border-radius: 10px;
   background-color: white;
-  padding: 10px;
+  margin: 10px;
   width: 700px;
   height: 60vh;
-  .non_scroll {
+  &.non_scroll {
     overflow: hidden;
+    position: sticky;
   }
   overflow-y: auto;
   &::-webkit-scrollbar {
@@ -70,11 +62,15 @@ export const WhiteBox = styled.div`
     margin-bottom: 10%;
   }
   @media (max-width: 880px) {
-    background-color: #000;
+    background-color: #bbf;
     width: 100%;
   }
   @media (max-width: 740px) {
-    background-color: orange;
+    background-color: #000;
+    &.scroll {
+      height: 20vh;
+      position: sticky;
+    }
   }
 `;
 export const VideoContainer = styled.div`
@@ -105,6 +101,7 @@ export const VideoBox = styled.div`
   }
   @media (max-width: 880px) {
     width: 50vw;
+    color: #000;
   }
   @media (max-width: 740px) {
   }
@@ -120,6 +117,15 @@ export const Bar = styled.div`
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
+  @media (min-width: 880px) {
+    margin-top: 10%;
+  }
+  @media (max-width: 880px) {
+    background-color: #000;
+  }
+  @media (max-width: 740px) {
+    background-color: #000;
+  }
 `;
 
 export const BarBtn = styled.button`

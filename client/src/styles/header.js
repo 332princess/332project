@@ -5,7 +5,6 @@ export const Container = styled.nav`
   background-color: #000;
   opacity: 90%;
   padding: 10px;
-  width: 100%;
   position: sticky;
   top: 0;
   left: 0;

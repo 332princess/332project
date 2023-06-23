@@ -5,15 +5,34 @@ export const Container = styled.div`
   width: 30%;
   height: 80%;
   left: 35%;
-  top: 10%;
-
+  top: 14%;
+  min-width: 500px;
   background: #ffffff;
   border-radius: 30px;
-
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  &.login {
+    justify-content: center;
+  }
+  @media (min-width: 880px) {
+    margin-bottom: 10%;
+    color: #ff6060;
+  }
+  @media (max-width: 1024px) {
+    left: 25%;
+  }
+  @media (max-width: 880px) {
+    color: #bbf;
+    width: 50vw;
+    left: 18%;
+  }
+  @media (max-width: 740px) {
+    background-color: #000;
+    color: #fff;
+    left: 5vw;
+    justify-content: center;
+  }
 `;
 
 export const Title = styled.div`
@@ -34,6 +53,17 @@ export const Box = styled.form`
   align-items: center;
   justify-content: center;
   gap: 3vh;
+
+  @media (min-width: 880px) {
+    margin-bottom: 10%;
+  }
+  @media (max-width: 880px) {
+    .register {
+      gap: 3vh;
+    }
+  }
+  @media (max-width: 740px) {
+  }
 `;
 
 export const SubmitBtn = styled.button`
@@ -44,6 +74,15 @@ export const SubmitBtn = styled.button`
 
   font-weight: 100;
   font-size: 35px;
+  @media (min-width: 880px) {
+  }
+  @media (max-width: 880px) {
+    background-color: #bbf;
+    color: #fff;
+  }
+  @media (max-width: 740px) {
+    background-color: #000;
+  }
 `;
 
 export const Input = styled.input`
@@ -64,7 +103,7 @@ export const Input = styled.input`
   }
   &.register {
     height: 5vh;
-    width: 14vw;
+    // width: 14vw;
     &.email {
       border-radius: 10px 0px 0px 10px;
     }
@@ -72,6 +111,14 @@ export const Input = styled.input`
       outline: none !important;
       box-shadow: 0 0 10px black;
     }
+  }
+  @media (min-width: 880px) {
+  }
+  @media (max-width: 880px) {
+  }
+  @media (max-width: 740px) {
+    background-color: #ddd;
+    color: #000;
   }
 `;
 
@@ -96,6 +143,13 @@ export const Find = styled.span`
     color: #ff6060;
     cursor: pointer;
   }
+  @media (min-width: 880px) {
+  }
+  @media (max-width: 880px) {
+  }
+  @media (max-width: 740px) {
+    color: #fff;
+  }
 `;
 export const InputBox = styled.div`
   display: flex;
@@ -104,5 +158,21 @@ export const InputBox = styled.div`
 
 export const CheckBtn = styled.button`
   border-radius: 0px 10px 10px 0px;
-  width: 4vw;
+  width: 100%;
+
+  @media (min-width: 880px) {
+  }
+  @media (max-width: 880px) {
+    background-color: #bbf;
+    color: #fff;
+    height: 5.3vh;
+  }
+  @media (max-width: 740px) {
+    background-color: #000;
+    color: #fff;
+    &:hover {
+      color: #ff6060;
+      cursor: pointer;
+    }
+  }
 `;

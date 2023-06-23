@@ -8,15 +8,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   background: #ff6060;
-  /* overflow: hidden; */
-  overflow-y: auto;
-  &::-webkit-scrollbar {
-    width: 4px;
+  @media (min-width: 880px) {
   }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 2px;
-    background: #ccc;
-    display: none;
+  @media (max-width: 880px) {
+    background-color: #bbf;
+    color: #fff;
+  }
+  @media (max-width: 740px) {
+    background-color: #000;
+    color: #fff;
   }
 }
 

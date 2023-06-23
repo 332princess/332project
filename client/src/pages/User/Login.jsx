@@ -63,7 +63,7 @@ const Login = () => {
   };
 
   return (
-    <Container>
+    <Container className="login">
       <Title>로그인</Title>
       <Box style={{ gap: '40px' }}>
         <Input

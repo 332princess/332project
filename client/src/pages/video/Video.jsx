@@ -122,7 +122,7 @@ const Video = () => {
           handlePause={handlePause}
         />
       </WhiteBox>
-      <WhiteBox>
+      <WhiteBox className="scroll">
         <VideoList
           videos={videos}
           currentVideo={currentVideo}
