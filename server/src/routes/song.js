@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     const params = {
-      videoId: params.video_id,
+      videoId: req.query.videId,
     };
     logger.info(`(post.list.params) ${JSON.stringify(params)}`);
 
