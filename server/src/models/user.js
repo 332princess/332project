@@ -38,13 +38,7 @@ module.exports = class Users extends Sequelize.Model {
 
   //테이블 생성
 
-  //   static associate(db) {
-  //     db.User.belongsTo(db.Department, { foreignKey: { name: 'departmentId', onDelete: 'SET NULL', as: 'Department' } });
-  //     db.User.hasMany(db.Board, { foreignKey: { name: 'userId', onDelete: 'SET NULL', as: 'Boards' } });
-  //     db.User.hasMany(db.Post, { foreignKey: { name: 'userId', onDelete: 'SET NULL', as: 'Posts' } });
-  //     db.User.hasMany(db.Comment, { foreignKey: { name: 'userId', onDelete: 'SET NULL', as: 'Comments' } });
-  //   }
-  //관계설정을 나중에 해주자구
+
   static associate(db) {
     db.User.hasMany(db.PlayList, {
       foreignKey: { name: 'userId' },
@@ -57,6 +51,5 @@ module.exports = class Users extends Sequelize.Model {
       as: 'Likes',
     });
   }
-  // static includeAttributes = ['id', 'name', 'role', 'email', 'phone'];
-  //static includeAttributes는 User 클래스의 정적 속성으로, 조회 작업에서 포함할 속성들을 배열로 정의한 것입니다.
+ 
 };

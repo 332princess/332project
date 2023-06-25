@@ -36,11 +36,7 @@ const dao = {
       User.findAndCountAll({
         ...setQuery,
         attributes: { exclude: ['password'] },
-        // include: [{
-        //   model: Department,
-        //   as: 'Department',
-        // },
-        // ],
+
       })
         .then((selectedList) => {
           resolve(selectedList);
@@ -59,34 +55,6 @@ const dao = {
         throw err;
       });
   },
-  // update(params) {
-  //   return new Promise((resolve, reject) => {
-  //     // User.findAll
-  //     User.update(params, {
-  //       where: { id: params.id },
-  //     })
-  //       .then(([updated]) => {
-  //         resolve({ updatedCount: updated });
-  //       })
-  //       .catch((err) => {
-  //         reject(err);
-  //       });
-  //   });
-  // },
-  // delete(params) {
-  //   return new Promise((resolve, reject) => {
-  //     // User.findAll
-  //     User.destroy({
-  //       where: { id: params.id },
-  //     })
-  //       .then((deleted) => {
-  //         resolve({ deletedCount: deleted });
-  //       })
-  //       .catch((err) => {
-  //         reject(err);
-  //       });
-  //   });
-  // },
 
   deleteUser(params) {
     return new Promise((resolve, reject) => {

@@ -24,36 +24,7 @@ const service = {
       return Promise.reject(err);
     }
   },
-  // // user 입력
-  // async reg(params) {
-  //   let inserted = null;
-  //   // 1. 비밀번호 암호화
-  //   let hashPassword = null;
-  //   try {
-  //     hashPassword = await bcryptUtil.makePasswordHash(params.password);
-  //     logger.debug(`(userService.makePassword) ${hashPassword}`);
-  //   } catch (err) {
-  //     logger.error(`(userService.makePassword) ${err.toString()}`);
-  //     return Promise.reject(err);
-  //   }
 
-  //   // 2. 사용자 등록 처리
-  //   const newParams = {
-  //     ...params,
-  //     password: hashPassword,
-  //   };
-
-  //   try {
-  //     inserted = await userDao.insert(newParams);
-  //     logger.debug(`(userService.reg) ${JSON.stringify(inserted)}`);
-  //   } catch (err) {
-  //     logger.error(`(userService.reg) ${err.toString()}`);
-  //     return Promise.reject(err);
-  //   }
-
-  //   // 결과값 리턴
-  //   return Promise.resolve(inserted);
-  // },
 
   // selectList
   async list(params) {
@@ -70,43 +41,6 @@ const service = {
     return Promise.resolve(result);
   },
 
-//   async login(params) {
-//     // 1. 사용자 조회
-//     let user = null;
-//     try {
-//       user = await userDao.selectUser(params);
-//       logger.debug(`(userService.login) ${JSON.stringify(user)}`);
-
-//       // 해당 사용자가 없는 경우 튕겨냄
-//       if (!user) {
-//         const err = new Error('Incorrect userid or password');
-//         logger.error(err.toString());
-//         return Promise.reject(err);
-//       }
-//     } catch (err) {
-//       logger.error(`(userService.login) ${err.toString()}`);
-//       return Promise.reject(err);
-//     }
-
-//     // 2. 비밀번호 비교
-//     try {
-//       const checkPassword = await hashUtil.checkPasswordHash(params.password, user.password);
-//       logger.debug(`(userService.checkPassword) ${checkPassword}`);
-
-//       // 비밀번호 틀린 경우 튕겨냄
-//       if (!checkPassword) {
-//         const err = new Error('Incorrect userid or password');
-//         logger.error(err.toString());
-//         return Promise.reject(err);
-//       }
-//     } catch (err) {
-//       logger.error(`(userService.checkPassword) ${err.toString()}`);
-//       return Promise.reject(err);
-//     }
-
-//     return Promise.resolve(user);
-//   },
-
       //   상세조회
   async getUser(params) {
     return new Promise((resolve, reject) => {
@@ -120,6 +54,20 @@ const service = {
     })
 
   },
+
+  //상세삭제
+  async deleteUser(params) {
+    return new Promise((resolve, reject) => {
+     userDao.deleteUser(params)
+       .then((result) => {
+         resolve(result);
+       })
+       .catch((err) => {
+         logger.error(`(userService.deleteUser) ${err.toString()}`);
+         reject(err);
+       });
+   });
+ },
 
 async login(params) {
   try {
@@ -143,18 +91,7 @@ async login(params) {
 },
 
 
-async deleteUser(params) {
-   return new Promise((resolve, reject) => {
-    userDao.deleteUser(params)
-      .then((result) => {
-        resolve(result);
-      })
-      .catch((err) => {
-        logger.error(`(userService.deleteUser) ${err.toString()}`);
-        reject(err);
-      });
-  });
-}
+
 
 };
 

@@ -21,6 +21,7 @@ const tokenUtil = {
   },
 
   verifyToken(token) {
+    
     try {
       const decoded = jwt.verify(token, secretKey, options);
       console.log(decoded);

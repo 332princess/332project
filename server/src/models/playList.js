@@ -4,17 +4,7 @@ module.exports = class PlayList extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        // title: {
-        //   type: Sequelize.STRING(255),
-        //   allowNull: false,
-        // },
-        // singer: {
-        //   type: Sequelize.STRING(50),
-        //   allowNull: false,
-        // },
-        // listSum: {
-        //   type: Sequelize.INTEGER,
-        // },
+
       },
       {
         sequelize,
