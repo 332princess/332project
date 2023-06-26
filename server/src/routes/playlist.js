@@ -34,17 +34,24 @@ router.post('/', isLoggedIn,async (req, res) => {
   }
 });
 
+
 // 리스트 조회
-router.get('/', async (req, res) => {
+router.get('/like',isLoggedIn, async (req, res) => {
+  console.log(req.headers)
+  const token = req.headers.authorization.replace('Bearer ', '');
+   const decoded = tokenUtil.verifyToken(token)
+   console.log(decoded)
+   const userId = decoded.user_id;
+
   try {
     const params = {
-      title: req.query.title,
-      singer: req.query.singer,
-      userIds: req.query.userIds ? req.query.userIds.split(',') : null,
+      user_id: userId,
+      songId: req.query.songId
     };
+    console.log(params)
     logger.info(`(post.list.params) ${JSON.stringify(params)}`);
 
-    const result = await playlistService.list(params);
+    const result = await likeService.list(params);
     logger.info(`(post.list.result) ${JSON.stringify(result)}`);
 
     // 최종 응답
@@ -54,43 +61,63 @@ router.get('/', async (req, res) => {
   }
 });
 
-// 상세정보 조회
-router.get('/:id', async (req, res) => {
-  try {
-    const params = {
-      id: req.params.id,
-    };
-    logger.info(`(post.info.params) ${JSON.stringify(params)}`);
 
-    const result = await playlistService.info(params);
-    logger.info(`(post.info.result) ${JSON.stringify(result)}`);
+// // 리스트 조회
+// router.get('/', async (req, res) => {
+//   try {
+//     const params = {
+//       userId: req.query.userId,
+//       songId: req.query.songId,
+//     };
+//     logger.info(`(post.list.params) ${JSON.stringify(params)}`);
 
-    // 최종 응답
-    res.status(200).json(result);
-  } catch (err) {
-    res.status(500).json({ err: err.toString() });
-  }
-});
+//     const result = await playlistService.list(params);
+//     logger.info(`(post.list.result) ${JSON.stringify(result)}`);
 
-// 수정
-router.put('/:id', async (req, res) => {
-  try {
-    const params = {
-      id: req.params.id,
-      title: req.body.title,
-      singer: req.body.singer,
-    };
-    logger.info(`(post.update.params) ${JSON.stringify(params)}`);
+//     // 최종 응답
+//     res.status(200).json(result);
+//   } catch (err) {
+//     res.status(500).json({ err: err.toString() });
+//   }
+// });
 
-    const result = await playlistService.edit(params);
-    logger.info(`(post.update.result) ${JSON.stringify(result)}`);
+// // 상세정보 조회
+// router.get('/:id', async (req, res) => {
+//   try {
+//     const params = {
+//       id: req.params.id,
+//     };
+//     logger.info(`(post.info.params) ${JSON.stringify(params)}`);
 
-    // 최종 응답
-    res.status(200).json(result);
-  } catch (err) {
-    res.status(500).json({ err: err.toString() });
-  }
-});
+//     const result = await playlistService.info(params);
+//     logger.info(`(post.info.result) ${JSON.stringify(result)}`);
+
+//     // 최종 응답
+//     res.status(200).json(result);
+//   } catch (err) {
+//     res.status(500).json({ err: err.toString() });
+//   }
+// });
+
+// // 수정
+// router.put('/:id', async (req, res) => {
+//   try {
+//     const params = {
+//       id: req.params.id,
+//       title: req.body.title,
+//       singer: req.body.singer,
+//     };
+//     logger.info(`(post.update.params) ${JSON.stringify(params)}`);
+
+//     const result = await playlistService.edit(params);
+//     logger.info(`(post.update.result) ${JSON.stringify(result)}`);
+
+//     // 최종 응답
+//     res.status(200).json(result);
+//   } catch (err) {
+//     res.status(500).json({ err: err.toString() });
+//   }
+// });
 
 // 삭제
 router.delete('/:id', async (req, res) => {

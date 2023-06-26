@@ -12,7 +12,6 @@ router.post('/', async (req, res) => {
     const params = {
       user_id: req.params.user_id,
       name: req.body.name,
-      // userid: req.body.userid,
       password: req.body.password,
       email: req.body.email,
       gender: req.body.gender,

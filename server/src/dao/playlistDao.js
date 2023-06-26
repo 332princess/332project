@@ -56,23 +56,18 @@ const dao = {
         });
     });
   },
+
+  
   selectInfo(params) {
     return new Promise((resolve, reject) => {
       // User.findAll
-      PlayList.findAll({
+      Like.findByPk(params.id, {
         include: [
           {
             model: User,
             as: 'User',
           },
-          {
-            model: Song,
-            as: 'Song',
-          },
         ],
-        where:{
-          userId : params.id,
-        }
       })
         .then((selectedInfo) => {
           resolve(selectedInfo);
@@ -82,6 +77,46 @@ const dao = {
         });
     });
   },
+  update(params) {
+    return new Promise((resolve, reject) => {
+      // Like.findAll
+      Like.update(params, {
+        where: { id: params.id },
+      })
+        .then(([updated]) => {
+          resolve({ updatedCount: updated });
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  },
+  // selectInfo(params) {
+  //   return new Promise((resolve, reject) => {
+  //     // User.findAll
+  //     PlayList.findAll({
+  //       include: [
+  //         {
+  //           model: User,
+  //           as: 'User',
+  //         },
+  //         {
+  //           model: Song,
+  //           as: 'Song',
+  //         },
+  //       ],
+  //       where:{
+  //         userId : params.id,
+  //       }
+  //     })
+  //       .then((selectedInfo) => {
+  //         resolve(selectedInfo);
+  //       })
+  //       .catch((err) => {
+  //         reject(err);
+  //       });
+  //   });
+  // },
   update(params) {
     return new Promise((resolve, reject) => {
       // PlayList.findAll

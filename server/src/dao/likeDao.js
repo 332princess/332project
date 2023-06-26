@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const { Like, User } = require('../models/index');
+const { Like, User, Song } = require('../models/index');
 
 const dao = {
   insert(params) {
@@ -15,41 +15,50 @@ const dao = {
         });
     });
   },
+
+  
   selectList(params) {
-    // where 검색 조건
     const setQuery = {};
-    if (params.name) {
-      setQuery.where = {
-        ...setQuery.where,
-        name: { [Op.like]: `%${params.name}%` }, // like검색
-      };
+  
+    if (params.user_id) {
+      setQuery.include = [{
+        model: User,
+        where: { user_id: params.user_id },
+        attributes: [] // Exclude user attributes from the result
+      }];
     }
-    if (params.userId) {
-      setQuery.where = {
-        ...setQuery.where,
-        userId: params.userId, // like검색
-      };
-    }
-    setQuery.order = [['id', 'DESC']];
+  
+    setQuery.order = [['user_id', 'ASC']];
+  
     return new Promise((resolve, reject) => {
       Like.findAndCountAll({
         ...setQuery,
-        attributes: { exclude: ['password'] },
-        include: [
-          {
-            model: User,
-            as: 'User',
-          },
-        ],
+        include: [{
+          model: Song,
+          attributes: ['id', 'video_id'] // Include song attributes if needed
+        }]
       })
         .then((selectedList) => {
-          resolve(selectedList);
+          const result = selectedList.rows.map((like) => {
+            const { userId, songId, Song } = like.get();
+            return {
+              userId,
+              songId,
+              Song: {
+                id: Song.id,
+                video_id: Song.video_id
+              }
+            };
+          });
+          resolve(result);
         })
         .catch((err) => {
           reject(err);
         });
     });
   },
+  
+
   selectInfo(params) {
     return new Promise((resolve, reject) => {
       // User.findAll
@@ -112,5 +121,74 @@ const dao = {
     });
   },
 };
+
+
+//   // where 검색 조건
+  //   const setQuery = {};
+  //   if (params.userId) {
+  //     setQuery.where = {
+  //       ...setQuery.where,
+  //       userId: { [Op.like]: `%${params.userId}%` }, // like검색
+  //     };
+  //   }
+  //   if (params.userId) {
+  //     setQuery.where = {
+  //       ...setQuery.where,
+  //       userId: params.userId, // like검색
+  //     };
+  //   }
+  //   setQuery.order = [['like', 'DESC']];
+  //   return new Promise((resolve, reject) => {
+  //     Like.findAll({
+  //       ...setQuery,
+  //       attributes: { exclude: ['password'] },
+  //       include: [
+  //         {
+  //           model: User,
+  //           as: 'User',
+  //         },
+  //       ],
+  //     })
+  //       .then((selectedList) => {
+  //         resolve(selectedList);
+  //       })
+  //       .catch((err) => {
+  //         reject(err);
+  //       });
+  //   });
+  // },
+  // 내정보 조회
+   
+  // async selectList(params) {
+  //   const user = await User.findOne({
+  //     where: { user_id: params.user_id },
+  //     // limit: 30,
+  //   });
+  //   const like = await Like.findAll({
+  //     where : {user_id : user.user_id}, attributes: ["like"],
+  //     order: [["like", "DESC"]],
+  //   })
+
+  //   // const userSkin = await UserSkin.findOne({
+  //   //   where: { active_skin: true, user_id: userInfo.user_id },
+  //   //   attributes: ["skin_id"],
+  //   // });
+
+  //   // let skinName = null;
+  //   // if (userSkin) {
+  //   //   const skin = await Skin.findOne({
+  //   //     where: { skin_id: userSkin.skin_id },
+  //   //     attributes: ["skin"],
+  //   //   });
+  //   //   skinName = skin ? skin.skin : null;
+  //   // }
+
+  //   return {
+  //     like,
+  //     // userScores,
+  //     // userSkin,
+  //     // skinName,
+  //   };
+  // },  
 
 module.exports = dao;
