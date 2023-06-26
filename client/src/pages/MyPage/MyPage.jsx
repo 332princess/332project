@@ -1,14 +1,13 @@
 import React from 'react';
-import { MyPage } from '../../components/MyPage';
-import Side from './Side';
-import { Container } from '../../components/Detail';
+import Side from '../../components/mypage/Side';
+import { Page, Container } from '../../styles/mypage';
 
 const MyPages = () => {
   return (
-    <MyPage>
+    <Page>
       <Side />
       <Container>원하는 메뉴를 선택해 주세요</Container>
-    </MyPage>
+    </Page>
   );
 };
 export default MyPages;

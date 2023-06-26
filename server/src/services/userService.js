@@ -144,7 +144,7 @@ async login(params) {
 
 
 async deleteUser(params) {
-  return new Promise((resolve, reject) => {
+   return new Promise((resolve, reject) => {
     userDao.deleteUser(params)
       .then((result) => {
         resolve(result);

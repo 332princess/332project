@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const { PlayList, User } = require('../models/index');
+const { PlayList, User, Song } = require('../models/index');
 
 const dao = {
   insert(params) {
@@ -34,11 +34,17 @@ const dao = {
     return new Promise((resolve, reject) => {
       PlayList.findAndCountAll({
         ...setQuery,
-        attributes: { exclude: ['password'] },
+        attributes: { exclude: ['id', 'createdAt', 'updatedAt'] },
         include: [
+            // {
+            //   model: User,
+            //   as: 'User',
+            //   attributes: ['user_id'],
+            // },
           {
-            model: User,
-            as: 'User',
+            model: Song,
+            as: 'Song',
+            attributes: ['videoId'],
           },
         ],
       })
@@ -53,13 +59,20 @@ const dao = {
   selectInfo(params) {
     return new Promise((resolve, reject) => {
       // User.findAll
-      PlayList.findByPk(params.id, {
+      PlayList.findAll({
         include: [
           {
             model: User,
             as: 'User',
           },
+          {
+            model: Song,
+            as: 'Song',
+          },
         ],
+        where:{
+          userId : params.id,
+        }
       })
         .then((selectedInfo) => {
           resolve(selectedInfo);

@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { PUBLIC_ROUTE_ARR, PRIVATE_ROUTE_ARR } from './Route';
-import { PrivateRoute } from './components/util/CustomRoute';
-import Home from './pages/HomePage';
-import Navbar from './pages/Navbar';
+import { PUBLIC_ROUTE_ARR, PRIVATE_ROUTE_ARR } from './routes/Route';
+import { PrivateRoute } from './util/CustomRoute';
+import Home from './pages/home/HomePage';
+import Navbar from './components/header/Navbar';
 
 function App() {
   return (

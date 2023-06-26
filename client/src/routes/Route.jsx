@@ -1,14 +1,14 @@
-import Register from './pages/User/Register';
-import Login from './pages/User/Login';
-import MyPage from './pages/MyPage/MyPage';
-import Like from './pages/MyPage/Like';
-import Info from './pages/MyPage/Info';
-import PlayList from './pages/MyPage/PlayList';
-import Running from './pages/MyPage/Chatting';
-import Home from './pages/HomePage';
-import ChatList from './pages/MyPage/Chatting';
-import Chat from './pages/Chatting';
-import Video from './pages/SongPage';
+import Register from '../pages/User/Register';
+import Login from '../pages/User/Login';
+import MyPage from '../pages/MyPage/MyPage';
+import Like from '../pages/MyPage/Like';
+import Info from '../pages/MyPage/Info';
+import PlayList from '../pages/MyPage/PlayList';
+import Running from '../pages/MyPage/Chatting';
+import Home from '../pages/home/HomePage';
+import ChatList from '../pages/MyPage/Chatting';
+import Chat from '../pages/chat/Chatting';
+import Video from '../pages/video/Video';
 
 export const ROUTE = {
   HOME: {
@@ -32,28 +32,28 @@ export const ROUTE = {
     element: Video,
   },
   MYPAGE: {
-    path: '/mypage',
-    link: '/mypage',
+    path: '/MyPage',
+    link: '/MyPage',
     element: MyPage,
   },
   LIKE: {
-    path: '/mypage/like',
-    link: '/mypage/like',
+    path: '/MyPage/like',
+    link: '/MyPage/like',
     element: Like,
   },
   INFO: {
-    path: '/mypage/info',
-    link: '/mypage/info',
+    path: '/MyPage/info',
+    link: '/MyPage/info',
     element: Info,
   },
   PLAYLIST: {
-    path: '/mypage/playlist',
-    link: '/mypage/playlist',
+    path: '/MyPage/playlist',
+    link: '/MyPage/playlist',
     element: PlayList,
   },
   RUNNING: {
-    path: '/mypage/running',
-    link: '/mypage/running',
+    path: '/MyPage/running',
+    link: '/MyPage/running',
     element: Running,
   },
 };
@@ -86,32 +86,32 @@ export const PRIVATE_ROUTE = {
     element: Chat,
   },
   MYPAGE: {
-    path: '/mypage',
-    link: '/mypage',
+    path: '/MyPage',
+    link: '/MyPage',
     element: MyPage,
   },
   LIKE: {
     name: '좋아요',
-    path: '/mypage/like',
-    link: '/mypage/like',
+    path: '/MyPage/like',
+    link: '/MyPage/like',
     element: Like,
   },
   PLAYLIST: {
     name: '플레이리스트',
-    path: '/mypage/playlist',
-    link: '/mypage/playlist',
+    path: '/MyPage/playlist',
+    link: '/MyPage/playlist',
     element: PlayList,
   },
   CHATLIST: {
     name: '내 채팅방',
-    path: '/mypage/chatting',
-    link: '/mypage/chatting',
+    path: '/MyPage/chatting',
+    link: '/MyPage/chatting',
     element: ChatList,
   },
   INFO: {
     name: '내 정보 보기',
-    path: '/mypage/info',
-    link: '/mypage/info',
+    path: '/MyPage/info',
+    link: '/MyPage/info',
     element: Info,
   },
 };

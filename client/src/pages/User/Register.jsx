@@ -1,9 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { ROUTE } from '../../Route';
-import { Container, Title, Box, SubmitBtn } from '../../components/UserStyle';
-import { CheckBtn, Input, InputBox } from '../../components/Register';
+import { ROUTE } from '../../routes/Route';
+import {
+  Container,
+  Title,
+  Box,
+  SubmitBtn,
+  CheckBtn,
+  Input,
+  InputBox,
+} from '../../styles/user';
+import {
+  validateNickname,
+  validateEmail,
+  validatePassword,
+} from '../../util/usefulFunction';
+import { register } from '../../services/user/Register';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -30,8 +43,6 @@ const Register = () => {
     }
   };
 
-  console.log(emailList);
-
   const nameChange = ({ target: { value } }) => setName(value);
   const emailChange = ({ target: { value } }) => setEmail(value);
   const passwordChange = ({ target: { value } }) => setPassword(value);
@@ -41,37 +52,36 @@ const Register = () => {
     e.preventDefault();
     await new Promise((res) => setTimeout(res, 1000));
     if (!name || !email || !password || !password2) {
-      if (!name && !email && !password && !password2) {
-        alert('정보를 입력해주세요!');
-      } else {
-        let reg =
-          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if (!name) alert('이름을 입력해주세요');
-        else if (!password) alert('비밀번호를 입력해주세요!');
-        else if (!password2) alert('비밀번호를 확인해주세요!');
-        else if (!email) {
-          alert('이메일을 입력해주세요');
-        } else {
-          if (!reg.test(email.toLowerCase())) alert('잘못된 이메일 입니다!');
-          else alert('중복 확인을 해주세요!');
-        }
-      }
-    } else if (password.length < 8)
-      alert('8자의 이상의 비밀번호를 사용하셔야 합니다.');
-    else if (password !== password2) alert('비밀번호를 재확인해주세요!');
-    else {
-      try {
-        await axios.post('http://localhost:8081/users', {
-          name,
-          email,
-          password,
-        });
-        alert('회원가입이 완료되었습니다.');
-        navigate(ROUTE.LOGIN.path);
-      } catch (error) {
-        console.error('Failed to register:', error);
-        alert('회원가입에 실패하였습니다.');
-      }
+      alert('정보를 입력해주세요!');
+      return;
+    }
+    if (!validateNickname(name)) {
+      alert('이름을 입력해주세요');
+      return;
+    }
+    if (!validateEmail(email)) {
+      alert('유효한 이메일을 입력해주세요');
+      return;
+    }
+    if (emailList.includes(email)) {
+      alert('중복된 이메일입니다.');
+      return;
+    }
+    if (!validatePassword(password)) {
+      alert('8자 이상의 비밀번호를 입력해주세요!');
+      return;
+    }
+    if (password !== password2) {
+      alert('비밀번호를 재확인해주세요!');
+      return;
+    }
+    try {
+      await register(name, email, password);
+      alert('회원가입이 완료되었습니다.');
+      navigate(ROUTE.LOGIN.path);
+    } catch (error) {
+      console.error('Failed to register:', error);
+      alert('회원가입에 실패하였습니다.');
     }
   };
 
@@ -88,44 +98,41 @@ const Register = () => {
     <Container>
       <Title>회원가입</Title>
       <Box style={{ top: '27%' }}>
-        <InputBox>
-          <Input
-            type="text"
-            name="name"
-            value={name}
-            onChange={nameChange}
-            placeholder=" Please Enter Your Name"
-          />
-        </InputBox>
+        <Input
+          type="text"
+          name="name"
+          value={name}
+          onChange={nameChange}
+          className="register"
+          placeholder=" Please Enter Your Name"
+        />
         <InputBox>
           <Input
             type="text"
             name="email"
             value={email}
             onChange={emailChange}
-            className="email"
+            className="register email"
             placeholder=" Please Enter Your Email"
           />
           <CheckBtn onClick={handleCheckEmail}>확인</CheckBtn>
         </InputBox>
-        <InputBox>
-          <Input
-            type="password"
-            name="password"
-            value={password}
-            onChange={passwordChange}
-            placeholder=" Please Enter Your Password"
-          />
-        </InputBox>
-        <InputBox>
-          <Input
-            type="password"
-            name="confirmPassword"
-            value={password2}
-            onChange={password2Change}
-            placeholder=" Please Enter Your Password Again"
-          />
-        </InputBox>
+        <Input
+          type="password"
+          name="password"
+          value={password}
+          onChange={passwordChange}
+          className="register"
+          placeholder=" Please Enter Your Password"
+        />
+        <Input
+          type="password"
+          name="confirmPassword"
+          value={password2}
+          onChange={password2Change}
+          className="register"
+          placeholder=" Please Enter Your Password Again"
+        />
       </Box>
       <SubmitBtn type="submit" onClick={handleSubmit}>
         Submit

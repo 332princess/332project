@@ -1,29 +1,28 @@
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
-const secretKey =
-  '24432646294A404E635166546A576E5A7234753778214125442A472D4B615064';
+const secretKey = process.env.JWT_SECRET_KEY;
 const options = {
   expiresIn: '9000h', // 만료시간
 };
 
 const tokenUtil = {
   // 토큰 생성
-  makeToken(user) {
+  makeToken(param) {
     const payload = {
-      id: user.id,
-      user_id: user.user_id,
-      email: user.email,
-      name: user.name,
-      gender: user.gender,
+      id: param.id,
+      user_id: param.user_id,
+      email: param.email,
     };
 
-    const token = jwt.sign(payload, secretKey);
+    const token = jwt.sign(payload, secretKey, options);
 
     return token;
   },
+
   verifyToken(token) {
     try {
-      const decoded = jwt.verify(token, secretKey);
+      const decoded = jwt.verify(token, secretKey, options);
       console.log(decoded);
 
       return decoded;
@@ -31,15 +30,6 @@ const tokenUtil = {
       return null;
     }
   },
-  // verifyToken(token) {
-  //   try {
-  //     const decoded = jwt.verify(token, secretKey);
-  //     const id = decoded.id;
-  //     return id;
-  //   } catch (err) {
-  //     return null;
-  //   }
-  // },
 };
 
 module.exports = tokenUtil;

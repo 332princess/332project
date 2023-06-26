@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Cookies } from 'react-cookie';
-import { Box, Container, SubmitBtn, Title } from '../../components/UserStyle';
-import { Find, FindBox, Input } from '../../components/Login';
 import {
-  validateEmail,
-  validatePassword,
-} from '../../components/util/usefulFunction';
+  Box,
+  Container,
+  SubmitBtn,
+  Title,
+  Find,
+  FindBox,
+  Input,
+} from '../../styles/user';
+import { validateEmail, validatePassword } from '../../util/usefulFunction';
+import { login } from '../../services/user/Login';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -27,31 +32,26 @@ const Login = () => {
       alert('이메일과 비밀번호를 입력해주세요!');
       return;
     }
-
     if (!validateEmail(email)) {
       alert('유효한 이메일 주소를 입력해주세요!');
       return;
     }
-
     if (!validatePassword(password)) {
       alert('비밀번호는 최소 8자 이상이어야 합니다!');
       return;
     }
 
     try {
-      // 로그인 요청을 보내고 응답을 받아옴
-      const response = await axios.post('http://localhost:8081/logins', {
-        email,
-        password,
-      });
-      if (response.data.success) {
-        // 로그인 성공
-        const { token } = response.data;
+      const response = await login(email, password);
+      if (response.success) {
+        const { token } = response;
+        console.log(token);
         const cookies = new Cookies();
         cookies.set('token', token, { path: '/' });
+        localStorage.setItem('token', token); // 토큰을 로컬 스토리지에 저장
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         alert('로그인 성공!');
-        window.location.href = '/'; // 페이지 새로고침 및 리다이렉트
+        window.location.href = '/';
       } else {
         // 로그인 실패
         alert(response.data.message);
@@ -71,6 +71,7 @@ const Login = () => {
           name="id"
           onChange={handleChange}
           placeholder="please enter your id"
+          className="login"
           style={{ borderRadius: '10px' }}
         />
         <Input
@@ -78,6 +79,7 @@ const Login = () => {
           name="password"
           onChange={handleChange}
           placeholder="please enter your password"
+          className="login"
           style={{ borderRadius: '10px' }}
         />
       </Box>

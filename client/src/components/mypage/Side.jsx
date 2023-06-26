@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Title, Box, URLs, Logo } from '../../components/SideBar';
-import { PRIVATE_ROUTE_ARR } from '../../Route';
+import { Container, Title, Box, URLs, Logo } from '../../styles/sidebar';
+import { PRIVATE_ROUTE_ARR } from '../../routes/Route';
 
 const Side = () => {
   return (

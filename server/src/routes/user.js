@@ -1,8 +1,10 @@
 const express = require('express');
-
+const tokenUtil = require('../lib/tokenUtil');
 const router = express.Router();
 const logger = require('../lib/logger');
 const userService = require('../services/userService');
+// const decryptToken = require('../lib/decryptToken');
+const { isLoggedIn } = require('../lib/middleware');
 
 // 등록
 router.post('/', async (req, res) => {
@@ -61,7 +63,7 @@ router.get('/:user_id', async (req, res) => {
   try {
     const params = {
       user_id: req.params.user_id,
-      user_id: req.params.user_id,
+      token: req.headers.token,
     };
     logger.info(`(user.detail.params) ${JSON.stringify(params)}`);
 
@@ -83,16 +85,18 @@ router.get('/:user_id', async (req, res) => {
   }
 });
 
-router.delete('/:user_id', async (req, res) => {
+router.delete('/deleteI',isLoggedIn, async (req, res) => {
+  const token = req.headers.authorization.replace('Bearer ', '');
+  const decoded = tokenUtil.verifyToken(token);
+  const user_id = decoded.user_id;
   try {
     const params = {
-      user_id: req.params.user_id,
-      user_id: req.params.user_id,
+       user_id: user_id,
+    
     };
-    logger.info(`(user.delete.params) ${JSON.stringify(params)}`);
-
+   logger.info(`(user.deleteUser.params) ${JSON.stringify(params)}`);
     const result = await userService.deleteUser(params);
-    logger.info(`(user.delete.result) ${JSON.stringify(result)}`);
+    logger.info(`(user.deleteUser.result) ${JSON.stringify(result)}`);
 
     // 삭제된 사용자가 없을 경우 에러 처리
     if (result === 0) {
