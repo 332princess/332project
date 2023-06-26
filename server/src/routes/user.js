@@ -3,7 +3,6 @@ const tokenUtil = require('../lib/tokenUtil');
 const router = express.Router();
 const logger = require('../lib/logger');
 const userService = require('../services/userService');
-// const decryptToken = require('../lib/decryptToken');
 const { isLoggedIn } = require('../lib/middleware');
 
 // 등록
