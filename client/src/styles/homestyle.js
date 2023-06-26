@@ -67,6 +67,9 @@ export const ImageWithTextContainer = styled.div`
   align-items: center;
   height: 90%;
   justify-content: space-evenly;
+
+  @midea only all and (min-width: 1024px)
+  flex-top: 1;
 `;
 
 export const ImageWrapper = styled.div`

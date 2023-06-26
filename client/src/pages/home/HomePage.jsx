@@ -14,6 +14,24 @@ import {
 import { Routes, Route, Link } from 'react-router-dom';
 import { ROUTE, PRIVATE_ROUTE } from '../../routes/Route';
 
+const imageItems = [
+  {
+    icon: <Music />,
+    text: '음악',
+    link: ROUTE.VIDEO.path,
+  },
+  {
+    icon: <PlayList />,
+    text: '플레이리스트',
+    link: PRIVATE_ROUTE.PLAYLIST.path,
+  },
+  {
+    icon: <Chat />,
+    text: '채팅',
+    link: PRIVATE_ROUTE.CHAT.path,
+  },
+];
+
 const Home = () => {
   return (
     <Container>
@@ -21,24 +39,14 @@ const Home = () => {
       <H1>Made by 삼삼한 녀석 둘</H1>
       <WhiteBox>
         <ImageWithTextContainer>
-          <ImageWrapper>
-            <Link to={ROUTE.VIDEO.path}>
-              <Music />
-              <Text>음악</Text>
-            </Link>
-          </ImageWrapper>
-          <ImageWrapper>
-            <Link to={PRIVATE_ROUTE.PLAYLIST.path}>
-              <PlayList />
-              <Text>플레이리스트</Text>
-            </Link>
-          </ImageWrapper>
-          <ImageWrapper>
-            <Link to={PRIVATE_ROUTE.CHAT.path}>
-              <Chat />
-              <Text>채팅</Text>
-            </Link>
-          </ImageWrapper>
+          {imageItems.map((item, index) => (
+            <ImageWrapper key={index}>
+              <Link to={item.link}>
+                {item.icon}
+                <Text>{item.text}</Text>
+              </Link>
+            </ImageWrapper>
+          ))}
         </ImageWithTextContainer>
       </WhiteBox>
       <Routes>
