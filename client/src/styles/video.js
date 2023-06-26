@@ -73,6 +73,10 @@ export const WhiteBox = styled.div`
     }
   }
 `;
+export const YoutubeWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+`;
 export const VideoContainer = styled.div`
   display: flex;
   flex-direction: row;

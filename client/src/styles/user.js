@@ -6,7 +6,7 @@ export const Container = styled.div`
   height: 80%;
   left: 35%;
   top: 14%;
-  min-width: 500px;
+  min-width: 400px;
   background: #ffffff;
   border-radius: 30px;
   display: flex;
@@ -25,13 +25,13 @@ export const Container = styled.div`
   @media (max-width: 880px) {
     color: #bbf;
     width: 50vw;
-    left: 18%;
+    left: 25%;
   }
   @media (max-width: 740px) {
     background-color: #000;
     color: #fff;
-    left: 5vw;
-    justify-content: center;
+    left: 0vw;
+    width: 100%;
   }
 `;
 
@@ -82,6 +82,7 @@ export const SubmitBtn = styled.button`
   }
   @media (max-width: 740px) {
     background-color: #000;
+    width: 100%;
   }
 `;
 
@@ -93,7 +94,7 @@ export const Input = styled.input`
     border: none;
 
     height: 5vh;
-    width: 15vw;
+    width: 100%;
 
     &:focus {
       outline: none !important;
@@ -113,6 +114,7 @@ export const Input = styled.input`
     }
   }
   @media (min-width: 880px) {
+    width: 15vw;
   }
   @media (max-width: 880px) {
   }

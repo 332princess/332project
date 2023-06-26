@@ -11,7 +11,7 @@ import {
   ImageWithTextContainer,
   ImageWrapper,
 } from '../../styles/homestyle';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ROUTE, PRIVATE_ROUTE } from '../../routes/Route';
 
 const Home = () => {
@@ -41,11 +41,11 @@ const Home = () => {
           </ImageWrapper>
         </ImageWithTextContainer>
       </WhiteBox>
-      <Routes>
+      {/* <Routes>
         <Route path="/music" />
         <Route path="/playlist" />
         <Route path="/chat" />
-      </Routes>
+      </Routes> */}
     </Container>
   );
 };

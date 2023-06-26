@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, WhiteBox } from '../../styles/video';
+import { Container, WhiteBox, YoutubeWrapper } from '../../styles/video';
 import {
   addToLiked,
   addToPlayList,
@@ -115,12 +115,14 @@ const Video = () => {
   return (
     <Container>
       <WhiteBox className="non_scroll">
-        <CurrentVideo
-          currentVideo={currentVideo}
-          opts={opts}
-          handlePlay={handlePlay}
-          handlePause={handlePause}
-        />
+        <YoutubeWrapper>
+          <CurrentVideo
+            currentVideo={currentVideo}
+            opts={opts}
+            handlePlay={handlePlay}
+            handlePause={handlePause}
+          />
+        </YoutubeWrapper>
       </WhiteBox>
       <WhiteBox className="scroll">
         <VideoList
