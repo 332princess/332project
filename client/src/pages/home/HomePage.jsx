@@ -32,7 +32,6 @@ const Home = () => {
               </Wrapper>
             </Link>
           </ImageWrapper>
-          {/* <Middle> */}
           <ImageWrapper>
             <Middle>
               <Link to={PRIVATE_ROUTE.PLAYLIST.path}>
@@ -43,7 +42,6 @@ const Home = () => {
               </Link>
             </Middle>
           </ImageWrapper>
-          {/* </Middle> */}
           <ImageWrapper>
             <Link to={PRIVATE_ROUTE.CHAT.path}>
               <Wrapper>
