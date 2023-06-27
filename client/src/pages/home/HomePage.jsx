@@ -10,6 +10,9 @@ import {
   Text,
   ImageWithTextContainer,
   ImageWrapper,
+  Wrapper,
+  Middle,
+  Text1,
 } from '../../styles/homestyle';
 import { Link } from 'react-router-dom';
 import { ROUTE, PRIVATE_ROUTE } from '../../routes/Route';
@@ -23,29 +26,34 @@ const Home = () => {
         <ImageWithTextContainer>
           <ImageWrapper>
             <Link to={ROUTE.VIDEO.path}>
-              <Music />
-              <Text>음악</Text>
+              <Wrapper>
+                <Music />
+                <Text>음악</Text>
+              </Wrapper>
             </Link>
           </ImageWrapper>
+          {/* <Middle> */}
           <ImageWrapper>
-            <Link to={PRIVATE_ROUTE.PLAYLIST.path}>
-              <PlayList />
-              <Text>플레이리스트</Text>
-            </Link>
+            <Middle>
+              <Link to={PRIVATE_ROUTE.PLAYLIST.path}>
+                <Wrapper>
+                  <PlayList />
+                  <Text1>플레이리스트</Text1>
+                </Wrapper>
+              </Link>
+            </Middle>
           </ImageWrapper>
+          {/* </Middle> */}
           <ImageWrapper>
             <Link to={PRIVATE_ROUTE.CHAT.path}>
-              <Chat />
-              <Text>채팅</Text>
+              <Wrapper>
+                <Chat />
+                <Text>채팅</Text>
+              </Wrapper>
             </Link>
           </ImageWrapper>
         </ImageWithTextContainer>
       </WhiteBox>
-      {/* <Routes>
-        <Route path="/music" />
-        <Route path="/playlist" />
-        <Route path="/chat" />
-      </Routes> */}
     </Container>
   );
 };
