@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
   // const loginUserId = res.get('user_id' || null);
   try {
     const params = {
-      videoId: req.body.videoId
+      videoId: req.body.videoId,
     };
     console.log(params);
     logger.info(`(post.reg.params) ${JSON.stringify(params)}`);
@@ -22,7 +22,6 @@ router.post('/', async (req, res) => {
 
     //   res.status(500).json({ err: err.toString() });
     // }
-
 
     // 비즈니스 로직 호출
     const result = await songService.reg(params);
@@ -51,6 +50,5 @@ router.get('/', async (req, res) => {
     res.status(500).json({ err: err.toString() });
   }
 });
-
 
 module.exports = router;

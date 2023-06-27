@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 // const corsConfig = require('./config/corsConfig.json');
+const socketio = require('socket.io');
 
 const indexRouter = require('./src/routes/index');
 
@@ -17,7 +18,7 @@ const { NODE_ENV, PORT, LOGGER_LEVEL } = process.env;
 
 const app = express();
 logger.info('app start');
-
+// const io = socketio(server);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

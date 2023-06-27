@@ -9,13 +9,11 @@ const PlayList = require('./playlist');
 const db = {};
 db.sequelize = sequelize;
 
-
 db.User = User;
 db.Song = Song;
 db.PlayList = PlayList;
 db.Like = Like;
 db.Login = Login;
-
 
 Object.keys(db).forEach((modelName) => {
   if (db[modelName].init) {

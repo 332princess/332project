@@ -1,13 +1,19 @@
-const { Op } = require('sequelize');
-const { PlayList, User, Song } = require('../models/index');
+const { Op, Sequelize, QueryTypes } = require('sequelize');
+const { PlayList, User, Song, sequelize } = require('../models/index');
 
 const dao = {
   insert(params) {
     return new Promise((resolve, reject) => {
-      PlayList.create(params)
+      // PlayList.create(params)
+      //   .then((inserted) => {
+      //     const insertedResult = { ...inserted };
+      //     delete insertedResult.dataValues.password;
+      //     resolve(inserted);
+      //   })
+      const query = `insert into play_lists(user_id, song_id) select ${params.userId}, id from songs where video_id = '${params.videoId}'`;
+      sequelize
+        .query(query, { type: QueryTypes.INSERT })
         .then((inserted) => {
-          const insertedResult = { ...inserted };
-          delete insertedResult.dataValues.password;
           resolve(inserted);
         })
         .catch((err) => {
@@ -36,11 +42,11 @@ const dao = {
         ...setQuery,
         attributes: { exclude: ['id', 'createdAt', 'updatedAt'] },
         include: [
-            // {
-            //   model: User,
-            //   as: 'User',
-            //   attributes: ['user_id'],
-            // },
+          // {
+          //   model: User,
+          //   as: 'User',
+          //   attributes: ['user_id'],
+          // },
           {
             model: Song,
             as: 'Song',
@@ -70,9 +76,9 @@ const dao = {
             as: 'Song',
           },
         ],
-        where:{
-          userId : params.id,
-        }
+        where: {
+          userId: params.id,
+        },
       })
         .then((selectedInfo) => {
           resolve(selectedInfo);

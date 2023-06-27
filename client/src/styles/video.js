@@ -11,25 +11,43 @@ export const Container = styled.div`
   font-family: 'GangwonEdu_OTFBoldA';
   font-size: 20px;
   font-weight: 500;
-`;
-export const Box = styled.div`
-  position: relative;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  margin-top: 10%;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: #ccc;
+    display: none;
+  }
+  @media (min-width: 880px) {
+    margin-top: 10%;
+  }
+  @media (max-width: 880px) {
+    background-color: #bbf;
+    width: 100%;
+  }
+  @media (max-width: 740px) {
+    background-color: #000;
+  }
 `;
+
 export const WhiteBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
   background-color: white;
-  padding: 10px;
+  margin: 10px;
   width: 700px;
   height: 60vh;
-  .non_scroll {
+  &.non_scroll {
     overflow: hidden;
+    position: sticky;
   }
   overflow-y: auto;
   &::-webkit-scrollbar {
@@ -40,6 +58,24 @@ export const WhiteBox = styled.div`
     background: #ccc;
     display: none;
   }
+  @media (min-width: 880px) {
+    margin-bottom: 10%;
+  }
+  @media (max-width: 880px) {
+    background-color: #bbf;
+    width: 100%;
+  }
+  @media (max-width: 740px) {
+    background-color: #000;
+    &.scroll {
+      height: 20vh;
+      position: sticky;
+    }
+  }
+`;
+export const YoutubeWrapper = styled.div`
+  width: 100%;
+  height: 100%;
 `;
 export const VideoContainer = styled.div`
   display: flex;
@@ -65,6 +101,14 @@ export const VideoBox = styled.div`
     background: #ccc;
     display: none;
   }
+  @media (min-width: 880px) {
+  }
+  @media (max-width: 880px) {
+    width: 50vw;
+    color: #000;
+  }
+  @media (max-width: 740px) {
+  }
 `;
 export const Bar = styled.div`
   background-color: #000;
@@ -77,6 +121,15 @@ export const Bar = styled.div`
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
+  @media (min-width: 880px) {
+    margin-top: 10%;
+  }
+  @media (max-width: 880px) {
+    background-color: #000;
+  }
+  @media (max-width: 740px) {
+    background-color: #000;
+  }
 `;
 
 export const BarBtn = styled.button`
@@ -93,6 +146,13 @@ export const VideoDetail = styled.div`
 
 export const Title = styled.h3`
   text-align: center;
+  @media (min-width: 880px) {
+  }
+  @media (max-width: 880px) {
+    color: #fff;
+  }
+  @media (max-width: 740px) {
+  }
 `;
 
 export const Singer = styled.span``;
