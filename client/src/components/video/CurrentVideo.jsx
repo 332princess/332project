@@ -11,7 +11,7 @@ const CurrentVideo = ({ currentVideo, opts, handlePlay, handlePause }) => {
             <Title>{currentVideo.snippet.title}</Title>
           </VideoDetail>
           <YouTube
-            videoId={currentVideo.snippet.resourceId.videoId}
+            videoId={currentVideo.id}
             opts={opts}
             onPlay={handlePlay}
             onPause={handlePause}

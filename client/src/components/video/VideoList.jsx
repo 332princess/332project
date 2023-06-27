@@ -18,7 +18,7 @@ const VideoList = ({
   liked,
   handleVideoClick,
   handlePlayList,
-  handleLike,
+  // handleLike,
 }) => {
   return (
     <>
@@ -45,7 +45,7 @@ const VideoList = ({
               )}
             </BarBtn>
             <BarBtn>
-              {playList.find((item) => item.id === video.id) ? (
+              {playList.find((item) => item === video.id) ? (
                 <FontAwesomeIcon
                   icon={faMinus}
                   color="#ff6060"
@@ -62,11 +62,9 @@ const VideoList = ({
               <FontAwesomeIcon
                 icon={faHeart}
                 color={
-                  liked.find((item) => item.id === video.id)
-                    ? '#ff6060'
-                    : 'white'
+                  liked.find((item) => item === video.id) ? '#ff6060' : 'white'
                 }
-                onClick={() => handleLike(video)}
+                // onClick={() => handleLike(video)}
               />
             </BarBtn>
           </Bar>

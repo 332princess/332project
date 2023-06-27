@@ -15,18 +15,8 @@ const PlayList = () => {
   useEffect(() => {
     const fetchSongs = async () => {
       try {
-        // const response = await axios.get('http://localhost:8081/song');
         const response = await playlist();
-        setVideo(response.data[0]);
-        // const videoIds = response.data.map((item) => item.videoId);
-        // const youtubeVideo = await apiClient.get('item', {
-        //   params: {
-        //     part: 'snippet',
-        //     videoId: videoIds.join(','),
-        //   },
-        // });
-        // const youtubeVideo = videoList();
-        // setCurrentVideo(youtubeVideo.data);
+        setVideo(response);
       } catch (error) {
         console.log(error);
       }

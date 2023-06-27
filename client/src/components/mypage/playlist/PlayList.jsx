@@ -13,7 +13,7 @@ const PlayListComponents = ({
     <BigBox>
       {video.map((item) => (
         <Box key={item.id}>
-          <Video>{item.title}</Video>
+          <Video>{item.snippet.title}</Video>
           <Bar>
             <BarBtn>
               {currentVideo && currentVideo.id === item.id ? (

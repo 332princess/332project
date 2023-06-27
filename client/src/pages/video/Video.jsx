@@ -3,6 +3,9 @@ import { Container, WhiteBox, YoutubeWrapper } from '../../styles/video';
 import {
   addToLiked,
   addToPlayList,
+  likelist,
+  playlist,
+  removeFromPlayList,
   updateLiked,
   updatePlayList,
   videoList,
@@ -19,81 +22,28 @@ const Video = () => {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await videoList();
-        console.log(response);
-        setVideos(response);
+        const song = await videoList();
+        const list = await playlist();
+        const like = await likelist();
+        setVideos(song);
+        setPlayList(list);
+        setLiked(like);
+        // console.log(list);
+        // console.log(like);
       } catch (error) {
         console.log(error);
       }
     };
     fetchVideos();
-  }, []);
+  }, [setVideos]);
 
-  const handleVideoClick = (Video) => {
-    if (currentVideo && currentVideo.id === Video.id) {
+  const handleVideoClick = (video) => {
+    if (currentVideo && currentVideo.id === video.id) {
       setCurrentVideo(null);
     } else {
-      setCurrentVideo({ ...Video, playing: true });
+      setCurrentVideo({ ...video, playing: true });
     }
   };
-
-  const handlePlayList = async (video) => {
-    const index = playList.findIndex((item) => item.id === video.id);
-    if (index === -1) {
-      setPlayList((prevPlayList) => [...prevPlayList, video]);
-      try {
-        await addToPlayList(video);
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      setPlayList((prevPlayList) => {
-        const updatedPlayList = [...prevPlayList];
-        updatedPlayList.splice(index, 1);
-        return updatedPlayList;
-      });
-    }
-  };
-
-  useEffect(() => {
-    const updatePlayListVideos = async () => {
-      try {
-        // await updatePlayList(playList);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    updatePlayListVideos();
-  }, [playList]);
-
-  const handleLike = async (video) => {
-    const index = liked.findIndex((item) => item.id === video.id);
-    if (index === -1) {
-      setLiked((prevLiked) => [...prevLiked, video]);
-      try {
-        await addToLiked(video);
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      setLiked((prevLiked) => {
-        const updatedLiked = [...prevLiked];
-        updatedLiked.splice(index, 1);
-        return updatedLiked;
-      });
-    }
-  };
-
-  useEffect(() => {
-    const updateLikedVideos = async () => {
-      try {
-        // await updateLiked(liked);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    updateLikedVideos();
-  }, [liked]);
 
   const handlePlay = () => {
     setCurrentVideo((prevVideo) => ({ ...prevVideo, playing: true }));
@@ -103,8 +53,24 @@ const Video = () => {
     setCurrentVideo((prevVideo) => ({ ...prevVideo, playing: false }));
   };
 
-  const playVideo = (videoId) => {
-    window.open(`https://www.youtube.com/watch?v=${videoId}`);
+  // const playVideo = (videoId) => {
+  //   window.open(`https://www.youtube.com/watch?v=${videoId}`);
+  // };
+
+  const handlePlayList = async (video) => {
+    try {
+      if (playList.find((item) => item === video.id)) {
+        await removeFromPlayList(video.id);
+        setPlayList((prevPlayList) =>
+          prevPlayList.filter((item) => item !== video.id)
+        );
+      } else {
+        await addToPlayList(video);
+        setPlayList((prevPlayList) => [...prevPlayList, video]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const opts = {
@@ -132,7 +98,7 @@ const Video = () => {
           liked={liked}
           handleVideoClick={handleVideoClick}
           handlePlayList={handlePlayList}
-          handleLike={handleLike}
+          // handleLike={handleLike}
         />
       </WhiteBox>
     </Container>

@@ -15,7 +15,7 @@ const Like = () => {
     const fetchvideo = async () => {
       try {
         const response = await like();
-        setVideo(response.data[0]);
+        setVideo(response);
       } catch (error) {
         console.log(error);
       }

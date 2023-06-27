@@ -5,7 +5,7 @@ const CurrentPlayList = ({ currentVideo, opts }) => {
   return (
     <>
       {currentVideo ? (
-        <YouTube videoId={currentVideo.videoId} opts={opts} />
+        <YouTube videoId={currentVideo.id} opts={opts} />
       ) : (
         <YouTube />
       )}

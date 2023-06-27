@@ -1,5 +1,5 @@
 const express = require('express');
-
+const tokenUtil = require('../lib/tokenUtil');
 const router = express.Router();
 const logger = require('../lib/logger');
 const likeService = require('../services/likeService');
@@ -9,14 +9,14 @@ const { isLoggedIn } = require('../lib/middleware');
 router.post('/', isLoggedIn, async (req, res) => {
   try {
     const params = {
-      userId: req.body.userId,
-      songId: req.body.songId,
+      userId: tokenUtil.verifyToken(req.headers.authorization).user_id,
+      videoId: req.body.videoId,
     };
     logger.info(`(post.reg.params) ${JSON.stringify(params)}`);
 
     // 필수값 체크
-    if (!params.userId || !params.songId) {
-      const err = new Error('Not allowed null (userId, songId)');
+    if (!params.userId || !params.videoId) {
+      const err = new Error('Not allowed null (userId, videoId)');
       logger.error(err.toString());
 
       res.status(500).json({ err: err.toString() });

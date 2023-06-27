@@ -4,10 +4,16 @@ const { Like, User } = require('../models/index');
 const dao = {
   insert(params) {
     return new Promise((resolve, reject) => {
-      Like.create(params)
+      // Like.create(params)
+      //   .then((inserted) => {
+      //     const insertedResult = { ...inserted };
+      //     delete insertedResult.dataValues.password;
+      //     resolve(inserted);
+      //   })
+      const query = `insert into likes(user_id, song_id) select ${params.userId}, id from songs where video_id = '${params.videoId}'`;
+      sequelize
+        .query(query, { type: QueryTypes.INSERT })
         .then((inserted) => {
-          const insertedResult = { ...inserted };
-          delete insertedResult.dataValues.password;
           resolve(inserted);
         })
         .catch((err) => {
