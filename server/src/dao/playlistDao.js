@@ -1,15 +1,9 @@
-const { Op, Sequelize, QueryTypes } = require('sequelize');
+const { Op, QueryTypes } = require('sequelize');
 const { PlayList, User, Song, sequelize } = require('../models/index');
 
 const dao = {
   insert(params) {
     return new Promise((resolve, reject) => {
-      // PlayList.create(params)
-      //   .then((inserted) => {
-      //     const insertedResult = { ...inserted };
-      //     delete insertedResult.dataValues.password;
-      //     resolve(inserted);
-      //   })
       const query = `insert into play_lists(user_id, song_id) select ${params.userId}, id from songs where video_id = '${params.videoId}'`;
       sequelize
         .query(query, { type: QueryTypes.INSERT })
@@ -33,7 +27,7 @@ const dao = {
     if (params.userId) {
       setQuery.where = {
         ...setQuery.where,
-        userId: params.userId, // like 검색
+        user_id: params.userId, // like 검색
       };
     }
     setQuery.order = [['id', 'DESC']];
@@ -42,15 +36,13 @@ const dao = {
         ...setQuery,
         attributes: { exclude: ['id', 'createdAt', 'updatedAt'] },
         include: [
-          // {
-          //   model: User,
-          //   as: 'User',
-          //   attributes: ['user_id'],
-          // },
+          {
+            model: User,
+            as: 'User',
+          },
           {
             model: Song,
             as: 'Song',
-            attributes: ['videoId'],
           },
         ],
       })
@@ -64,22 +56,18 @@ const dao = {
   },
   selectInfo(params) {
     return new Promise((resolve, reject) => {
-      // User.findAll
-      PlayList.findAll({
+      const userPlaylist = PlayList.findAll({
+        where: {
+          user_id: params.user_id,
+        },
         include: [
-          {
-            model: User,
-            as: 'User',
-          },
           {
             model: Song,
             as: 'Song',
           },
         ],
-        where: {
-          userId: params.id,
-        },
-      })
+      });
+      return userPlaylist
         .then((selectedInfo) => {
           resolve(selectedInfo);
         })
@@ -106,7 +94,9 @@ const dao = {
     return new Promise((resolve, reject) => {
       // PlayList.findAll
       PlayList.destroy({
-        where: { id: params.id },
+        where: {
+          id: params.id,
+        },
       })
         .then((deleted) => {
           resolve({ deletedCount: deleted });

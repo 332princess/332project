@@ -10,7 +10,9 @@ const { isLoggedIn } = require('../lib/middleware');
 router.post('/', isLoggedIn, async (req, res) => {
   try {
     const params = {
-      userId: tokenUtil.verifyToken(req.headers.authorization).user_id,
+      userId: tokenUtil.verifyToken(
+        req.headers.authorization.replace('Bearer ', '')
+      ).user_id,
       videoId: req.body.videoId,
     };
     logger.info(`(post.reg.params) ${JSON.stringify(params)}`);
@@ -35,12 +37,12 @@ router.post('/', isLoggedIn, async (req, res) => {
 });
 
 // 리스트 조회
-router.get('/', async (req, res) => {
+router.get('/', isLoggedIn, async (req, res) => {
   try {
     const params = {
-      title: req.query.title,
-      singer: req.query.singer,
-      userIds: req.query.userIds ? req.query.userIds.split(',') : null,
+      user_id: tokenUtil.verifyToken(
+        req.headers.authorization.replace('Bearer ', '')
+      ).user_id,
     };
     logger.info(`(post.list.params) ${JSON.stringify(params)}`);
 
@@ -55,10 +57,11 @@ router.get('/', async (req, res) => {
 });
 
 // 상세정보 조회
-router.get('/:id', async (req, res) => {
+router.get('/:id', isLoggedIn, async (req, res) => {
   try {
+    const token = tokenUtil.verifyToken(req.headers.authorization).user_id;
     const params = {
-      id: req.params.id,
+      id: token,
     };
     logger.info(`(post.info.params) ${JSON.stringify(params)}`);
 
@@ -93,10 +96,12 @@ router.put('/:id', async (req, res) => {
 });
 
 // 삭제
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', isLoggedIn, async (req, res) => {
   try {
     const params = {
-      id: req.params.id,
+      id: tokenUtil.verifyToken(
+        req.headers.authorization.replace('Bearer ', '')
+      ).id,
     };
     logger.info(`(post.delete.params) ${JSON.stringify(params)}`);
 

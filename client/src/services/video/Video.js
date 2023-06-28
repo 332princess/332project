@@ -24,7 +24,7 @@ export const videoList = async () => {
 export const playlist = async () => {
   try {
     const res = await axios.get('http://localhost:8081/playlists');
-    const response = res.data.rows.map((v) => v.Song.videoId);
+    const response = res.data.map((v) => v.Song.videoId);
     return response;
   } catch (error) {
     console.log(error);
@@ -33,7 +33,8 @@ export const playlist = async () => {
 export const likelist = async () => {
   try {
     const res = await axios.get('http://localhost:8081/likes');
-    const response = res.data.rows.map((v) => v.Song.videoId);
+    console.log(res);
+    const response = res.data.map((v) => v.Song.videoId);
     return response;
   } catch (error) {
     console.log(error);
@@ -42,9 +43,10 @@ export const likelist = async () => {
 
 export const addToPlayList = async (video) => {
   try {
-    await axios.post('http://localhost:8081/playlists', video.id);
+    await axios.post('http://localhost:8081/playlists', { videoId: video.id });
     console.log('비디오가 성공적으로 추가되었습니다.');
   } catch (error) {
+    console.log(video);
     console.log('비디오 추가 중 오류가 발생했습니다.', error);
     throw error;
   }
@@ -52,7 +54,19 @@ export const addToPlayList = async (video) => {
 
 export const removeFromPlayList = async (video) => {
   try {
-    await axios.post('http://localhost:8081/playlists', video);
+    await axios.delete('http://localhost:8081/playlists', {
+      videoId: video.id,
+    });
+    console.log('비디오가 성공적으로 삭제되었습니다.');
+  } catch (error) {
+    console.log('비디오 삭제 중 오류가 발생했습니다.', error);
+    throw error;
+  }
+};
+
+export const addToLiked = async (video) => {
+  try {
+    await axios.post('http://localhost:8081/likes', { videoId: video.id });
     console.log('비디오가 성공적으로 추가되었습니다.');
   } catch (error) {
     console.log('비디오 추가 중 오류가 발생했습니다.', error);
@@ -60,12 +74,12 @@ export const removeFromPlayList = async (video) => {
   }
 };
 
-export const addToLiked = async (video) => {
+export const removeFromLiked = async (video) => {
   try {
-    await axios.post('http://localhost:8081/likes', video);
-    console.log('비디오가 성공적으로 추가되었습니다.');
+    await axios.delete('http://localhost:8081/likes', { videoId: video.id });
+    console.log('비디오가 성공적으로 삭제되었습니다.');
   } catch (error) {
-    console.log('비디오 추가 중 오류가 발생했습니다.', error);
+    console.log('비디오 삭제 중 오류가 발생했습니다.', error);
     throw error;
   }
 };

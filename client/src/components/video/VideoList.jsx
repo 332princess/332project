@@ -18,7 +18,7 @@ const VideoList = ({
   liked,
   handleVideoClick,
   handlePlayList,
-  // handleLike,
+  handleLike,
 }) => {
   return (
     <>
@@ -59,13 +59,19 @@ const VideoList = ({
               )}
             </BarBtn>
             <BarBtn>
-              <FontAwesomeIcon
-                icon={faHeart}
-                color={
-                  liked.find((item) => item === video.id) ? '#ff6060' : 'white'
-                }
-                // onClick={() => handleLike(video)}
-              />
+              {liked.find((item) => item === video.id) ? (
+                <FontAwesomeIcon
+                  icon={faHeart}
+                  color="#ff6060"
+                  onClick={() => handleLike(video)}
+                />
+              ) : (
+                <FontAwesomeIcon
+                  icon={faHeart}
+                  color="white"
+                  onClick={() => handleLike(video)}
+                />
+              )}
             </BarBtn>
           </Bar>
         </VideoContainer>

@@ -8,7 +8,8 @@ const apiClient = axios.create({
 export const like = async () => {
   try {
     const res = await axios.get('http://localhost:8081/likes');
-    const videoIds = res.data.rows.map((v) => v.Song.videoId).toString();
+    console.log(res);
+    const videoIds = res.data.map((v) => v.Song.videoId).toString();
     const youtube = await apiClient.get('videos', {
       params: {
         part: 'snippet',
