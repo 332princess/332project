@@ -9,6 +9,7 @@ module.exports = class Users extends Sequelize.Model {
           primaryKey: true,
           autoIncrement: true,
         },
+        //username으로 받아야 채팅할듯?
         name: {
           type: Sequelize.STRING(500),
           allowNull: false,

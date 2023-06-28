@@ -1,17 +1,17 @@
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
-// const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-// const corsConfig = require('./config/corsConfig.json');
-
+const { Server } = require('socket.io');
 const indexRouter = require('./src/routes/index');
-
+const roomRepository = require('./data/room.js');
+const userRepository = require('./data/users.js');
+const router = require('./router.js')
 const models = require('./src/models/index');
 const logger = require('./src/lib/logger');
-
+const http =require('http');
 dotenv.config();
 const { NODE_ENV, PORT, LOGGER_LEVEL } = process.env;
 
@@ -50,29 +50,87 @@ app.use(
     credentials: true,
   })
 );
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-// app.use(cookieParser());
 app.use(express.static('uploads'));
 app.use('/', indexRouter);
+app.use(router);
 
-// catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404));
 });
 
-// error handler
 app.use((err, req, res, next) => {
-  // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
   res.status(err.status || 500);
   res.render('error');
 });
-// app.listen(PORT, () => {
-//   console.log(`Server is running on port ${PORT}`);
-// });
+
+const server = http.createServer(app); // app 대신 server를 생성합니다
+
+const io = new Server(server, {
+  path: '/socket.io',
+  cors: {
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
+    credentials: true,
+  },
+});
+
+io.on('connect', (socket) => {
+  let currentRoom;
+  logger.debug('aa');
+  socket.on('signin', ({ username }) => {
+    logger.debug('bb');
+    console.log(`@@ 사용자 연결: ${username} (${socket.id})`);
+
+    socket.on('join', async (room) => {
+      console.log(`@@ 채팅방 입장 (${username}) to (${room})`);
+      logger.debug('cc');
+      currentRoom = room;
+      socket.join(currentRoom);
+
+      const message = `${username}님이 입장하셨습니다.`;
+
+      socket.to(currentRoom).emit('sendMessage', message, room, 'admin');
+    });
+
+    socket.on('user list', async (room) => {
+      console.log('user list:');
+      console.log(room);
+      socket.broadcast.emit('users', { title: room.title, users: room.users });
+    });
+
+    socket.on('sendMessage', async (message, sentRoom, sender) => {
+      const result = await userRepository.addMessage(username, sentRoom, {
+        sender,
+        message,
+      });
+      console.log(result);
+      const room = await roomRepository.getRoom(sentRoom);
+      const usersInRoom = room.users;
+      usersInRoom.forEach((user) => {
+        if (user !== username) {
+          userRepository.addMessage(user, sentRoom, { sender, message });
+        }
+      });
+
+      socket.emit('message', { sender, message, sentRoom });
+      socket.broadcast.emit('message', {
+        sender,
+        message,
+        sentRoom,
+      });
+    });
+  });
+});
+
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+  logger.debug('여긴찍힘');
+});
 
 module.exports = app;

@@ -4,13 +4,19 @@ import MyPage from '../pages/MyPage/MyPage';
 import Like from '../pages/MyPage/Like';
 import Info from '../pages/MyPage/Info';
 import PlayList from '../pages/MyPage/PlayList';
-import Running from '../pages/MyPage/Chatting';
+import Running from '../pages/chat/chat';
 import Home from '../pages/home/HomePage';
-import ChatList from '../pages/MyPage/Chatting';
-import Chat from '../pages/chat/Chatting';
+import ChatList from '../pages/chat/chat';
+import Chat from '../pages/chat/chat';
 import Video from '../pages/video/Video';
+import Join from '../pages/chat/Join';
 
 export const ROUTE = {
+  JOIN: {
+    path: '/join',
+    link: '/join',
+    component: Join, // 조인추가
+  },
   HOME: {
     path: '/',
     link: '/',
@@ -75,6 +81,11 @@ export const PUBLIC_ROUTE = {
   },
 };
 export const PRIVATE_ROUTE = {
+  JOIN: {
+    path: '/join',
+    link: '/join',
+    element: Join,
+  },
   VIDEO: {
     path: '/video',
     link: '/video',

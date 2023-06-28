@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Container,
   Title,
@@ -13,8 +13,13 @@ import {
 } from '../../styles/homestyle';
 import { Routes, Route, Link } from 'react-router-dom';
 import { ROUTE, PRIVATE_ROUTE } from '../../routes/Route';
-
+import HttpClient from '../../services/chat/http';
+import ChatService from '../../services/chat/chat';
+const baseURL = process.env.REACT_APP_BASE_URL;
+const httpClient = new HttpClient(baseURL);
+const chatService = new ChatService(httpClient);
 const Home = () => {
+  const [username, setUsername] = useState('');
   return (
     <Container>
       <Title>뮤메이트</Title>
@@ -34,8 +39,12 @@ const Home = () => {
             </Link>
           </ImageWrapper>
           <ImageWrapper>
-            <Link to={PRIVATE_ROUTE.CHAT.path}>
-              <Chat />
+            <Link to={PRIVATE_ROUTE.JOIN.path}>
+              <Chat
+                setUsername={(name) => {
+                  setUsername(name);
+                }}
+              />
               <Text>채팅</Text>
             </Link>
           </ImageWrapper>
@@ -44,7 +53,7 @@ const Home = () => {
       <Routes>
         <Route path="/music" />
         <Route path="/playlist" />
-        <Route path="/chat" />
+        <Route path="/join" />
       </Routes>
     </Container>
   );
