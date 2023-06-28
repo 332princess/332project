@@ -8,13 +8,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   background: #ff6060;
-  @media (min-width: 880px) {
-  }
-  @media (max-width: 880px) {
+
+  @media (max-width: 1024px) {
     background-color: #bbf;
     color: #fff;
   }
-  @media (max-width: 740px) {
+  @media (max-width: 768px) {
     background-color: #000;
     color: #fff;
   }

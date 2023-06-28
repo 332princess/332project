@@ -28,7 +28,9 @@ const Home = () => {
             <Link to={ROUTE.VIDEO.path}>
               <Wrapper>
                 <Music />
-                <Text>음악</Text>
+                <span>
+                  <Text>음악</Text>
+                </span>
               </Wrapper>
             </Link>
           </ImageWrapper>
@@ -37,7 +39,9 @@ const Home = () => {
               <Link to={PRIVATE_ROUTE.PLAYLIST.path}>
                 <Wrapper>
                   <PlayList />
-                  <Text1>플레이리스트</Text1>
+                  <span>
+                    <Text1>플레이리스트</Text1>
+                  </span>
                 </Wrapper>
               </Link>
             </Middle>
@@ -46,7 +50,9 @@ const Home = () => {
             <Link to={PRIVATE_ROUTE.CHAT.path}>
               <Wrapper>
                 <Chat />
-                <Text>채팅</Text>
+                <span>
+                  <Text>채팅</Text>
+                </span>
               </Wrapper>
             </Link>
           </ImageWrapper>

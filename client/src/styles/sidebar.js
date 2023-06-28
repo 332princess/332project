@@ -41,6 +41,14 @@ export const Box = styled.div`
   width: 70%;
   height: 65%;
   font-size: 14px;
+
+  @media only screen and (max-width: 1024px) {
+    background-color: #bbf;
+  }
+
+  @media only screen and (max-width: 768px) {
+    background-color: #000;
+  }
 `;
 
 // export const SideBox =
@@ -51,10 +59,16 @@ export const URLs = styled(NavLink)`
 `;
 
 export const Logo = styled.div`
-  background-image: url('/logoMyu.png');
+  background-image: url('/assets/logoMyu.png');
   background-size: cover;
   margin-top: 30%;
-  width: 45%;
-  height: 20%;
-  border-radius: 100%;
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;'
+
+  @media only screen and (max-width: 1024px) {
+  }
+
+  @media only screen and (max-width: 768px) {
+  }
 `;

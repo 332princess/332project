@@ -15,19 +15,16 @@ export const Container = styled.div`
   &.login {
     justify-content: center;
   }
-  @media (min-width: 880px) {
+  @media (min-width: 768px) {
     margin-bottom: 10%;
     color: #ff6060;
   }
   @media (max-width: 1024px) {
-    left: 25%;
-  }
-  @media (max-width: 880px) {
     color: #bbf;
     width: 50vw;
     left: 25%;
   }
-  @media (max-width: 740px) {
+  @media (max-width: 768px) {
     background-color: #000;
     color: #fff;
     left: 0vw;
@@ -54,15 +51,13 @@ export const Box = styled.form`
   justify-content: center;
   gap: 3vh;
 
-  @media (min-width: 880px) {
+  @media (min-width: 1024px) {
     margin-bottom: 10%;
   }
-  @media (max-width: 880px) {
+  @media (max-width: 1024px) {
     .register {
       gap: 3vh;
     }
-  }
-  @media (max-width: 740px) {
   }
 `;
 
@@ -74,13 +69,13 @@ export const SubmitBtn = styled.button`
 
   font-weight: 100;
   font-size: 35px;
-  @media (min-width: 880px) {
+  @media (min-width: 1024px) {
   }
-  @media (max-width: 880px) {
+  @media (max-width: 1024px) {
     background-color: #bbf;
     color: #fff;
   }
-  @media (max-width: 740px) {
+  @media (max-width: 768px) {
     background-color: #000;
     width: 100%;
   }
@@ -113,12 +108,10 @@ export const Input = styled.input`
       box-shadow: 0 0 10px black;
     }
   }
-  @media (min-width: 880px) {
+  @media (min-width: 1024px) {
     width: 15vw;
   }
-  @media (max-width: 880px) {
-  }
-  @media (max-width: 740px) {
+  @media (max-width: 768px) {
     background-color: #ddd;
     color: #000;
   }
@@ -145,11 +138,7 @@ export const Find = styled.span`
     color: #ff6060;
     cursor: pointer;
   }
-  @media (min-width: 880px) {
-  }
-  @media (max-width: 880px) {
-  }
-  @media (max-width: 740px) {
+  @media (max-width: 768px) {
     color: #fff;
   }
 `;
@@ -162,14 +151,12 @@ export const CheckBtn = styled.button`
   border-radius: 0px 10px 10px 0px;
   width: 100%;
 
-  @media (min-width: 880px) {
-  }
-  @media (max-width: 880px) {
+  @media (max-width: 1024px) {
     background-color: #bbf;
     color: #fff;
     height: 5.3vh;
   }
-  @media (max-width: 740px) {
+  @media (max-width: 768px) {
     background-color: #000;
     color: #fff;
     &:hover {
