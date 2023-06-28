@@ -24,7 +24,7 @@ const service = {
     let result = null;
 
     try {
-      result = await playlistDao.selectList(params);
+      result = await playlistDao.selectInfo(params);
       logger.debug(`(playlistService.list) ${JSON.stringify(result)}`);
     } catch (err) {
       logger.error(`(playlistService.list) ${err.toString()}`);
@@ -40,7 +40,6 @@ const service = {
   },
   async info(params) {
     let result = null;
-
     try {
       result = await playlistDao.selectInfo(params);
       logger.debug(`(playlistService.info) ${JSON.stringify(result)}`);

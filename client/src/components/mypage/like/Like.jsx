@@ -8,7 +8,7 @@ const LikeComponent = ({ video, currentVideo, handleVideo, deleteVideo }) => {
     <BigBox>
       {video.map((video) => (
         <Box key={video.id}>
-          <Video>{video.title}</Video>
+          <Video>{video.snippet.title}</Video>
           <Bar>
             <BarBtn>
               {currentVideo && currentVideo.id === video.id ? (

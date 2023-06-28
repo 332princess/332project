@@ -24,7 +24,7 @@ const service = {
     let result = null;
 
     try {
-      result = await likeDao.selectList(params);
+      result = await likeDao.selectInfo(params);
       logger.debug(`(likeService.list) ${JSON.stringify(result)}`);
     } catch (err) {
       logger.error(`(likeService.list) ${err.toString()}`);
@@ -40,7 +40,6 @@ const service = {
   },
   async info(params) {
     let result = null;
-
     try {
       result = await likeDao.selectInfo(params);
       logger.debug(`(likeService.info) ${JSON.stringify(result)}`);

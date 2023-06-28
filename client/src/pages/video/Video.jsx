@@ -6,6 +6,7 @@ import {
   likelist,
   playlist,
   removeFromPlayList,
+  removeFromLiked,
   updateLiked,
   updatePlayList,
   videoList,
@@ -72,6 +73,19 @@ const Video = () => {
       console.log(error);
     }
   };
+  const handleLike = async (video) => {
+    try {
+      if (liked.find((item) => item === video.id)) {
+        await removeFromLiked(video.id);
+        setLiked((prevLiked) => prevLiked.filter((item) => item !== video.id));
+      } else {
+        await addToLiked(video);
+        setLiked((prevLiked) => [...prevLiked, video]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const opts = {
     height: '315',
@@ -98,7 +112,7 @@ const Video = () => {
           liked={liked}
           handleVideoClick={handleVideoClick}
           handlePlayList={handlePlayList}
-          // handleLike={handleLike}
+          handleLike={handleLike}
         />
       </WhiteBox>
     </Container>

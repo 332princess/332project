@@ -1,15 +1,9 @@
-const { Op } = require('sequelize');
-const { Like, User } = require('../models/index');
+const { Op, QueryTypes } = require('sequelize');
+const { Like, User, Song, sequelize } = require('../models/index');
 
 const dao = {
   insert(params) {
     return new Promise((resolve, reject) => {
-      // Like.create(params)
-      //   .then((inserted) => {
-      //     const insertedResult = { ...inserted };
-      //     delete insertedResult.dataValues.password;
-      //     resolve(inserted);
-      //   })
       const query = `insert into likes(user_id, song_id) select ${params.userId}, id from songs where video_id = '${params.videoId}'`;
       sequelize
         .query(query, { type: QueryTypes.INSERT })
@@ -40,11 +34,15 @@ const dao = {
     return new Promise((resolve, reject) => {
       Like.findAndCountAll({
         ...setQuery,
-        attributes: { exclude: ['password'] },
+        attributes: { exclude: ['id', 'createdAt', 'updatedAt'] },
         include: [
           {
             model: User,
             as: 'User',
+          },
+          {
+            model: Song,
+            as: 'Song',
           },
         ],
       })
@@ -58,15 +56,18 @@ const dao = {
   },
   selectInfo(params) {
     return new Promise((resolve, reject) => {
-      // User.findAll
-      Like.findByPk(params.id, {
+      const userLike = Like.findAll({
+        where: {
+          user_id: params.user_id,
+        },
         include: [
           {
-            model: User,
-            as: 'User',
+            model: Song,
+            as: 'Song',
           },
         ],
-      })
+      });
+      return userLike
         .then((selectedInfo) => {
           resolve(selectedInfo);
         })
