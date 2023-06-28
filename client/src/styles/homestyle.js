@@ -7,6 +7,11 @@ export const Container = styled.div`
   min-height: 50vh;
   flex-direction: column;
   font-family: 'HSJiptokki-Round';
+
+  @media only screen and (max-width: 768px) {
+    min-height: 30vh;
+    margin-top: 9vh;
+  }
 `;
 
 export const Title = styled.h1`
@@ -19,7 +24,6 @@ export const Title = styled.h1`
   }
   font-family: 'HSJiptokki-Round';
   font-size: 70px;
-  margin-top: 25vh;
   color: #fff;
 
   @media only screen and (max-width: 1024px) {
@@ -28,7 +32,7 @@ export const Title = styled.h1`
 
   @media only screen and (max-width: 768px) {
     font-size: 60px;
-    margin-top: 5vh;
+    margin-top: -15vh;
   }
 `;
 
@@ -43,7 +47,6 @@ export const H1 = styled.h1`
 
   @media only screen and (max-width: 768px) {
     font-size: 16px;
-    margin-top: -5vh;
   }
 `;
 
@@ -123,16 +126,19 @@ export const ImageWithTextContainer = styled.div`
   @media only screen and (max-width: 768px) {
     flex-direction: column;
     width: 100%;
+    justify-content: center;
   }
 `;
 
 export const ImageWrapper = styled.div`
   display: flex;
-  height: 100px;
+  height: 200px;
   background-size: cover;
   align-items: center;
   text-align: center;
   flex-direction: column;
+  margin-top: 50px;
+  z-index: 10;
 
   @media only screen and (max-width: 768px) {
     flex-direction: row;
@@ -151,10 +157,12 @@ export const Text = styled.button`
 
   @media only screen and (max-width: 1024px) {
     font-size: 17px;
+    color: #bbf;
   }
 
   @media only screen and (max-width: 768px) {
     font-size: 20px;
+    color: #ff6060;
   }
 `;
 
@@ -169,6 +177,7 @@ export const Text1 = styled.button`
 
   @media only screen and (max-width: 1024px) {
     font-size: 17px;
+    color: #bbf;
   }
 
   @media only screen and (max-width: 768px) {
@@ -195,8 +204,9 @@ export const Middle = styled.div`
   display: flex;
 
   @media only screen and (max-width: 768px) {
-    hight: 130px;
+    height: 150px;
     width: 100%;
-    background-color: #ff6060;
+    align-items: center;
+    background-color: #000;
   }
 `;
