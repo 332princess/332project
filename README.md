@@ -3,12 +3,39 @@
 ## To start
 ```shell
 cd client
+npm i
 npm start
 ```
 ```shell
 cd server
-npm run dev
+npm i
+npm start
 ```
+<br/>
+.env from server folder. DB settings or PORT settings. 
+if you want to start this web, you need to insert those '.env's
+```
+NODE_ENV=development
+PORT=8081
+LOGGER_LEVEL=debug
+
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=332project
+DB_ID=root
+DB_PASS=a123
+DB_DIALECT=mysql
+```
+<br/><br/><br/>
+```
+.env from client folder. you can get this key from youtube data API v3.👍
+JWT_SECRET_KEY= {import your personal key}
+```
+
+
+
+<br/><br/>
+
 ## What We Used
 | Front | Back |
 | --- | --- |
@@ -19,7 +46,7 @@ npm run dev
 
 ## Who We are
 Kim HyeJi : leader(maybe reader) + Front-end(60%) + Back-end(15%)<br/>
-Lee GangWoo: Front-end(15%) + Back-end(70%)<br/>
+Lee KangWoo: Front-end(15%) + Back-end(70%)<br/>
 Yoon Taeyoung: Front(15%) + Back-end(15%) (only been learning for a week)<br/>
 
 Front-end 10% is gone~!
