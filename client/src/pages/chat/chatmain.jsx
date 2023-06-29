@@ -1,3 +1,100 @@
+// import React, { useState } from 'react';
+// import styled from 'styled-components';
+// import Chat from './chat';
+// import io from 'socket.io-client';
+
+// const socket = io.connect('http://localhost:8081');
+
+// const ChatmainContainer = styled.div`
+//   width: 100vw;
+//   height: 100vh;
+//   background: #ff6060;
+//   color: #212121;
+//   font-family: 'Open Sans', sans-serif;
+//   display: grid;
+//   place-items: center;
+// `;
+
+// const JoinChatContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   text-align: center;
+// `;
+
+// const JoinChatTitle = styled.h3`
+//   font-size: 2.5rem;
+//   margin-bottom: 1rem;
+// `;
+
+// const JoinChatInput = styled.input`
+//   width: 210px;
+//   height: 40px;
+//   margin: 7px;
+//   border: 2px solid #b3ffd9;
+//   border-radius: 5px;
+//   padding: 5px;
+//   font-size: 16px;
+// `;
+
+// const JoinChatButton = styled.button`
+//   width: 225px;
+//   height: 50px;
+//   margin: 7px;
+//   border: none;
+//   border-radius: 5px;
+//   padding: 5px;
+//   font-size: 16px;
+//   background: #b3ffd9;
+//   color: #fff;
+//   cursor: pointer;
+
+//   &:hover {
+//     background: #c7e3ff;
+//   }
+// `;
+
+// const Chatmain = () => {
+//   const [username, setUsername] = useState('');
+//   const [room, setRoom] = useState('');
+//   const [showChat, setShowChat] = useState(false);
+
+//   const joinRoom = () => {
+//     if (username !== '' && room !== '') {
+//       socket.emit('join_room', room);
+//       setShowChat(true);
+//     }
+//   };
+
+//   return (
+//     <ChatmainContainer>
+//       {!showChat ? (
+//         <JoinChatContainer>
+//           <JoinChatTitle>Join A Chat</JoinChatTitle>
+//           <JoinChatInput
+//             type="text"
+//             placeholder="이름"
+//             onChange={(event) => {
+//               setUsername(event.target.value);
+//             }}
+//           />
+//           <JoinChatInput
+//             type="text"
+//             placeholder="방이름"
+//             onChange={(event) => {
+//               setRoom(event.target.value);
+//             }}
+//           />
+//           <JoinChatButton onClick={joinRoom}>Join A Room</JoinChatButton>
+//         </JoinChatContainer>
+//       ) : (
+//         <Chat socket={socket} username={username} room={room} />
+//       )}
+//     </ChatmainContainer>
+//   );
+// };
+
+// export default Chatmain;
+
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Chat from './chat';
@@ -15,28 +112,18 @@ const ChatmainContainer = styled.div`
   place-items: center;
 `;
 
-const JoinChatContainer = styled.div`
+const RoomSelectionContainer = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
 `;
 
-const JoinChatTitle = styled.h3`
+const RoomSelectionTitle = styled.h3`
   font-size: 2.5rem;
   margin-bottom: 1rem;
 `;
 
-const JoinChatInput = styled.input`
-  width: 210px;
-  height: 40px;
-  margin: 7px;
-  border: 2px solid #b3ffd9;
-  border-radius: 5px;
-  padding: 5px;
-  font-size: 16px;
-`;
-
-const JoinChatButton = styled.button`
+const RoomButton = styled.button`
   width: 225px;
   height: 50px;
   margin: 7px;
@@ -44,50 +131,36 @@ const JoinChatButton = styled.button`
   border-radius: 5px;
   padding: 5px;
   font-size: 16px;
-  background: #b3ffd9;
+  background: #212121;
   color: #fff;
   cursor: pointer;
 
   &:hover {
-    background: #c7e3ff;
+    background: #212121;
   }
 `;
 
 const Chatmain = () => {
-  const [username, setUsername] = useState('');
   const [room, setRoom] = useState('');
   const [showChat, setShowChat] = useState(false);
 
-  const joinRoom = () => {
-    if (username !== '' && room !== '') {
-      socket.emit('join_room', room);
-      setShowChat(true);
-    }
+  const joinRoom = (selectedRoom) => {
+    setRoom(selectedRoom);
+    socket.emit('join_room', selectedRoom);
+    setShowChat(true);
   };
 
   return (
     <ChatmainContainer>
       {!showChat ? (
-        <JoinChatContainer>
-          <JoinChatTitle>Join A Chat</JoinChatTitle>
-          <JoinChatInput
-            type="text"
-            placeholder="이름"
-            onChange={(event) => {
-              setUsername(event.target.value);
-            }}
-          />
-          <JoinChatInput
-            type="text"
-            placeholder="방이름"
-            onChange={(event) => {
-              setRoom(event.target.value);
-            }}
-          />
-          <JoinChatButton onClick={joinRoom}>Join A Room</JoinChatButton>
-        </JoinChatContainer>
+        <RoomSelectionContainer>
+          <RoomSelectionTitle>Join A Chat</RoomSelectionTitle>
+          <RoomButton onClick={() => joinRoom('힙합')}>힙합</RoomButton>
+          <RoomButton onClick={() => joinRoom('발라드')}>발라드</RoomButton>
+          <RoomButton onClick={() => joinRoom('락')}>락</RoomButton>
+        </RoomSelectionContainer>
       ) : (
-        <Chat socket={socket} username={username} room={room} />
+        <Chat socket={socket} room={room} />
       )}
     </ChatmainContainer>
   );
