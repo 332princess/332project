@@ -91,9 +91,7 @@ export const Wrapper = styled.div`
 
   @media only screen and (max-width: 768px) {
     flex-direction: row;
-    /* width: 100%; */
     padding-left: 15vh;
-    justify-content: space-between;
   }
 `;
 
@@ -165,6 +163,7 @@ export const Text = styled.button`
   @media only screen and (max-width: 768px) {
     font-size: 20px;
     color: #ff6060;
+    margin-left: 100px;
     &.playlist {
       color: #fff;
     }

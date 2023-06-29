@@ -4,10 +4,13 @@ import axios from 'axios';
 import { SideBarWrap, NavItems } from '../../styles/header';
 import { Link } from 'react-router-dom';
 
-const SideBar = ({ isOpen, setIsOpen, handleToggleOpen }) => {
+const SideBar = ({ isOpen, setIsOpen }) => {
   const outside = useRef();
   const [cookies, setCookie, removeCookie] = useCookies(['token']);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const handleToggleOpen = () => {
+    setIsOpen(!isOpen);
+  };
 
   useEffect(() => {
     document.addEventListener('mousedown', handleOutsideClick);

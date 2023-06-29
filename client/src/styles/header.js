@@ -52,7 +52,7 @@ export const NavLinkWrapper = styled(NavLink)`
   font-weight: bold;
   margin: 0 1.2vw 0 1.2vw;
 
-  background-image: url('/assets/logoMyu.png');
+  background-image: url('/assets/logoMyu.jpg');
   background-size: cover;
   background-position: center;
   width: 50px;
