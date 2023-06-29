@@ -15,6 +15,7 @@ export const Container = styled.div`
   &.login {
     justify-content: center;
   }
+  z-index: -1;
   @media (min-width: 768px) {
     margin-bottom: 10%;
     color: #ff6060;

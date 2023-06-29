@@ -9,15 +9,16 @@ import {
   NavLinkWrapper,
   NavList,
   MenuToggleBtn,
+  LogoWrapper,
 } from '../../styles/header';
+import SideBar from './SideBar';
 
 const Navbar = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['token']);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isToggleOpen, setIsToggleOpen] = useState(false);
-
-  const handleToggleOpen = () => {
-    setIsToggleOpen(!isToggleOpen);
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleSide = () => {
+    setIsOpen(true);
   };
 
   useEffect(() => {
@@ -37,9 +38,11 @@ const Navbar = () => {
     <Container>
       <NavList>
         <NavLinkWrapper to="/" exact>
-          <LogoHome />
+          <LogoWrapper>
+            <LogoHome />
+          </LogoWrapper>
         </NavLinkWrapper>
-        <NavItem isToggleOpen={isToggleOpen}>
+        <NavItem>
           {isLoggedIn ? (
             <>
               <NavLinkWrapper
@@ -67,10 +70,14 @@ const Navbar = () => {
             </>
           )}
         </NavItem>
-        {/* <FaBars className="menuToggleBtn" onClick={handleToggleOpen} /> */}
-        <MenuToggleBtn onClick={handleToggleOpen}>
+        <MenuToggleBtn role="button" onClick={toggleSide}>
           <FaBars />
         </MenuToggleBtn>
+        <SideBar
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          handleToggleOpen={toggleSide}
+        />
       </NavList>
     </Container>
   );

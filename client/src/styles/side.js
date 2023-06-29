@@ -15,6 +15,10 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  // @media (max-width: 768px) {
+  //   display: none;
+  // }
 `;
 
 export const Title = styled.div`
