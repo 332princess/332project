@@ -3,12 +3,36 @@
 ## To start
 ```shell
 cd client
+npm i
 npm start
 ```
 ```shell
 cd server
-npm run dev
+npm i
+npm start
 ```
+
+server쪽 .env 예시
+
+NODE_ENV=development
+PORT=8081
+LOGGER_LEVEL=debug
+
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=332project
+DB_ID=root
+DB_PASS=a123
+DB_DIALECT=mysql
+
+JWT_SECRET_KEY=24432646294A404E635166546A576E5A7234753778214125442A472D4B615064
+
+.env를 삽입해주어야 가능하다.
+
+
+client쪽 .env 는
+REACT_APP_API_KEY= {youtube data API v3 에서 발급 받은 개인 키}
+
 ## What We Used
 | Front | Back |
 | --- | --- |
@@ -19,7 +43,7 @@ npm run dev
 
 ## Who We are
 Kim HyeJi : leader(maybe reader) + Front-end(60%) + Back-end(15%)<br/>
-Lee GangWoo: Front-end(15%) + Back-end(70%)<br/>
+Lee KangWoo: Front-end(15%) + Back-end(70%)<br/>
 Yoon Taeyoung: Front(15%) + Back-end(15%) (only been learning for a week)<br/>
 
 Front-end 10% is gone~!
