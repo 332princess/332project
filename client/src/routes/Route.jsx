@@ -1,14 +1,14 @@
-import Register from '../pages/user/Register';
-import Login from '../pages/user/Login';
-import MyPage from '../pages/mypage/MyPage';
-import Like from '../pages/mypage/Like';
-import Info from '../pages/mypage/Info';
-import PlayList from '../pages/mypage/PlayList';
-import Running from '../pages/mypage/Chatting';
+import Register from '../pages/User/Register';
+import Login from '../pages/User/Login';
+import MyPage from '../pages/MyPage/MyPage';
+import Like from '../pages/MyPage/Like';
+import Info from '../pages/MyPage/Info';
+import PlayList from '../pages/MyPage/PlayList';
 import Home from '../pages/home/HomePage';
-import ChatList from '../pages/mypage/Chatting';
+import ChatList from '../pages/MyPage/Chatting';
 import Chat from '../pages/chat/Chatting';
 import Video from '../pages/video/Video';
+import ChatMain from '../pages/chat/chatmain';
 
 export const ROUTE = {
   HOME: {
@@ -51,11 +51,6 @@ export const ROUTE = {
     link: '/MyPage/playlist',
     element: PlayList,
   },
-  RUNNING: {
-    path: '/MyPage/running',
-    link: '/MyPage/running',
-    element: Running,
-  },
 };
 export const PUBLIC_ROUTE = {
   HOME: {
@@ -95,6 +90,12 @@ export const PRIVATE_ROUTE = {
     path: '/MyPage/like',
     link: '/MyPage/like',
     element: Like,
+  },
+  CHATMAIN: {
+    name: '좋아요',
+    path: '/chat/chatmain',
+    link: '/chat/chatmain',
+    element: ChatMain,
   },
   PLAYLIST: {
     name: '플레이리스트',
