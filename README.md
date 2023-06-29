@@ -11,7 +11,7 @@ cd server
 npm i
 npm start
 ```
-
+<br/>
 server쪽 .env 예시
 
 NODE_ENV=development
@@ -26,13 +26,13 @@ DB_PASS=a123
 DB_DIALECT=mysql
 
 JWT_SECRET_KEY=24432646294A404E635166546A576E5A7234753778214125442A472D4B615064
-
+<br/>
 .env를 삽입해주어야 가능하다.
 
-
+<br/><br/>
 client쪽 .env 는
 REACT_APP_API_KEY= {youtube data API v3 에서 발급 받은 개인 키}
-
+<br/>
 ## What We Used
 | Front | Back |
 | --- | --- |
