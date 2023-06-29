@@ -14,7 +14,7 @@ npm start
 <br/>
 .env from server folder. DB settings or PORT settings. 
 if you want to start this web, you need to insert those '.env's
-<br/>
+```
 NODE_ENV=development
 PORT=8081
 LOGGER_LEVEL=debug
@@ -25,10 +25,13 @@ DB_DATABASE=332project
 DB_ID=root
 DB_PASS=a123
 DB_DIALECT=mysql
+```
 <br/><br/><br/>
+```
 .env from client folder. you can get this key from youtube data API v3.👍
 JWT_SECRET_KEY= {import your personal key}
-<br/>
+```
+
 
 
 <br/><br/>
