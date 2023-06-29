@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const register = async (name, email, password) => {
   try {
-    const response = await axios.post('http://192.168.0.54:8081/users', {
+    const response = await axios.post('http://localhost:8081/users', {
       name,
       email,
       password,
