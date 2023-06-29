@@ -8,7 +8,7 @@ const socket = io.connect('http://localhost:8081');
 const ChatmainContainer = styled.div`
   width: 100vw;
   height: 100vh;
-  background: #fff;
+  background: #ff6060;
   color: #212121;
   font-family: 'Open Sans', sans-serif;
   display: grid;
@@ -30,7 +30,7 @@ const JoinChatInput = styled.input`
   width: 210px;
   height: 40px;
   margin: 7px;
-  border: 2px solid #43a047;
+  border: 2px solid #b3ffd9;
   border-radius: 5px;
   padding: 5px;
   font-size: 16px;
@@ -44,12 +44,12 @@ const JoinChatButton = styled.button`
   border-radius: 5px;
   padding: 5px;
   font-size: 16px;
-  background: #43a047;
+  background: #b3ffd9;
   color: #fff;
   cursor: pointer;
 
   &:hover {
-    background: #2e7d32;
+    background: #c7e3ff;
   }
 `;
 

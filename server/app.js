@@ -52,6 +52,7 @@ app.use(
       'http://localhost:3000',
       'http://192.168.0.28:3000',
       'http://192.168.0.98:3000',
+      'http://192.168.0.54:3000',
     ],
     credentials: true,
   })
@@ -86,6 +87,7 @@ const io = new Server(server, {
       'http://localhost:3000',
       'http://192.168.0.28:3000',
       'http://192.168.0.98:3000',
+      'http://192.168.0.54:3000',
     ],
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type'],
@@ -113,5 +115,6 @@ io.on('connection', (socket) => {
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
 
 module.exports = app;

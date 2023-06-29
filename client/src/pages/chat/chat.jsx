@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import styled from 'styled-components';
+const ChatContainer = styled.div`
+  background-color: #b3ffd9; /* 원하는 배경 색상 */
+`;
 
 const ChatWindow = styled.div`
   .chat-window {
@@ -54,7 +57,7 @@ const ChatWindow = styled.div`
     height: auto;
     min-height: 40px;
     max-width: 120px;
-    background-color: #43a047;
+    background-color: #c7e3ff;
     border-radius: 5px;
     color: white;
     display: flex;
@@ -65,6 +68,82 @@ const ChatWindow = styled.div`
     padding-left: 5px;
     overflow-wrap: break-word;
     word-break: break-word;
+  }
+  .chat-window .chat-body .message .message-meta {
+    display: flex;
+    font-size: 12px;
+  }
+
+  .chat-window .chat-footer {
+    height: 40px;
+    border: 1px solid #263238;
+    border-top: none;
+    display: flex;
+  }
+
+  .chat-window .chat-footer input {
+    height: 100%;
+    flex: 85%;
+    border: 0;
+    padding: 0 0.7em;
+    font-size: 1em;
+    border-right: 1px dotted #607d8b;
+
+    outline: none;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .chat-window .chat-footer button {
+    border: 0;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    flex: 15%;
+    height: 100%;
+    background: transparent;
+    outline: none;
+    font-size: 25px;
+    color: lightgray;
+  }
+
+  .chat-window .chat-footer button:hover {
+    color: #c7e3ff;
+  }
+  .hide {
+    opacity: 0 !important;
+  }
+`;
+const MessageCon = styled.div`
+  #you {
+    justify-content: flex-start;
+  }
+
+  #you .message-content {
+    justify-content: flex-start;
+  }
+
+  #you .message-meta {
+    justify-content: flex-start;
+    margin-left: 5px;
+  }
+
+  #other {
+    justify-content: flex-end;
+  }
+
+  #other .message-content {
+    justify-content: flex-end;
+    background-color: cornflowerblue;
+  }
+
+  #other .message-meta {
+    justify-content: flex-end;
+    margin-right: 5px;
+  }
+
+  .message-meta #author {
+    margin-left: 10px;
+    font-weight: bold;
   }
 `;
 
@@ -97,50 +176,54 @@ function Chat({ socket, username, room }) {
   }, [socket]);
 
   return (
-    <ChatWindow>
-      <div className="chat-window">
-        <div className="chat-header">
-          <p>Live Chat</p>
-        </div>
-        <div className="chat-body">
-          <ScrollToBottom className="message-container">
-            {messageList.map((messageContent, index) => {
-              return (
-                <div
-                  key={index}
-                  className="message"
-                  id={username === messageContent.author ? 'you' : 'other'}
-                >
-                  <div>
-                    <div className="message-content">
-                      <p>{messageContent.message}</p>
+    <ChatContainer>
+      <ChatWindow>
+        <div className="chat-window">
+          <div className="chat-header">
+            <p>Live Chat</p>
+          </div>
+          <div className="chat-body">
+            <ScrollToBottom className="message-container">
+              {messageList.map((messageContent, index) => {
+                return (
+                  <MessageCon>
+                    <div
+                      key={index}
+                      className="message"
+                      id={username === messageContent.author ? 'you' : 'other'}
+                    >
+                      <div>
+                        <div className="message-content">
+                          <p>{messageContent.message}</p>
+                        </div>
+                        <div className="message-meta">
+                          <p id="time">{messageContent.time}</p>
+                          <p id="author">{messageContent.author}</p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="message-meta">
-                      <p id="time">{messageContent.time}</p>
-                      <p id="author">{messageContent.author}</p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </ScrollToBottom>
+                  </MessageCon>
+                );
+              })}
+            </ScrollToBottom>
+          </div>
+          <div className="chat-footer">
+            <input
+              type="text"
+              value={currentMessage}
+              placeholder="입력하세요"
+              onChange={(event) => {
+                setCurrentMessage(event.target.value);
+              }}
+              onKeyPress={(event) => {
+                event.key === 'Enter' && sendMessage();
+              }}
+            />
+            <button onClick={sendMessage}>&#9658;</button>
+          </div>
         </div>
-        <div className="chat-footer">
-          <input
-            type="text"
-            value={currentMessage}
-            placeholder="Hey..."
-            onChange={(event) => {
-              setCurrentMessage(event.target.value);
-            }}
-            onKeyPress={(event) => {
-              event.key === 'Enter' && sendMessage();
-            }}
-          />
-          <button onClick={sendMessage}>&#9658;</button>
-        </div>
-      </div>
-    </ChatWindow>
+      </ChatWindow>
+    </ChatContainer>
   );
 }
 

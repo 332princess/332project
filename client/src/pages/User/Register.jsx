@@ -32,7 +32,7 @@ const Register = () => {
 
   const fetchEmailList = async () => {
     try {
-      const response = await axios.get('http://localhost:8081/users');
+      const response = await axios.get('http://192.168.0.54:8081/users');
       setEmailList(
         response.data?.rows.map((v, i) => {
           return v.email;
