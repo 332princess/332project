@@ -22,10 +22,9 @@ export const Container = styled.div`
   &::-webkit-scrollbar-thumb {
     border-radius: 2px;
     background: #ccc;
-    display: none;
   }
-  @media (min-width: 880px) {
-    margin-top: 10%;
+  @media (min-width: 1400px) {
+    margin-top: 7%;
   }
   @media (max-width: 880px) {
     background-color: #bbf;
@@ -58,8 +57,13 @@ export const WhiteBox = styled.div`
     background: #ccc;
     display: none;
   }
-  @media (min-width: 880px) {
-    margin-bottom: 10%;
+  @media (max-width: 1455px) {
+    border-radius: 0px;
+    margin: 0;
+  }
+  @media (max-width: 1024px) {
+    margin: 10px;
+    background-color: #bbf;
   }
   @media (max-width: 880px) {
     background-color: #bbf;
@@ -76,6 +80,8 @@ export const WhiteBox = styled.div`
 export const YoutubeWrapper = styled.div`
   width: 100%;
   height: 100%;
+  align-items: center;
+  justify-content: center;
 `;
 export const VideoContainer = styled.div`
   display: flex;
@@ -91,6 +97,7 @@ export const VideoBox = styled.div`
   text-align: center;
   line-height: 2;
 
+  color: #000;
   overflow-x: auto;
   white-space: no-wrap;
   &::-webkit-scrollbar {
@@ -101,7 +108,11 @@ export const VideoBox = styled.div`
     background: #ccc;
     display: none;
   }
-  @media (min-width: 880px) {
+  @media (max-width: 1455px) {
+    width: 40vw;
+  }
+  @media (max-width: 1024px) {
+    width: 40vw;
   }
   @media (max-width: 880px) {
     width: 50vw;
@@ -121,8 +132,10 @@ export const Bar = styled.div`
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
-  @media (min-width: 880px) {
-    margin-top: 10%;
+  @media (max-width: 1455px) {
+  }
+  @media (max-width: 1024px) {
+    color: #000;
   }
   @media (max-width: 880px) {
     background-color: #000;
@@ -140,12 +153,14 @@ export const BarBtn = styled.button`
 
 export const VideoDetail = styled.div`
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: center;
   gap: 10px;
+  justify-content: center;
 `;
 
 export const Title = styled.h3`
-  text-align: center;
+  justify-content: center;
   @media (min-width: 880px) {
   }
   @media (max-width: 880px) {
@@ -153,25 +168,4 @@ export const Title = styled.h3`
   }
   @media (max-width: 740px) {
   }
-`;
-
-export const Singer = styled.span``;
-
-export const Lyrics = styled.p`
-  margin-top: 10%;
-  text-align: center;
-  word-break: keep-all;
-
-  overflow-y: auto;
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 2px;
-    background: #ccc;
-  }
-`;
-
-export const PlayBox = styled.div`
-  background-color: gray;
 `;

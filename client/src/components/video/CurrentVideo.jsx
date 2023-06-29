@@ -9,13 +9,13 @@ const CurrentVideo = ({ currentVideo, opts, handlePlay, handlePause }) => {
         <>
           <VideoDetail>
             <Title>{currentVideo.snippet.title}</Title>
+            <YouTube
+              videoId={currentVideo.id}
+              opts={opts}
+              onPlay={handlePlay}
+              onPause={handlePause}
+            />
           </VideoDetail>
-          <YouTube
-            videoId={currentVideo.id}
-            opts={opts}
-            onPlay={handlePlay}
-            onPause={handlePause}
-          />
         </>
       )}
     </>
