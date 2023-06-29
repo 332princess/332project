@@ -6,8 +6,8 @@ const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 // const corsConfig = require('./config/corsConfig.json');
-const socketio = require('socket.io');
-
+const { Server } = require('socket.io');
+const http = require('http');
 const indexRouter = require('./src/routes/index');
 
 const models = require('./src/models/index');
@@ -17,6 +17,7 @@ dotenv.config();
 const { NODE_ENV, PORT, LOGGER_LEVEL } = process.env;
 
 const app = express();
+
 logger.info('app start');
 // const io = socketio(server);
 // view engine setup
@@ -47,7 +48,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: ['http://localhost:3000'],
+    origin: [
+      'http://localhost:3000',
+      'http://192.168.0.28:3000',
+      'http://192.168.0.98:3000',
+      'http://192.168.0.54:3000',
+    ],
     credentials: true,
   })
 );
@@ -72,8 +78,43 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.render('error');
 });
-// app.listen(PORT, () => {
-//   console.log(`Server is running on port ${PORT}`);
-// });
+
+const server = http.createServer(app);
+const io = new Server(server, {
+  path: '/socket.io',
+  cors: {
+    origin: [
+      'http://localhost:3000',
+      'http://192.168.0.28:3000',
+      'http://192.168.0.98:3000',
+      'http://192.168.0.54:3000',
+    ],
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
+  },
+  pingtimeout: 600000,
+});
+
+io.on('connection', (socket) => {
+  logger.debug(`User Connected: ${socket.id}`);
+
+  socket.on('join_room', (data) => {
+    socket.join(data);
+    logger.debug(`User with ID: ${socket.id} joined room: ${data}`);
+  });
+
+  socket.on('send_message', (data) => {
+    socket.to(data.room).emit('receive_message', data);
+  });
+
+  socket.on('disconnect', () => {
+    console.log('User Disconnected', socket.id);
+  });
+});
+
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
 
 module.exports = app;

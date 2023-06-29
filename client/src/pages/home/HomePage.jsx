@@ -47,7 +47,7 @@ const Home = () => {
             </Middle>
           </ImageWrapper>
           <ImageWrapper>
-            <Link to={PRIVATE_ROUTE.CHAT.path}>
+            <Link to={PRIVATE_ROUTE.CHATMAIN.path}>
               <Wrapper>
                 <Chat />
                 <span>
