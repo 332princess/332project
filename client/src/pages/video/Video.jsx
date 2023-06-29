@@ -7,8 +7,6 @@ import {
   playlist,
   removeFromPlayList,
   removeFromLiked,
-  updateLiked,
-  updatePlayList,
   videoList,
 } from '../../services/video/Video';
 import VideoList from '../../components/video/VideoList';
@@ -29,8 +27,6 @@ const Video = () => {
         setVideos(song);
         setPlayList(list);
         setLiked(like);
-        // console.log(list);
-        // console.log(like);
       } catch (error) {
         console.log(error);
       }
@@ -54,10 +50,6 @@ const Video = () => {
     setCurrentVideo((prevVideo) => ({ ...prevVideo, playing: false }));
   };
 
-  // const playVideo = (videoId) => {
-  //   window.open(`https://www.youtube.com/watch?v=${videoId}`);
-  // };
-
   const handlePlayList = async (video) => {
     try {
       if (playList.find((item) => item === video.id)) {
@@ -65,9 +57,11 @@ const Video = () => {
         setPlayList((prevPlayList) =>
           prevPlayList.filter((item) => item !== video.id)
         );
+        window.location.href = '/video';
       } else {
         await addToPlayList(video);
         setPlayList((prevPlayList) => [...prevPlayList, video]);
+        window.location.href = '/video';
       }
     } catch (error) {
       console.log(error);
@@ -78,9 +72,11 @@ const Video = () => {
       if (liked.find((item) => item === video.id)) {
         await removeFromLiked(video.id);
         setLiked((prevLiked) => prevLiked.filter((item) => item !== video.id));
+        window.location.href = '/video';
       } else {
         await addToLiked(video);
         setLiked((prevLiked) => [...prevLiked, video]);
+        window.location.href = '/video';
       }
     } catch (error) {
       console.log(error);
@@ -93,29 +89,31 @@ const Video = () => {
   };
 
   return (
-    <Container>
-      <WhiteBox className="non_scroll">
-        <YoutubeWrapper>
-          <CurrentVideo
+    <main>
+      <Container>
+        <WhiteBox className="non_scroll">
+          <YoutubeWrapper>
+            <CurrentVideo
+              currentVideo={currentVideo}
+              opts={opts}
+              handlePlay={handlePlay}
+              handlePause={handlePause}
+            />
+          </YoutubeWrapper>
+        </WhiteBox>
+        <WhiteBox className="scroll">
+          <VideoList
+            videos={videos}
             currentVideo={currentVideo}
-            opts={opts}
-            handlePlay={handlePlay}
-            handlePause={handlePause}
+            playList={playList}
+            liked={liked}
+            handleVideoClick={handleVideoClick}
+            handlePlayList={handlePlayList}
+            handleLike={handleLike}
           />
-        </YoutubeWrapper>
-      </WhiteBox>
-      <WhiteBox className="scroll">
-        <VideoList
-          videos={videos}
-          currentVideo={currentVideo}
-          playList={playList}
-          liked={liked}
-          handleVideoClick={handleVideoClick}
-          handlePlayList={handlePlayList}
-          handleLike={handleLike}
-        />
-      </WhiteBox>
-    </Container>
+        </WhiteBox>
+      </Container>
+    </main>
   );
 };
 export default Video;

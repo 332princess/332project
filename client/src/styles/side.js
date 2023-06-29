@@ -6,7 +6,7 @@ export const Container = styled.div`
   width: 15%;
   height: 80%;
   left: 7%;
-  top: 10%;
+  top: 15%;
 
   background: #ffffff;
   border-radius: 30px;
@@ -15,10 +15,6 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  // @media (max-width: 768px) {
-  //   display: none;
-  // }
 `;
 
 export const Title = styled.div`
@@ -55,8 +51,6 @@ export const Box = styled.div`
   }
 `;
 
-// export const SideBox =
-
 export const URLs = styled(NavLink)`
   text-decoration-line: none;
   color: #fff;
@@ -68,7 +62,7 @@ export const Logo = styled.div`
   margin-top: 30%;
   width: 45px;
   height: 45px;
-  border-radius: 100%;'
+  border-radius: 100%;
 
   @media only screen and (max-width: 1024px) {
   }

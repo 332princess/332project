@@ -2,28 +2,29 @@ import React from 'react';
 import {
   Container,
   Title,
+  TitleBox,
   H1,
   WhiteBox,
   Music,
   PlayList,
   Chat,
   Text,
-  ImageWithTextContainer,
   ImageWrapper,
   Wrapper,
   Middle,
-  Text1,
 } from '../../styles/homestyle';
 import { Link } from 'react-router-dom';
-import { ROUTE, PRIVATE_ROUTE } from '../../routes/Route';
+import { ROUTE } from '../../routes/Route';
 
 const Home = () => {
   return (
-    <Container>
-      <Title>뮤메이트</Title>
-      <H1>Made by 삼삼한 녀석 둘</H1>
-      <WhiteBox>
-        <ImageWithTextContainer>
+    <main>
+      <Container>
+        <TitleBox>
+          <Title>뮤메이트</Title>
+          <H1>Made by 삼삼한 녀석 둘</H1>
+        </TitleBox>
+        <WhiteBox>
           <ImageWrapper>
             <Link to={ROUTE.VIDEO.path}>
               <Wrapper>
@@ -36,18 +37,18 @@ const Home = () => {
           </ImageWrapper>
           <ImageWrapper>
             <Middle>
-              <Link to={PRIVATE_ROUTE.PLAYLIST.path}>
+              <Link to={ROUTE.PLAYLIST.path}>
                 <Wrapper>
                   <PlayList />
                   <span>
-                    <Text1>플레이리스트</Text1>
+                    <Text className="playlist">플레이리스트</Text>
                   </span>
                 </Wrapper>
               </Link>
             </Middle>
           </ImageWrapper>
           <ImageWrapper>
-            <Link to={PRIVATE_ROUTE.CHATMAIN.path}>
+            <Link to={ROUTE.CHATMAIN.path}>
               <Wrapper>
                 <Chat />
                 <span>
@@ -56,9 +57,9 @@ const Home = () => {
               </Wrapper>
             </Link>
           </ImageWrapper>
-        </ImageWithTextContainer>
-      </WhiteBox>
-    </Container>
+        </WhiteBox>
+      </Container>
+    </main>
   );
 };
 

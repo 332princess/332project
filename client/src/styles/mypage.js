@@ -5,6 +5,7 @@ export const Page = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
 `;
 
 export const Container = styled.div`
@@ -12,7 +13,7 @@ export const Container = styled.div`
   width: 65%;
   height: 74.5%;
   left: 25%;
-  top: 10%;
+  top: 15%;
 
   background: #ffffff;
   border-radius: 30px;

@@ -11,20 +11,15 @@ export const Container = styled.div`
   font-family: 'GangwonEdu_OTFBoldA';
   font-size: 20px;
   font-weight: 500;
-
+  /* height: 100%; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
 
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 2px;
-    background: #ccc;
-  }
   @media (min-width: 1400px) {
-    margin-top: 7%;
+  }
+  @media (max-width: 1024px) {
+    height: 100%;
   }
   @media (max-width: 880px) {
     background-color: #bbf;
@@ -46,23 +41,26 @@ export const WhiteBox = styled.div`
   height: 60vh;
   &.non_scroll {
     overflow: hidden;
-    position: sticky;
+    justify-content: center;
   }
-  overflow-y: auto;
-  &::-webkit-scrollbar {
-    width: 4px;
+  &.scroll {
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 2px;
+      background: #ccc;
+      display: none;
+    }
   }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 2px;
-    background: #ccc;
-    display: none;
-  }
+
   @media (max-width: 1455px) {
     border-radius: 0px;
     margin: 0;
   }
   @media (max-width: 1024px) {
-    margin: 10px;
+    margin: 0 10px;
     background-color: #bbf;
   }
   @media (max-width: 880px) {
@@ -78,10 +76,10 @@ export const WhiteBox = styled.div`
   }
 `;
 export const YoutubeWrapper = styled.div`
-  width: 100%;
+  /* width: 100%;
   height: 100%;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 `;
 export const VideoContainer = styled.div`
   display: flex;
@@ -115,8 +113,7 @@ export const VideoBox = styled.div`
     width: 40vw;
   }
   @media (max-width: 880px) {
-    width: 50vw;
-    color: #000;
+    width: 70vw;
   }
   @media (max-width: 740px) {
   }
@@ -142,6 +139,7 @@ export const Bar = styled.div`
   }
   @media (max-width: 740px) {
     background-color: #000;
+    width: 30%;
   }
 `;
 

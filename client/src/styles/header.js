@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-export const Container = styled.nav`
+export const Header = styled.header`
   background-color: #000;
   opacity: 90%;
   padding: 5px;
@@ -9,22 +9,41 @@ export const Container = styled.nav`
   top: 0;
   left: 0;
   right: 0;
-`;
-
-export const NavList = styled.ul`
   display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
   justify-content: space-between;
   align-items: center;
 `;
 
-export const NavItem = styled.li`
+export const NavItem = styled.ul`
+  display: flex;
   margin-right: 10px;
+  a {
+    text-decoration: none;
+    color: #ddd;
+    font-weight: bold;
+    margin: 0 1.2vw 0 1.2vw;
 
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+
+    &.active {
+      color: #ff0000;
+    }
+
+    @media screen and (max-width: 768px) {
+      color: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      height: 40px;
+      font-size: 20px;
+      justify-content: space-evenly;
+    }
+  }
   @media screen and (max-width: 768px) {
     display: none;
+  }
 `;
 
 export const NavLinkWrapper = styled(NavLink)`
@@ -32,6 +51,13 @@ export const NavLinkWrapper = styled(NavLink)`
   color: #ddd;
   font-weight: bold;
   margin: 0 1.2vw 0 1.2vw;
+
+  background-image: url('/assets/logoMyu.png');
+  background-size: cover;
+  background-position: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
 
   &.active {
     color: #ff0000;
@@ -43,21 +69,10 @@ export const NavLinkWrapper = styled(NavLink)`
     flex-direction: column;
     align-items: left;
     height: 40px;
+    width: 40px;
     font-size: 20px;
     justify-content: space-evenly;
   }
-`;
-
-export const LogoHome = styled.div`
-  background-image: url('/assets/logoMyu.png');
-  background-size: cover;
-  width: 50px;
-  height: 50px;
-  border-radius: 100%;
-`;
-
-export const LogoWrapper = styled.div`
-  height: 50px;
 `;
 
 export const MenuToggleBtn = styled.button`
@@ -74,7 +89,7 @@ export const MenuToggleBtn = styled.button`
 
 export const SideBarWrap = styled.div`
   z-index: 99999;
-  padding: 12px;
+  padding: 40px 16px;
   border-radius: 15px 0 0 15px;
   background-color: #e7e4e1;
   height: 100%;
@@ -96,4 +111,19 @@ export const SideBarWrap = styled.div`
 
 export const NavItems = styled.li`
   margin-right: 10px;
+  display: grid;
+  a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    margin: 0 1.2vw 0 1.2vw;
+
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+
+    &.active {
+      color: #ff0000;
+    }
+  }
 `;

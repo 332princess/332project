@@ -95,49 +95,51 @@ const Register = () => {
   };
 
   return (
-    <Container>
-      <Title>회원가입</Title>
-      <Box style={{ top: '27%' }}>
-        <Input
-          type="text"
-          name="name"
-          value={name}
-          onChange={nameChange}
-          className="register"
-          placeholder=" Please Enter Your Name"
-        />
-        <InputBox>
+    <main>
+      <Container>
+        <Title>회원가입</Title>
+        <Box>
           <Input
             type="text"
-            name="email"
-            value={email}
-            onChange={emailChange}
-            className="register email"
-            placeholder=" Please Enter Your Email"
+            name="name"
+            value={name}
+            onChange={nameChange}
+            className="register"
+            placeholder=" Please Enter Your Name"
           />
-          <CheckBtn onClick={handleCheckEmail}>확인</CheckBtn>
-        </InputBox>
-        <Input
-          type="password"
-          name="password"
-          value={password}
-          onChange={passwordChange}
-          className="register"
-          placeholder=" Please Enter Your Password"
-        />
-        <Input
-          type="password"
-          name="confirmPassword"
-          value={password2}
-          onChange={password2Change}
-          className="register"
-          placeholder=" Please Enter Your Password Again"
-        />
-      </Box>
-      <SubmitBtn type="submit" onClick={handleSubmit}>
-        Submit
-      </SubmitBtn>
-    </Container>
+          <InputBox>
+            <Input
+              type="text"
+              name="email"
+              value={email}
+              onChange={emailChange}
+              className="register email"
+              placeholder=" Please Enter Your Email"
+            />
+            <CheckBtn onClick={handleCheckEmail}>확인</CheckBtn>
+          </InputBox>
+          <Input
+            type="password"
+            name="password"
+            value={password}
+            onChange={passwordChange}
+            className="register"
+            placeholder=" Please Enter Your Password"
+          />
+          <Input
+            type="password"
+            name="confirmPassword"
+            value={password2}
+            onChange={password2Change}
+            className="register"
+            placeholder=" Please Enter Your Password Again"
+          />
+        </Box>
+        <SubmitBtn type="submit" onClick={handleSubmit}>
+          Submit
+        </SubmitBtn>
+      </Container>
+    </main>
   );
 };
 export default Register;

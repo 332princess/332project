@@ -5,7 +5,7 @@ import Like from '../pages/mypage/Like';
 import Info from '../pages/mypage/Info';
 import PlayList from '../pages/mypage/PlayList';
 import Home from '../pages/home/HomePage';
-import ChatList from '../pages/mypage/Chatting';
+// import ChatList from '../pages/mypage/Chatting';
 import Chat from '../pages/chat/Chatting';
 import Video from '../pages/video/Video';
 import ChatMain from '../pages/chat/chatmain';
@@ -51,6 +51,12 @@ export const ROUTE = {
     link: '/MyPage/playlist',
     element: PlayList,
   },
+  CHATMAIN: {
+    name: '좋아요',
+    path: '/chat/chatmain',
+    link: '/chat/chatmain',
+    element: ChatMain,
+  },
 };
 export const PUBLIC_ROUTE = {
   HOME: {
@@ -85,6 +91,12 @@ export const PRIVATE_ROUTE = {
     link: '/MyPage',
     element: MyPage,
   },
+  PLAYLIST: {
+    name: '플레이리스트',
+    path: '/MyPage/playlist',
+    link: '/MyPage/playlist',
+    element: PlayList,
+  },
   LIKE: {
     name: '좋아요',
     path: '/MyPage/like',
@@ -92,23 +104,17 @@ export const PRIVATE_ROUTE = {
     element: Like,
   },
   CHATMAIN: {
-    name: '좋아요',
+    name: '채팅',
     path: '/chat/chatmain',
     link: '/chat/chatmain',
     element: ChatMain,
   },
-  PLAYLIST: {
-    name: '플레이리스트',
-    path: '/MyPage/playlist',
-    link: '/MyPage/playlist',
-    element: PlayList,
-  },
-  CHATLIST: {
-    name: '내 채팅방',
-    path: '/MyPage/chatting',
-    link: '/MyPage/chatting',
-    element: ChatList,
-  },
+  // CHATLIST: {
+  //   name: '내 채팅방',
+  //   path: '/MyPage/chatting',
+  //   link: '/MyPage/chatting',
+  //   element: ChatList,
+  // },
   INFO: {
     name: '내 정보 보기',
     path: '/MyPage/info',

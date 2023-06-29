@@ -1,7 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
-import { SideBarWrap, NavItems, NavLinkWrapper } from '../../styles/header';
+import { SideBarWrap, NavItems } from '../../styles/header';
+import { Link } from 'react-router-dom';
 
 const SideBar = ({ isOpen, setIsOpen, handleToggleOpen }) => {
   const outside = useRef();
@@ -41,7 +42,7 @@ const SideBar = ({ isOpen, setIsOpen, handleToggleOpen }) => {
         <NavItems>
           {isLoggedIn ? (
             <>
-              <NavLinkWrapper
+              <Link
                 to="/logout"
                 activeClassName="active"
                 onClick={() => {
@@ -50,34 +51,34 @@ const SideBar = ({ isOpen, setIsOpen, handleToggleOpen }) => {
                 }}
               >
                 Logout
-              </NavLinkWrapper>
-              <NavLinkWrapper to="/" exact onClick={handleToggleOpen}>
+              </Link>
+              <Link to="/" exact onClick={handleToggleOpen}>
                 Home
-              </NavLinkWrapper>
-              <NavLinkWrapper
+              </Link>
+              <Link
                 to="/mypage"
                 activeClassName="active"
                 onClick={handleToggleOpen}
               >
                 My Page
-              </NavLinkWrapper>
+              </Link>
             </>
           ) : (
             <>
-              <NavLinkWrapper
+              <Link
                 to="/login"
                 activeClassName="active"
                 onClick={handleToggleOpen}
               >
                 Login
-              </NavLinkWrapper>
-              <NavLinkWrapper
+              </Link>
+              <Link
                 to="/register"
                 activeClassName="active"
                 onClick={handleToggleOpen}
               >
                 Signup
-              </NavLinkWrapper>
+              </Link>
             </>
           )}
         </NavItems>

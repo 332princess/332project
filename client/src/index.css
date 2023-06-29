@@ -1,3 +1,18 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 body {
   margin: 0;
   padding: 0;
@@ -18,7 +33,9 @@ body {
     color: #fff;
   }
 }
-
+li {
+  list-style: none;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -38,4 +55,11 @@ input {
   background-color: #d9d9d9;
   text-align: center;
   border-radius: 10px;
+}
+main {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

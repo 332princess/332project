@@ -62,41 +62,43 @@ const Login = () => {
   };
 
   return (
-    <Container className="login">
-      <Title>로그인</Title>
-      <Box style={{ gap: '40px' }}>
-        <Input
-          type="text"
-          name="id"
-          onChange={handleChange}
-          placeholder="please enter your id"
-          className="login"
-          style={{ borderRadius: '10px' }}
-        />
-        <Input
-          type="password"
-          name="password"
-          onChange={handleChange}
-          placeholder="please enter your password"
-          className="login"
-          style={{ borderRadius: '10px' }}
-        />
-      </Box>
-      <FindBox>
-        <Find>
-          <Link to="#">아이디 찾기</Link>
-        </Find>
-        &nbsp;|&nbsp;
-        <Find>
-          <Link to="#">비밀번호 찾기</Link>
-        </Find>
-        &nbsp;|&nbsp;
-        <Find>
-          <Link to={'/register'}>회원가입</Link>
-        </Find>
-      </FindBox>
-      <SubmitBtn onClick={handleSubmit}>Submit</SubmitBtn>
-    </Container>
+    <main>
+      <Container className="login">
+        <Title>로그인</Title>
+        <Box>
+          <Input
+            type="text"
+            name="id"
+            onChange={handleChange}
+            placeholder="please enter your id"
+            className="login"
+            style={{ borderRadius: '10px' }}
+          />
+          <Input
+            type="password"
+            name="password"
+            onChange={handleChange}
+            placeholder="please enter your password"
+            className="login"
+            style={{ borderRadius: '10px' }}
+          />
+        </Box>
+        <FindBox>
+          <Find>
+            <Link to="#">아이디 찾기</Link>
+          </Find>
+          &nbsp;|&nbsp;
+          <Find>
+            <Link to="#">비밀번호 찾기</Link>
+          </Find>
+          &nbsp;|&nbsp;
+          <Find>
+            <Link to={'/register'}>회원가입</Link>
+          </Find>
+        </FindBox>
+        <SubmitBtn onClick={handleSubmit}>Submit</SubmitBtn>
+      </Container>
+    </main>
   );
 };
 export default Login;
