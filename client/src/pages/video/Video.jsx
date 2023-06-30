@@ -11,7 +11,7 @@ import {
 } from '../../services/video/Video';
 import VideoList from '../../components/video/VideoList';
 import CurrentVideo from '../../components/video/CurrentVideo';
-
+//
 const Video = () => {
   const [videos, setVideos] = useState([]);
   const [currentVideo, setCurrentVideo] = useState(false);
